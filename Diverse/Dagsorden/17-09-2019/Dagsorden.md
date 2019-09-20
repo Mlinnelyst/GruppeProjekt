@@ -2,8 +2,9 @@ Følgende skal vi huske at snakke om til næste vejledermøde.
 
 ## Næste vejledermøde 24/09/2019
 - Flere idéer som vi kan snakke om til næste møde.
+- Måske starte med at tænke lidt på problemstilling(er)
 - Gruppekontrakten klar.
-- Vejlederkontrakt klar.
+- Vejlederkontrakten klar.
 - Få styr på GitHub (dvs. opsætning af logbog, dagsorden, selve projektet på NetBeans).
 - Snak om grupperoller.
 - Snak om programmeringsdelen, dele specialisterne op.
