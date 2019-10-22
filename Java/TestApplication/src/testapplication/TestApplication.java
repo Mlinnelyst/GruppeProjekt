@@ -18,6 +18,7 @@ public class TestApplication {
         System.out.println("Hej");
         System.out.println("Skrrt");
         System.out.println("GANG GANG");
+        System.out.println("Hej");
         
     }
     
