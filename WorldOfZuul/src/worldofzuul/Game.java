@@ -4,7 +4,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+     
 
     public Game() 
     {
@@ -15,28 +15,25 @@ public class Game
 
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
+        Room park, hjem, byen, genbrugsplads, genbrugsbutik;
       
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        park = new Room("i parken");
+        hjem = new Room("derhjemme");
+        byen = new Room("i byen");
+        genbrugsplads = new Room("på genbrugspladsen");
+        genbrugsbutik = new Room("i genbrugsbutikken");
+
+        hjem.setExit("parken", park);
+        hjem.setExit("byen", byen);
+        hjem.setExit("genbrugspladsen", genbrugsplads);
+        hjem.setExit("genbrugsbutikken", genbrugsbutik);
         
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        byen.setExit("hjem", hjem);
+        park.setExit("hjem", hjem);
+        genbrugsbutik.setExit("hjem", hjem);
+        genbrugsplads.setExit("hjem", hjem);
 
-        theatre.setExit("west", outside);
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-
-        currentRoom = outside;
+        currentRoom = park;
     }
 
     public void play() 

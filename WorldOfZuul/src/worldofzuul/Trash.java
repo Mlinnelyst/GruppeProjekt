@@ -9,6 +9,7 @@ public class Trash {
         this.trashType = trashType;
     }
     
+    @Override
     public String toString(){
         return name;
     }
