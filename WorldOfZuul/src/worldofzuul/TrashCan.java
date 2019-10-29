@@ -25,12 +25,20 @@ public class TrashCan {
     public void addTrash(Inventory inv, Trash trash) {
         // først tjekker vi om det objekt overhovedet eksisterer i vores player inventory
         if (inv.trash.contains(trash)) {
+            // vi tjekker også om vores skrald har samme skraldetype som vores skraldespand.
+            // det vil sige, vi definerer hvilken type skrald vores skraldespand kan acceptere.
+            // eksempelvis, kan vi ikke sætte en plastikflaske ind i en mad skraldesprand.
             if (containsTrashType(trash.getTrashType())) {
                 // hvis det gør tilføjer vi det til skraldespandens "inventory"
                 this.trash.add(trash);
 
                 // vi skal også huske at fjerne objektet fra vores player inventory
                 inv.trash.remove(trash);
+            }
+            else {
+                // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
+                // udskrives følgende 
+                System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name);
             }
         }    
     }
