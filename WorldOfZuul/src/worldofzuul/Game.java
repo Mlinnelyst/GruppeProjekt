@@ -78,7 +78,10 @@ public class Game
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
+        } else if (commandWord == CommandWord.THROWOUT) {
+            throwOut(command);
         }
+        
         return wantToQuit;
     }
 
@@ -91,6 +94,20 @@ public class Game
         parser.showCommands();
     }
 
+    private void throwOut(Command command) {
+        if(!command.hasSecondWord()) {
+            System.out.println("Smid hvad ud?");
+            return;
+        }
+        
+        String targetTrash = command.getSecondWord();
+        
+        System.out.println("I hvilken skraldespand?");
+        
+        // Print skraldespande
+        
+    }
+    
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
