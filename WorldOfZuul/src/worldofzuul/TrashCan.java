@@ -10,6 +10,7 @@ public class TrashCan {
         trash = new ArrayList<>();
         this.name = name;
         this.trashType = trashType;
+        this.trash = new ArrayList<>();
     }
     
     public String toString(){
