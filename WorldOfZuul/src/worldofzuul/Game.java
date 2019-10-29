@@ -18,6 +18,11 @@ public class Game
         Room park, hjem, byen, genbrugsplads;
       
         park = new Room("i parken");
+
+        Trash apple = new Trash("Æble", TrashType.FOOD);
+
+        park.addTrash(apple);
+
         hjem = new Room("derhjemme");
         byen = new Room("i byen");
         genbrugsplads = new Room("på genbrugspladsen");
@@ -121,6 +126,7 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            currentRoom.printTrash();
         }
     }
 
