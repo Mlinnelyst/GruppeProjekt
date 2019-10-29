@@ -7,6 +7,7 @@ public class TrashCan {
     public ArrayList<Trash> trash;
     
     public TrashCan(String name, ArrayList<Integer> trashType){
+        trash = new ArrayList<>();
         this.name = name;
         this.trashType = trashType;
     }
@@ -17,5 +18,31 @@ public class TrashCan {
     
     public boolean containsTrashType(Integer trashType){
         return this.trashType.contains(trashType);
+    }
+
+    // følgende funktion har til opgave at fjerne affald fra players inventory
+    // og tilføje affaldet ind til skraldespanden
+    public void addTrash(Inventory inv, Trash trash) {
+        // først tjekker vi om det objekt overhovedet eksisterer i vores player inventory
+        if (inv.trash.contains(trash)) {
+            if (containsTrashType(trash.getTrashType())) {
+                // hvis det gør tilføjer vi det til skraldespandens "inventory"
+                this.trash.add(trash);
+
+                // vi skal også huske at fjerne objektet fra vores player inventory
+                inv.trash.remove(trash);
+            }
+        }    
+    }
+
+    // print alle 
+    public void printInventory() {
+        System.out.printf("----- Inventory of %s trashcan -----%n", this.name);
+    
+        trash.forEach((trash1) -> {
+            System.out.println(trash1.toString());
+        });
+        
+        System.out.println("--------------------------------------");
     }
 }

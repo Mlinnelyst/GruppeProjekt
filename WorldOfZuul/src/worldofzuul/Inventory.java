@@ -4,6 +4,10 @@ import java.util.ArrayList;
 public class Inventory {
     public ArrayList<Trash> trash;
 
+    public Inventory() {
+        trash = new ArrayList<>();
+    }
+
     // Print alle navne på skrald i spillerens inventory
     public void PrintInventory() {
         System.out.println("-----Inventory-----");
