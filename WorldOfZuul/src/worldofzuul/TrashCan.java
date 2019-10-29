@@ -3,21 +3,20 @@ import java.util.ArrayList;
 
 public class TrashCan {
     private String name;
-    private ArrayList<Integer> trashType;
+    private ArrayList<TrashType> trashType;
     public ArrayList<Trash> trash;
     
-    public TrashCan(String name, ArrayList<Integer> trashType){
-        trash = new ArrayList<>();
+    public TrashCan(String name, ArrayList<TrashType> trashType) {
         this.name = name;
         this.trashType = trashType;
         this.trash = new ArrayList<>();
     }
     
-    public String toString(){
+    public String toString() {
         return this.name;
     }
     
-    public boolean containsTrashType(Integer trashType){
+    public boolean containsTrashType(TrashType trashType) {
         return this.trashType.contains(trashType);
     }
 
@@ -39,9 +38,9 @@ public class TrashCan {
             else {
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
                 // udskrives følgende 
-                System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name);
+                System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name.toLowerCase());
             }
-        }    
+        } 
     }
 
     // print alle 

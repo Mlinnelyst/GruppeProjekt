@@ -1,6 +1,8 @@
 package worldofzuul;
 
-public enum TrashTypes {
+public enum TrashType {
+    FOOD("Mad"),
+
     PLASTBAG("Plastikpose"), JUICE("Juice karton"),
     BANANA("Bananskrald"), APPLE("Råddent æble"), PIZZA("Rådent pizza skorpe"),
     
@@ -10,15 +12,14 @@ public enum TrashTypes {
     CARDBOARD("Pap"), BEERFRAME("Ølramme"), 
     PHONE("Ødelagt telefon");
     
-    
-    private String TrashTypes;
+    private String trashTypes;
 
-    TrashTypes(String trashTypes) {
-        this.TrashTypes = trashTypes;
+    TrashType(String trashTypes) {
+        this.trashTypes = trashTypes;
     }
 
     @Override
     public String toString() {
-        return TrashTypes;
+        return trashTypes;
     }
 }
