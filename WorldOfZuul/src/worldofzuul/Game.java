@@ -15,25 +15,22 @@ public class Game
 
     private void createRooms()
     {
-        Room park, hjem, byen, genbrugsplads, genbrugsbutik;
+        Room park, hjem, byen, genbrugsplads;
       
         park = new Room("i parken");
         hjem = new Room("derhjemme");
         byen = new Room("i byen");
         genbrugsplads = new Room("på genbrugspladsen");
-        genbrugsbutik = new Room("i genbrugsbutikken");
 
         hjem.setExit("parken", park);
         hjem.setExit("byen", byen);
         hjem.setExit("genbrugspladsen", genbrugsplads);
-        hjem.setExit("genbrugsbutikken", genbrugsbutik);
         
         byen.setExit("hjem", hjem);
         park.setExit("hjem", hjem);
-        genbrugsbutik.setExit("hjem", hjem);
         genbrugsplads.setExit("hjem", hjem);
 
-        currentRoom = park;
+        currentRoom = hjem;
     }
 
     public void play() 
@@ -66,7 +63,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Hvad mener du?");
             return false;
         }
 
@@ -87,10 +84,9 @@ public class Game
 
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("Du har kaldt efter hjælp!");
         System.out.println();
-        System.out.println("Your command words are:");
+        System.out.println("Dine muligheder er:");
         parser.showCommands();
     }
 
@@ -111,7 +107,7 @@ public class Game
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
-            System.out.println("Go where?");
+            System.out.println("Besoeg hvad?");
             return;
         }
 
@@ -120,7 +116,7 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("Du kan ikke gå den vej");
         }
         else {
             currentRoom = nextRoom;
