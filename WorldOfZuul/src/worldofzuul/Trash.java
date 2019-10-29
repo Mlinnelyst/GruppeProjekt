@@ -2,9 +2,9 @@ package worldofzuul;
 
 public class Trash {
     private String name;
-    private int trashType;
+    private TrashType trashType;
     
-    public Trash(String name, int trashType){
+    public Trash(String name, TrashType trashType){
         this.name = name;
         this.trashType = trashType;
     }
@@ -14,7 +14,7 @@ public class Trash {
         return name;
     }
     
-    public int getTrashType(){
+    public TrashType getTrashType(){
         return trashType;
     }
 }
