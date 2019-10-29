@@ -7,9 +7,9 @@ public class TrashCan {
     public ArrayList<Trash> trash;
     
     public TrashCan(String name, ArrayList<Integer> trashType){
-        trash = new ArrayList<>();
         this.name = name;
         this.trashType = trashType;
+        this.trash = new ArrayList<>();
     }
     
     public String toString(){
