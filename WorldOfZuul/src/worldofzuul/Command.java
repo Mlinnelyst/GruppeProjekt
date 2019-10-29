@@ -30,8 +30,7 @@ public class Command
         this.secondWord = secondWord;
     }
 
-    public CommandWord getCommandWord()
-    {
+    public CommandWord getCommandWord() {
         return commandWord;
     }
 
