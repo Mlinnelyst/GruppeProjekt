@@ -8,7 +8,7 @@ public enum TrashType {
     FOOD("Mad"),
 
     PLASTBAG("Plastikpose"), JUICE("Juice karton"),
-    BANANA("Bananskrald"), APPLE("Råddent æble"), PIZZA("Rådent pizza skorpe"),
+    BANANA("Bananskrald"), APPLE("Råddent æble"), PIZZA("Pizzaskorpe"),
     
     PLAST("Plastikflaske uden pant"), PLASTPANT("Plastikflaske med pant"), PLASTBUCKET("Ødelagt plastik spand"), 
     PLASTSHOVEL("Ødelagt plastik skovl"), CAN("Dåse"), CANPANT("Dåse med pant"), NAILS("Ødelagt søm"),
