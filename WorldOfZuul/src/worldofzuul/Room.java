@@ -22,10 +22,6 @@ public class Room {
     public void setExit(String direction, Room neighbor) {
         exits.put(direction, neighbor);
     }
-    
-    public void setTrash(String room, ArrayList<Trash> trashTypes) {
-        
-    }
 
     public String getShortDescription() {
         return description;
@@ -73,7 +69,7 @@ public class Room {
         
         Boolean spawned = false;
         while (!spawned) {
-            int index2 = random.nextInt(TrashList.trashList.size());
+            int index2 = random2.nextInt(TrashList.trashList.size());
             if (trashTypes.get(index).toString().contentEquals(TrashList.trashList.get(index2))) {
                 spawned = true;
                 //trash.add(new Trash(trashTypes.get(index).toString(), trashTypes.get(index)));
