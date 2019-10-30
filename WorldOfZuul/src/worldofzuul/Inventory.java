@@ -5,7 +5,7 @@ public class Inventory {
     public ArrayList<Trash> trash;
 
     public void addTrash(Room room, Trash trash) {
-        if(room.trash.contains(trash)) {
+        if(room.trash.containsValue(trash)) {
             this.trash.add(trash);
         }
     }
@@ -15,7 +15,7 @@ public class Inventory {
     }
 
     // Print alle navne på skrald i spillerens inventory
-    public void PrintInventory() {
+    public void printInventory() {
         System.out.println("-----Inventory-----");
         
         trash.forEach((trash1) -> {
