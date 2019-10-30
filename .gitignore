@@ -2,5 +2,6 @@
 /Java/TestApplication/build/
 /WorldOfZuul/build/
 .vscode/
+/WorldOfZuul/dist/
 
 /WorldOfZuul/nbproject/private/

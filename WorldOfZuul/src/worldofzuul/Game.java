@@ -4,8 +4,8 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-     
-
+    private int moves;
+    
     public Game() 
     {
         createRooms();
@@ -111,6 +111,7 @@ public class Game
     
     private void goRoom(Command command) 
     {
+
         if(!command.hasSecondWord()) {
             System.out.println("Besoeg hvad?");
             return;
@@ -126,6 +127,13 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            
+            moves++;
+            if (moves % 2 == 0) {
+                System.out.println("Add Trash");
+            } else {
+                System.out.println("You moved");
+            }
             currentRoom.printTrash();
         }
     }
