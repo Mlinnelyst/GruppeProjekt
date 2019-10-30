@@ -1,10 +1,14 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+
 public enum TrashType {
+    INIT_ITEMS("init"),
+    
     FOOD("Mad"),
 
     PLASTBAG("Plastikpose"), JUICE("Juice karton"),
-    BANANA("Bananskrald"), APPLE("Råddent æble"), PIZZA("Rådent pizza skorpe"),
+    BANANA("Bananskrald"), APPLE("Råddent æble"), PIZZA("Pizzaskorpe"),
     
     PLAST("Plastikflaske uden pant"), PLASTPANT("Plastikflaske med pant"), PLASTBUCKET("Ødelagt plastik spand"), 
     PLASTSHOVEL("Ødelagt plastik skovl"), CAN("Dåse"), CANPANT("Dåse med pant"), NAILS("Ødelagt søm"),
@@ -16,6 +20,10 @@ public enum TrashType {
 
     TrashType(String trashTypes) {
         this.trashTypes = trashTypes;
+        
+        if (!trashTypes.equals("init")) {
+            TrashList.trashList.add(trashTypes);
+        }
     }
 
     @Override
