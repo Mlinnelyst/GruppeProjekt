@@ -5,12 +5,14 @@ public class TrashCan {
     private String name;
     private ArrayList<Integer> trashType;
     public ArrayList<Trash> trash;
+    public ScoreCounter scoreCounter;
     
-    public TrashCan(String name, ArrayList<Integer> trashType){
+    public TrashCan(String name, ArrayList<Integer> trashType, ScoreCounter scoreCounter){
         trash = new ArrayList<>();
         this.name = name;
         this.trashType = trashType;
         this.trash = new ArrayList<>();
+        this.scoreCounter = scoreCounter;
     }
     
     public String toString(){
@@ -32,11 +34,13 @@ public class TrashCan {
             if (containsTrashType(trash.getTrashType())) {
                 // hvis det gør tilføjer vi det til skraldespandens "inventory"
                 this.trash.add(trash);
+                scoreCounter.addScore(10);
 
                 // vi skal også huske at fjerne objektet fra vores player inventory
                 inv.trash.remove(trash);
             }
             else {
+                scoreCounter.addScore(-10);
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
                 // udskrives følgende 
                 System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name);
