@@ -39,7 +39,7 @@ public class TrashCan {
                 inv.trash.remove(trash);
             }
             else {
-                scoreCounter.addScore(-10);
+                scoreCounter.decreaseScore(10);
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
                 // udskrives følgende 
                 System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name.toLowerCase());
