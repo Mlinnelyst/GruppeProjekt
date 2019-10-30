@@ -114,8 +114,7 @@ public class Game {
     }
 
     private void printHelp() {
-        System.out.println("Du har kaldt efter hjælp!");
-        System.out.println();
+        System.out.println("Du har kaldt efter hjælp!\n"); // \n = new line
         System.out.println("Dine muligheder er:");
         parser.showCommands();
     }
