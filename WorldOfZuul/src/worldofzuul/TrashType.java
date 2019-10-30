@@ -1,6 +1,10 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+
 public enum TrashType {
+    INIT_ITEMS("init"),
+    
     FOOD("Mad"),
 
     PLASTBAG("Plastikpose"), JUICE("Juice karton"),
@@ -16,6 +20,10 @@ public enum TrashType {
 
     TrashType(String trashTypes) {
         this.trashTypes = trashTypes;
+        
+        if (!trashTypes.equals("init")) {
+            TrashList.trashList.add(trashTypes);
+        }
     }
 
     @Override
