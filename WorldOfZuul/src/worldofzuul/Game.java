@@ -63,27 +63,27 @@ public class Game {
         CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) {
-            case HELP:
-                printHelp();
-                break;
-            case GO:
-                goRoom(command);
-                break;
-            case QUIT:
-                wantToQuit = quit(command);
-                break;
-            case THROWOUT:
-                throwOut(command);
-                break;
-            case PICKUP:
-                pickUp(command);
-                break;
-            case INVENTORY:
-                inventory.printInventory();
-                break;
-            default:
-                System.out.println("Hvad mener du?");
-                break;
+        case HELP:
+            printHelp();
+            break;
+        case GO:
+            goRoom(command);
+            break;
+        case QUIT:
+            wantToQuit = quit(command);
+            break;
+        case THROWOUT:
+            throwOut(command);
+            break;
+        case PICKUP:
+            pickUp(command);
+            break;
+        case INVENTORY:
+            inventory.printInventory();
+            break;
+        default:
+            System.out.println("Hvad mener du?");
+            break;
         }
 
         return wantToQuit;
