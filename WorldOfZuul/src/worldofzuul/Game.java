@@ -100,7 +100,7 @@ public class Game {
             System.out.println("Tag hvad?");
         } else {
             String targetTrash = command.getSecondWord();
-
+            
             if (!currentRoom.trash.containsKey(targetTrash)) {
                 System.out.printf("%s eksisterer ikke i rummet!%n", targetTrash);
                 return;

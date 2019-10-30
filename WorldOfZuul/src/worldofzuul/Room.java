@@ -9,13 +9,13 @@ import java.util.Random;
 public class Room {
     private String description;
     private HashMap<String, Room> exits;
-    private ArrayList<Trash> trash;
+    public HashMap<String, Trash> trash;
     private ArrayList<TrashType> trashTypes;
 
     public Room(String description) {
         this.description = description;
-        exits = new HashMap<String, Room>();
-        trash = new ArrayList<>();
+        exits = new HashMap<>();
+        trash = new HashMap<>();
         trashTypes = new ArrayList<>();
     }
 
@@ -50,16 +50,16 @@ public class Room {
 
     public void printTrash() {
         System.out.println("----- Affald på jorden -----");
-
-        trash.forEach((trash1) -> {
-            System.out.println(trash1.toString());
-        });
+        
+        for (Trash trash : trash.values()) {
+            System.out.println(trash.toString());
+        }
 
         System.out.println("----------------------------");
     }
 
     public void addTrash(Trash trash) {
-        this.trash.add(trash);
+        this.trash.put(trash.toString(), trash);
     }
     
     public void addTrashType(TrashType trashType) {
@@ -76,7 +76,8 @@ public class Room {
             int index2 = random.nextInt(TrashList.trashList.size());
             if (trashTypes.get(index).toString().contentEquals(TrashList.trashList.get(index2))) {
                 spawned = true;
-                trash.add(new Trash(trashTypes.get(index).toString(), trashTypes.get(index)));
+                //trash.add(new Trash(trashTypes.get(index).toString(), trashTypes.get(index)));
+                // vi fixer det her næste gang
             }
         }
         
