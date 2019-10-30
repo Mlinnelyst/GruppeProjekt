@@ -50,9 +50,9 @@ public class Game {
 
     private void printWelcome() {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Hello Gamer, Welcome to the Big dick club");
+        System.out.println("This game is all about big dick energy.");
+        System.out.println("Skriv '" + CommandWord.HELP + "' hvis du ikke fatter noget.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
