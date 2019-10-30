@@ -13,7 +13,7 @@ public enum TrashType {
 
     CARDBOARD("Pap"), BEERFRAME("Ølramme"), PHONE("Ødelagt telefon");
 
-    private String trashTypes;
+    private final String trashTypes;
 
     TrashType(String trashTypes) {
         this.trashTypes = trashTypes;

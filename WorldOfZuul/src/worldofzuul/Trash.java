@@ -1,8 +1,8 @@
 package worldofzuul;
 
 public class Trash {
-    private String name;
-    private TrashType trashType;
+    private final String name;
+    private final TrashType trashType;
     
     public Trash(String name, TrashType trashType){
         this.name = name;

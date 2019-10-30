@@ -3,8 +3,8 @@ package worldofzuul;
 import java.util.ArrayList;
 
 public class TrashCan {
-    private String name;
-    private ArrayList<TrashType> trashType;
+    private final String name;
+    private final ArrayList<TrashType> trashType;
     public ArrayList<Trash> trash;
     public ScoreCounter scoreCounter;
 
@@ -15,6 +15,7 @@ public class TrashCan {
         this.scoreCounter = scoreCounter;
     }
 
+    @Override
     public String toString() {
         return this.name;
     }
