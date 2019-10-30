@@ -20,8 +20,14 @@ public class Game
         park = new Room("i parken");
 
         Trash apple = new Trash("Æble", TrashType.FOOD);
-
-        park.addTrash(apple);
+        
+        
+        
+        
+        park.addTrashType(TrashType.APPLE);
+        park.addTrashType(TrashType.BANANA);
+        park.spawnTrash();
+        park.printTrash();
 
         hjem = new Room("derhjemme");
         byen = new Room("i byen");

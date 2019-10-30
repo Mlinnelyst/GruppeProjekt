@@ -1,6 +1,5 @@
 package worldofzuul;
 
-import java.util.ArrayList;
 
 public enum TrashType {
     INIT_ITEMS("init"),
