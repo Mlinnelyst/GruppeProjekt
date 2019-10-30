@@ -9,7 +9,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
-    private ArrayList<Trash> trash;
+    public ArrayList<Trash> trash;
 
     public Room(String description) 
     {

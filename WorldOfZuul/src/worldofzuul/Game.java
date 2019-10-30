@@ -5,7 +5,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private int moves;
-    
+
     public Game() 
     {
         createRooms();
@@ -82,9 +82,20 @@ public class Game
             wantToQuit = quit(command);
         } else if (commandWord == CommandWord.THROWOUT) {
             throwOut(command);
+        } else if (commandWord == CommandWord.PICKUP) {
+
         }
         
         return wantToQuit;
+    }
+
+    private void pickUp(Command command) {
+        Inventory playerInventory = new Inventory();
+        if(!command.hasSecondWord()) {
+            System.out.println("Tag hvad?");
+        } else {
+            playerInventory
+        }
     }
 
     private void printHelp() 

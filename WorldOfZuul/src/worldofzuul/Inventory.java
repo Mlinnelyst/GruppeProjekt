@@ -4,6 +4,12 @@ import java.util.ArrayList;
 public class Inventory {
     public ArrayList<Trash> trash;
 
+    public void addTrash(Room room, Trash trash) {
+        if(room.trash.contains(trash)) {
+            this.trash.add(trash);
+        }
+    }
+
     public Inventory() {
         trash = new ArrayList<>();
     }
