@@ -18,10 +18,9 @@ public class Game {
 
         park = new Room("i parken");
 
-        Trash apple = new Trash("Æble", TrashType.FOOD);
+        Trash apple = new Trash(TrashType.APPLE.toString(), TrashType.FOOD);
         
-        
-        
+        park.addTrash(apple);
         
         park.addTrashType(TrashType.APPLE);
         park.addTrashType(TrashType.BANANA);
@@ -100,6 +99,9 @@ public class Game {
             System.out.println("Tag hvad?");
         } else {
             String targetTrash = command.getSecondWord();
+            if (command.hasThirdWord()) {
+                targetTrash += " " + command.getThirdWord();
+            }
             
             if (!currentRoom.trash.containsKey(targetTrash)) {
                 System.out.printf("%s eksisterer ikke i rummet!%n", targetTrash);
