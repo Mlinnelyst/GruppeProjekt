@@ -4,8 +4,8 @@ public class Trash {
     private final String name;
     private final TrashType trashType;
     
-    public Trash(TrashType name, TrashType trashType){
-        this.name = name.toString();
+    public Trash(String name, TrashType trashType){
+        this.name = name;
         this.trashType = trashType;
     }
     

@@ -29,7 +29,8 @@ public class TrashCan {
     public void addTrash(Inventory inv, Trash trash) {
         // først tjekker vi om det objekt overhovedet eksisterer i vores player
         // inventory
-        if (inv.trash.contains(trash)) {
+        
+        if (inv.trash.containsValue(trash)) {
             // vi tjekker også om vores skrald har samme skraldetype som vores skraldespand.
             // det vil sige, vi definerer hvilken type skrald vores skraldespand kan
             // acceptere.
@@ -40,7 +41,7 @@ public class TrashCan {
                 scoreCounter.addScore(10);
 
                 // vi skal også huske at fjerne objektet fra vores player inventory
-                inv.trash.remove(trash);
+                inv.trash.remove(trash.toString());
             } else {
                 scoreCounter.decreaseScore(10);
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden

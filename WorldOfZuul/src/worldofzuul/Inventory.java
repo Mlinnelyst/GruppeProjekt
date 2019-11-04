@@ -1,27 +1,27 @@
 package worldofzuul;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inventory {
-    public ArrayList<Trash> trash;
+    public HashMap<String, Trash> trash;
 
     public void addTrash(Room room, Trash trash) {        
         if (room.trash.containsValue(trash)) {
-            this.trash.add(trash);
+            this.trash.put(trash.toString(), trash);
         }
     }
 
     public Inventory() {
-        trash = new ArrayList<>();
+        trash = new HashMap<>();
     }
 
     // Print alle navne på skrald i spillerens inventory
     public void printInventory() {
         System.out.println("-----Inventory-----");
-
-        trash.forEach((trash1) -> {
-            System.out.println(trash1.toString());
-        });
+        
+        for (String trash : trash.keySet()) {
+            System.out.println(trash);
+        }
 
         System.out.println("-------------------");
     }

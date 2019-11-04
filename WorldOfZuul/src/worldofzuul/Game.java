@@ -1,29 +1,46 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Game {
 
     private Parser parser;
+    
     private Room currentRoom;
+    private HashMap<String, Room> rooms;
+    
     private int moves;
     private Inventory inventory;
+    private ScoreCounter score;
+
+    private HashMap<String, TrashCan> trashCans;
 
     public Game() {
         createRooms();
         parser = new Parser();
         inventory = new Inventory();
+        score = new ScoreCounter();
+        trashCans = new HashMap<>();
+
+        ArrayList<TrashType> trashType = new ArrayList<>();
+        trashType.add(TrashType.FOOD);
+
+        TrashCan food = new TrashCan("Mad", trashType, score);
+
+        trashCans.put(food.toString(), food);
     }
 
     private void createRooms() {
         Room park, hjem, byen, genbrugsplads;
 
+        rooms = new HashMap<>();
+        
         park = new Room("i parken");
-
-        Trash apple = new Trash(TrashType.CANPANT, TrashType.FOOD);
-        
-        park.addTrash(apple);
-        
         park.addTrashType(TrashType.APPLE);
         park.addTrashType(TrashType.BANANA);
+        park.addTrashType(TrashType.PLASTPANT);
+        park.addTrashType(TrashType.PHONE);
         park.spawnTrash();
         park.printTrash();
 
@@ -36,10 +53,16 @@ public class Game {
         hjem.setExit("genbrugspladsen", genbrugsplads);
 
         byen.setExit("hjem", hjem);
+        
         park.setExit("hjem", hjem);
+        
         genbrugsplads.setExit("hjem", hjem);
 
         currentRoom = hjem;
+        
+        rooms.put("parken", park);
+        rooms.put("byen", byen);
+        rooms.put("genbrugspladsen", genbrugsplads);
     }
 
     public void play() {
@@ -68,27 +91,38 @@ public class Game {
         CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) {
-        case HELP:
-            printHelp();
-            break;
-        case GO:
-            goRoom(command);
-            break;
-        case QUIT:
-            wantToQuit = quit(command);
-            break;
-        case THROWOUT:
-            throwOut(command);
-            break;
-        case PICKUP:
-            pickUp(command);
-            break;
-        case INVENTORY:
-            inventory.printInventory();
-            break;
-        default:
-            System.out.println("Hvad mener du?");
-            break;
+            case HELP:
+                printHelp();
+                break;
+            case GO:
+                goRoom(command);
+                break;
+            case QUIT:
+                wantToQuit = quit(command);
+                break;
+            case THROWOUT:
+                throwOut(command);
+                break;
+            case PICKUP:
+                pickUp(command);
+                break;
+            case INVENTORY:
+                inventory.printInventory();
+                break;
+            case INVCAN:
+                for (String trashCan : trashCans.keySet()) {
+                    System.out.printf("----- %s affald -----%n", trashCan);
+
+                    for (Trash trash : trashCans.get(trashCan).trash) {
+                        System.out.println(trash.toString());
+                    }
+
+                    System.out.println("----------------------");
+                }
+                break;
+            default:
+                System.out.println("Hvad mener du?");
+                break;
         }
 
         return wantToQuit;
@@ -101,12 +135,12 @@ public class Game {
             String targetTrash = command.getSecondWord();
             if (command.hasThirdWord()) {
                 targetTrash += " " + command.getThirdWord();
-                
+
                 if (command.hasFourthWord()) {
                     targetTrash += " " + command.getFourthWord();
                 }
             }
-            
+
             if (!currentRoom.trash.containsKey(targetTrash)) {
                 System.out.printf("%s eksisterer ikke i rummet!%n", targetTrash);
                 return;
@@ -126,22 +160,32 @@ public class Game {
     }
 
     private void throwOut(Command command) {
+        if (!currentRoom.getShortDescription().contains("derhjemme")) {
+            System.out.println("Du skal være hjemme for at kunne sortere dit affald!");
+            return;
+        }
+
         if (!command.hasSecondWord()) {
             System.out.println("Smid hvad ud?");
             return;
         }
 
-        String targetTrash = command.getSecondWord();
+        String targetTrashCan = command.getSecondWord();
 
-        System.out.println("I hvilken skraldespand?");
+        String targetTrash = command.getThirdWord();
+        Trash currentTrash = inventory.trash.get(targetTrash);
 
-        // Print skraldespande
+        TrashCan currentTrashCan = trashCans.get(targetTrashCan);
+
+        currentTrashCan.addTrash(inventory, currentTrash);
+
+        System.out.printf("%nTilføjet %s til %s skraldespand.%n", currentTrash.toString(), currentTrashCan.toString());
     }
 
     private void goRoom(Command command) {
 
         if (!command.hasSecondWord()) {
-            System.out.println("Besoeg hvad?");
+            System.out.println("Besøg hvad?");
             return;
         }
 
@@ -155,13 +199,29 @@ public class Game {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
 
+            if (currentRoom.getShortDescription().contains("derhjemme")) {
+                for (String can : trashCans.keySet()) {
+                    
+                    System.out.println("\n----- Skraldespande -----");
+
+                    System.out.println(can);
+
+                    System.out.println("-------------------------");
+                }
+            }
+            
+            if (!currentRoom.trash.isEmpty()) {
+                currentRoom.printTrash();
+            }
+
+            
             moves++;
             if (moves % 2 == 0) {
                 System.out.println("Add Trash");
+                
             } else {
                 System.out.println("You moved");
             }
-            currentRoom.printTrash();
         }
     }
 

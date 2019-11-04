@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Room {
+
     private String description;
     private HashMap<String, Room> exits;
     public HashMap<String, Trash> trash;
@@ -21,6 +22,10 @@ public class Room {
 
     public void setExit(String direction, Room neighbor) {
         exits.put(direction, neighbor);
+    }
+
+    public void setTrash(String room, ArrayList<Trash> trashTypes) {
+
     }
 
     public String getShortDescription() {
@@ -46,7 +51,7 @@ public class Room {
 
     public void printTrash() {
         System.out.println("----- Affald på jorden -----");
-        
+
         for (Trash trash : trash.values()) {
             System.out.println(trash.toString());
         }
@@ -57,25 +62,16 @@ public class Room {
     public void addTrash(Trash trash) {
         this.trash.put(trash.toString(), trash);
     }
-    
+
     public void addTrashType(TrashType trashType) {
         this.trashTypes.add(trashType);
     }
-    
-    public void spawnTrash () {
+
+    public void spawnTrash() {
         Random random = new Random();
-        Random random2 = new Random();
         int index = random.nextInt(trashTypes.size());
         
-        Boolean spawned = false;
-        while (!spawned) {
-            int index2 = random2.nextInt(TrashList.trashList.size());
-            if (trashTypes.get(index).toString().contentEquals(TrashList.trashList.get(index2))) {
-                spawned = true;
-                //trash.add(new Trash(trashTypes.get(index).toString(), trashTypes.get(index)));
-                // vi fixer det her næste gang
-            }
-        }
-        
+        Trash randomTrash = new Trash(trashTypes.get(index).toString(), trashTypes.get(index));
+        trash.put(randomTrash.toString(), randomTrash);
     }
 }
