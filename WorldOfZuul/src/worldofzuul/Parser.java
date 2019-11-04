@@ -9,13 +9,14 @@ public class Parser {
 
     public Parser() {
         commands = new CommandWords();
-        reader = new Scanner(System.in);
+        reader = new Scanner(System.in, "Windows-1252");
     }
 
     public Command getCommand() {
         String inputLine;
         String word1 = null;
         String word2 = null;
+        String word3 = null;
 
         System.out.print("> ");
 
@@ -26,10 +27,13 @@ public class Parser {
             word1 = tokenizer.next();
             if (tokenizer.hasNext()) {
                 word2 = tokenizer.next();
+                if (tokenizer.hasNext()) {
+                    word3 = tokenizer.next();
+                }
             }
         }
 
-        return new Command(commands.getCommandWord(word1), word2);
+        return new Command(commands.getCommandWord(word1), word2, word3);
     }
 
     public void showCommands() {
