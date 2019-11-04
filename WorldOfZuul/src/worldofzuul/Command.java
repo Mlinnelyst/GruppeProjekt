@@ -23,11 +23,13 @@ public class Command {
     private CommandWord commandWord;
     private String secondWord;
     private String thirdWord;
+    private String fourthWord;
 
-    public Command(CommandWord commandWord, String secondWord, String thirdWord) {
+    public Command(CommandWord commandWord, String secondWord, String thirdWord, String fourthWord) {
         this.commandWord = commandWord;
         this.secondWord = secondWord;
         this.thirdWord = thirdWord;
+        this.fourthWord = fourthWord;
     }
 
     public CommandWord getCommandWord() {
@@ -41,16 +43,24 @@ public class Command {
     public String getThirdWord() {
         return thirdWord;
     }
+    
+    public String getFourthWord() {
+        return fourthWord;
+    }
 
     public boolean isUnknown() {
-        return (commandWord == CommandWord.UNKNOWN);
+        return commandWord == CommandWord.UNKNOWN;
     }
 
     public boolean hasSecondWord() {
-        return (secondWord != null);
+        return secondWord != null;
     }
     
     public boolean hasThirdWord() {
-        return (thirdWord != null); 
+        return thirdWord != null; 
+    }
+    
+    public boolean hasFourthWord() {
+        return fourthWord != null;
     }
 }
