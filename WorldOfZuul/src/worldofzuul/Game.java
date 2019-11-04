@@ -18,7 +18,7 @@ public class Game {
 
         park = new Room("i parken");
 
-        Trash apple = new Trash(TrashType.APPLE.toString(), TrashType.FOOD);
+        Trash apple = new Trash(TrashType.CANPANT, TrashType.FOOD);
         
         park.addTrash(apple);
         
@@ -101,6 +101,10 @@ public class Game {
             String targetTrash = command.getSecondWord();
             if (command.hasThirdWord()) {
                 targetTrash += " " + command.getThirdWord();
+                
+                if (command.hasFourthWord()) {
+                    targetTrash += " " + command.getFourthWord();
+                }
             }
             
             if (!currentRoom.trash.containsKey(targetTrash)) {

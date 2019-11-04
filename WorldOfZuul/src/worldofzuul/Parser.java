@@ -9,7 +9,7 @@ public class Parser {
 
     public Parser() {
         commands = new CommandWords();
-        reader = new Scanner(System.in, "Windows-1252");
+        reader = new Scanner(System.in, "ISO-8859-1");
     }
 
     public Command getCommand() {
@@ -17,6 +17,7 @@ public class Parser {
         String word1 = null;
         String word2 = null;
         String word3 = null;
+        String word4 = null;
 
         System.out.print("> ");
 
@@ -29,11 +30,14 @@ public class Parser {
                 word2 = tokenizer.next();
                 if (tokenizer.hasNext()) {
                     word3 = tokenizer.next();
+                    if (tokenizer.hasNext()) {
+                        word4 = tokenizer.next();
+                    }
                 }
             }
         }
 
-        return new Command(commands.getCommandWord(word1), word2, word3);
+        return new Command(commands.getCommandWord(word1), word2, word3, word4);
     }
 
     public void showCommands() {
