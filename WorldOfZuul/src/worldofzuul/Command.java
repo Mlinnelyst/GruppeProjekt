@@ -1,29 +1,29 @@
 /**
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
+ * This class is part of the "World of Zuul" application.
+ * "World of Zuul" is a very simple, text based adventure game.
  *
  * This class holds information about a command that was issued by the user.
  * A command currently consists of two parts: a CommandWord and a string
  * (for example, if the command was "take map", then the two parts
  * are TAKE and "map").
- * 
+ *
  * The way this is used is: Commands are already checked for being valid
  * command words. If the user entered an invalid command (a word that is not
  * known) then the CommandWord is UNKNOWN.
  *
  * If the command had only one word, then the second word is <null>.
- * 
- * @author  Michael Kolling and David J. Barnes
+ *
+ * @author Michael Kolling and David J. Barnes
  * @version 2006.03.30
  */
-
 package worldofzuul;
 
 public class Command {
-    private CommandWord commandWord;
-    private String secondWord;
-    private String thirdWord;
-    private String fourthWord;
+
+    private final CommandWord commandWord;
+    private final String secondWord;
+    private final String thirdWord;
+    private final String fourthWord;
 
     public Command(CommandWord commandWord, String secondWord, String thirdWord, String fourthWord) {
         this.commandWord = commandWord;
@@ -39,11 +39,11 @@ public class Command {
     public String getSecondWord() {
         return secondWord;
     }
-    
+
     public String getThirdWord() {
         return thirdWord;
     }
-    
+
     public String getFourthWord() {
         return fourthWord;
     }
@@ -55,11 +55,11 @@ public class Command {
     public boolean hasSecondWord() {
         return secondWord != null;
     }
-    
+
     public boolean hasThirdWord() {
-        return thirdWord != null; 
+        return thirdWord != null;
     }
-    
+
     public boolean hasFourthWord() {
         return fourthWord != null;
     }

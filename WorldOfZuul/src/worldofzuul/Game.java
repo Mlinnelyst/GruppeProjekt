@@ -5,16 +5,16 @@ import java.util.HashMap;
 
 public class Game {
 
-    private Parser parser;
+    private final Parser parser;
 
     private Room currentRoom;
     private HashMap<String, Room> rooms;
 
     private int moves;
-    private Inventory inventory;
-    private ScoreCounter score;
+    private final Inventory inventory;
+    private final ScoreCounter score;
 
-    private HashMap<String, TrashCan> trashCans;
+    private final HashMap<String, TrashCan> trashCans;
 
     public Game() {
         createRooms();

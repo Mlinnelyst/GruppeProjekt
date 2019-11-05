@@ -9,8 +9,8 @@ public class Room {
 
     static public int spawnCounter;
 
-    private String description;
-    private HashMap<String, Room> exits;
+    private final String description;
+    private final HashMap<String, Room> exits;
     public HashMap<String, Trash> trash;
     private HashMap<String, ArrayList<TrashType>> trashSpawn;
 
@@ -49,8 +49,8 @@ public class Room {
     public void printTrash() {
         System.out.println("----- Affald på jorden -----");
 
-        for (Trash trash : trash.values()) {
-            System.out.println(trash.toString());
+        for (Trash trashPrint : trash.values()) {
+            System.out.println(trashPrint.toString());
         }
 
         System.out.println("----------------------------");
@@ -66,17 +66,17 @@ public class Room {
 
     public void spawnTrash() {
         Random random = new Random();
-        int randomNumber = (int)(Math.floor((Math.random() * 4) + 1));
-        
+        int randomNumber = (int) (Math.floor((Math.random() * 4) + 1));
+
         if (randomNumber == 0) {
             randomNumber++;
         }
-        
-        for (String spawn : trashSpawn.keySet()) {     
+
+        for (String spawn : trashSpawn.keySet()) {
             if (trash.size() > 3) {
                 continue;
-            } 
-            
+            }
+
             if (spawnCounter % randomNumber == 0) {
                 int index = random.nextInt(trashSpawn.get(spawn).size());
                 ArrayList<TrashType> currentArray = trashSpawn.get(spawn);

@@ -2,8 +2,6 @@ package worldofzuul;
 
 
 public enum TrashType {
-    INIT_ITEMS("init"),
-
     FOOD("mad"), 
     BANANA("bananskrald"), APPLE("råddent_æble"), PIZZA("pizzaskorpe"), AVOCADO("avocado"),
     POTATO("kartoffel"),  
