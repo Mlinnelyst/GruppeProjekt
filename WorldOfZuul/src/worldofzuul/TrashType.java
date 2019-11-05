@@ -6,12 +6,12 @@ public enum TrashType {
 
     FOOD("mad"),
 
-    PLASTBAG("plastikpose"), JUICE("juice karton"), BANANA("bananskrald"), APPLE("råddent æble"), PIZZA("pizzaskorpe"),
+    PLASTBAG("plastikpose"), JUICE("juice_karton"), BANANA("bananskrald"), APPLE("råddent_æble"), PIZZA("pizzaskorpe"),
 
-    PLAST("plastikflaske uden pant"), PLASTPANT("plastikflaske med pant"), PLASTBUCKET("ødelagt plastik spand"),
-    PLASTSHOVEL("ødelagt plastik skovl"), CAN("dåse"), CANPANT("dåse med pant"), NAILS("ødelagt søm"),
+    PLAST("plastikflaske_uden_pant"), PLASTPANT("plastikflaske_med_pant"), PLASTBUCKET("ødelagt_plastik_spand"),
+    PLASTSHOVEL("ødelagt_plastik_skovl"), CAN("dåse"), CANPANT("dåse_med_pant"), NAILS("ødelagt_søm"),
 
-    CARDBOARD("pap"), BEERFRAME("ølramme"), PHONE("ødelagt telefon");
+    CARDBOARD("pap"), BEERFRAME("ølramme"), PHONE("ødelagt_telefon");
 
     private final String trashTypes;
 
