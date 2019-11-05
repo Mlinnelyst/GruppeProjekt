@@ -20,11 +20,13 @@ package worldofzuul;
 
 public class Command {
 
+    // Kommandovariable
     private final CommandWord commandWord;
     private final String secondWord;
     private final String thirdWord;
     private final String fourthWord;
 
+    // Initializer kommandovariablene til parametrene
     public Command(CommandWord commandWord, String secondWord, String thirdWord, String fourthWord) {
         this.commandWord = commandWord;
         this.secondWord = secondWord;
@@ -32,6 +34,7 @@ public class Command {
         this.fourthWord = fourthWord;
     }
 
+    // Returner alle commandwords i følgende funktioner:
     public CommandWord getCommandWord() {
         return commandWord;
     }
@@ -48,10 +51,12 @@ public class Command {
         return fourthWord;
     }
 
+    // Check om kommandoen er en kendt kommando
     public boolean isUnknown() {
         return commandWord == CommandWord.UNKNOWN;
     }
 
+    // Check om kommandostrengene er sat i følgende funktioner:
     public boolean hasSecondWord() {
         return secondWord != null;
     }
