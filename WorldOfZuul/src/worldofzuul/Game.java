@@ -80,7 +80,7 @@ public class Game {
         System.out.println();
         System.out.println("Hello Gamer, Welcome to the Big dick club");
         System.out.println("This game is all about big dick energy.");
-        System.out.println("Skriv '" + CommandWord.HELP + "' hvis du ikke fatter noget.");
+        System.out.println("Skriv '" + CommandWord.HELP + "' hvis du ikke forstår noget.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -149,7 +149,7 @@ public class Game {
             inventory.addTrash(currentRoom, currentRoom.trash.get(targetTrash));
             currentRoom.trash.remove(targetTrash);
 
-            System.out.printf("Tilføjet %s til din taske!%n", targetTrash);
+            System.out.printf("Tilføjet %s til din taske!%n", targetTrash.toLowerCase());
         }
     }
 
@@ -179,7 +179,7 @@ public class Game {
 
         currentTrashCan.addTrash(inventory, currentTrash);
 
-        System.out.printf("%nTilføjet %s til %s skraldespand.%n", currentTrash.toString(), currentTrashCan.toString());
+        System.out.printf("%nTilføjet %s til %s skraldespand.%n", currentTrash.toString().toLowerCase(), currentTrashCan.toString());
     }
 
     private void goRoom(Command command) {

@@ -4,14 +4,14 @@ package worldofzuul;
 public enum TrashType {
     INIT_ITEMS("init"),
 
-    FOOD("Mad"),
+    FOOD("mad"),
 
-    PLASTBAG("Plastikpose"), JUICE("Juice karton"), BANANA("Bananskrald"), APPLE("Råddent æble"), PIZZA("Pizzaskorpe"),
+    PLASTBAG("plastikpose"), JUICE("juice karton"), BANANA("bananskrald"), APPLE("råddent æble"), PIZZA("pizzaskorpe"),
 
-    PLAST("Plastikflaske uden pant"), PLASTPANT("Plastikflaske med pant"), PLASTBUCKET("Ødelagt plastik spand"),
-    PLASTSHOVEL("Ødelagt plastik skovl"), CAN("Dåse"), CANPANT("Dåse med pant"), NAILS("Ødelagt søm"),
+    PLAST("plastikflaske uden pant"), PLASTPANT("plastikflaske med pant"), PLASTBUCKET("ødelagt plastik spand"),
+    PLASTSHOVEL("ødelagt plastik skovl"), CAN("dåse"), CANPANT("dåse med pant"), NAILS("ødelagt søm"),
 
-    CARDBOARD("Pap"), BEERFRAME("Ølramme"), PHONE("Ødelagt telefon");
+    CARDBOARD("pap"), BEERFRAME("ølramme"), PHONE("ødelagt telefon");
 
     private final String trashTypes;
 

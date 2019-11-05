@@ -4,7 +4,7 @@ public class ScoreCounter {
     private int score;
 
     public ScoreCounter() {
-        this.score = 15;
+        this.score = 20;
     }
     
     public void addScore(int amount) {

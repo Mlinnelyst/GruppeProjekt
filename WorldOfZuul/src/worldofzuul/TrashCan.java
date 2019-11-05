@@ -43,7 +43,7 @@ public class TrashCan {
                 // vi skal også huske at fjerne objektet fra vores player inventory
                 inv.trash.remove(trash.toString());
             } else {
-                scoreCounter.decreaseScore(10);
+                scoreCounter.decreaseScore(15);
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
                 // udskrives følgende
                 System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name.toLowerCase());
@@ -53,7 +53,7 @@ public class TrashCan {
 
     // print alle
     public void printInventory() {
-        System.out.printf("----- Inventory of %s trashcan -----%n", this.name);
+        System.out.printf("----- Inventory of %s trashcan -----%n", this.name.toLowerCase());
 
         trash.forEach((trash1) -> {
             System.out.println(trash1.toString());
