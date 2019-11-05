@@ -26,7 +26,7 @@ public class TrashCan {
 
     // følgende funktion har til opgave at fjerne affald fra players inventory
     // og tilføje affaldet ind til skraldespanden
-    public void addTrash(Inventory inv, Trash trash) {
+    public boolean addTrash(Inventory inv, Trash trash) {
         // først tjekker vi om det objekt overhovedet eksisterer i vores player
         // inventory
         
@@ -42,13 +42,19 @@ public class TrashCan {
 
                 // vi skal også huske at fjerne objektet fra vores player inventory
                 inv.trash.remove(trash.toString());
+                
+                return true;
             } else {
                 scoreCounter.decreaseScore(15);
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
                 // udskrives følgende
                 System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name.toLowerCase());
+                
+                return false;
             }
         }
+        
+        return false;
     }
 
     // print alle

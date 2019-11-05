@@ -5,7 +5,12 @@ public enum TrashType {
     INIT_ITEMS("init"),
 
     FOOD("mad"),
-
+    PLASTIC("plastikaffald"),
+    METAL("metalaffald"),
+    GLAS("glasaffald"),
+    PAPER("papir"),
+    PANT("pant"),
+    
     PLASTBAG("plastikpose"), JUICE("juice_karton"), BANANA("bananskrald"), APPLE("råddent_æble"), PIZZA("pizzaskorpe"),
 
     PLAST("plastikflaske_uden_pant"), PLASTPANT("plastikflaske_med_pant"), PLASTBUCKET("ødelagt_plastik_spand"),

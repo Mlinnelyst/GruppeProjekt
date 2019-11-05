@@ -6,10 +6,10 @@ import java.util.HashMap;
 public class Game {
 
     private Parser parser;
-    
+
     private Room currentRoom;
     private HashMap<String, Room> rooms;
-    
+
     private int moves;
     private Inventory inventory;
     private ScoreCounter score;
@@ -23,20 +23,41 @@ public class Game {
         score = new ScoreCounter();
         trashCans = new HashMap<>();
 
-        ArrayList<TrashType> trashType = new ArrayList<>();
-        trashType.add(TrashType.FOOD);
+        ArrayList<TrashType> foodTrashType = new ArrayList<>();
+        foodTrashType.add(TrashType.FOOD);
 
-        TrashCan food = new TrashCan("Mad", trashType, score);
+        TrashCan food = new TrashCan("madaffald", foodTrashType, score);
+
+        ArrayList<TrashType> metalTrashType = new ArrayList<>();
+        metalTrashType.add(TrashType.PLAST);
+        metalTrashType.add(TrashType.METAL);
+        metalTrashType.add(TrashType.GLAS);
+
+        TrashCan metalplastCan = new TrashCan("metal_glas_plast", metalTrashType, score);
+
+        ArrayList<TrashType> papirPapTrashType = new ArrayList<>();
+        papirPapTrashType.add(TrashType.PAPER);
+        papirPapTrashType.add(TrashType.CARDBOARD);
+
+        TrashCan papirPapCan = new TrashCan("papir_pap", papirPapTrashType, score);
+        
+        ArrayList<TrashType> pantTrashType = new ArrayList<>();
+        pantTrashType.add(TrashType.PANT);
 
         trashCans.put(food.toString(), food);
+        trashCans.put(metalplastCan.toString(), metalplastCan);
+        trashCans.put(papirPapCan.toString(), papirPapCan);
     }
 
     private void createRooms() {
         Room park, hjem, byen, genbrugsplads;
 
         rooms = new HashMap<>();
-        
+
         park = new Room("i parken");
+
+        park.addTrash(new Trash(TrashType.CAN.toString(), TrashType.METAL));
+
         park.addTrashType(TrashType.APPLE);
         park.addTrashType(TrashType.BANANA);
         park.addTrashType(TrashType.PLASTPANT);
@@ -53,13 +74,13 @@ public class Game {
         hjem.setExit("genbrugspladsen", genbrugsplads);
 
         byen.setExit("hjem", hjem);
-        
+
         park.setExit("hjem", hjem);
-        
+
         genbrugsplads.setExit("hjem", hjem);
 
         currentRoom = hjem;
-        
+
         rooms.put("parken", park);
         rooms.put("byen", byen);
         rooms.put("genbrugspladsen", genbrugsplads);
@@ -177,9 +198,9 @@ public class Game {
 
         TrashCan currentTrashCan = trashCans.get(targetTrashCan);
 
-        currentTrashCan.addTrash(inventory, currentTrash);
-
-        System.out.printf("%nTilføjet %s til %s skraldespand.%n", currentTrash.toString().toLowerCase(), currentTrashCan.toString());
+        if (currentTrashCan.addTrash(inventory, currentTrash)) {
+            System.out.printf("%nTilføjet %s til %s skraldespand.%n", currentTrash.toString().toLowerCase(), currentTrashCan.toString());
+        }
     }
 
     private void goRoom(Command command) {
@@ -200,25 +221,21 @@ public class Game {
             System.out.println(currentRoom.getLongDescription());
 
             if (currentRoom.getShortDescription().contains("derhjemme")) {
+                System.out.println("\n----- Skraldespande -----");
                 for (String can : trashCans.keySet()) {
-                    
-                    System.out.println("\n----- Skraldespande -----");
-
                     System.out.println(can);
-
-                    System.out.println("-------------------------");
                 }
+                System.out.println("-------------------------");
             }
-            
+
             if (!currentRoom.trash.isEmpty()) {
                 currentRoom.printTrash();
             }
 
-            
             moves++;
             if (moves % 2 == 0) {
                 System.out.println("Add Trash");
-                
+
             } else {
                 System.out.println("You moved");
             }
