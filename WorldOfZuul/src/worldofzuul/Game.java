@@ -40,13 +40,16 @@ public class Game {
         papirPapTrashType.add(TrashType.CARDBOARD);
 
         TrashCan papirPapCan = new TrashCan("papir_pap", papirPapTrashType, score);
-        
+
         ArrayList<TrashType> pantTrashType = new ArrayList<>();
         pantTrashType.add(TrashType.PANT);
+        
+        TrashCan pantCan = new TrashCan("pant", pantTrashType, score);
 
         trashCans.put(food.toString(), food);
         trashCans.put(metalplastCan.toString(), metalplastCan);
         trashCans.put(papirPapCan.toString(), papirPapCan);
+        trashCans.put(pantCan.toString(), pantCan);
     }
 
     private void createRooms() {
@@ -55,18 +58,58 @@ public class Game {
         rooms = new HashMap<>();
 
         park = new Room("i parken");
+        ArrayList<TrashType> foodTypes = new ArrayList<>();
+        foodTypes.add(TrashType.BANANA);
+        foodTypes.add(TrashType.APPLE);
+        foodTypes.add(TrashType.PIZZA);
+        foodTypes.add(TrashType.AVOCADO);
+        foodTypes.add(TrashType.POTATO);
 
-        park.addTrash(new Trash(TrashType.CAN.toString(), TrashType.METAL));
+        ArrayList<TrashType> plasticTypes = new ArrayList<>();
+        plasticTypes.add(TrashType.PLAST);
+        plasticTypes.add(TrashType.PLASTBAG);
+        plasticTypes.add(TrashType.PLASTBUCKET);
+        plasticTypes.add(TrashType.PLASTSHOVEL);
+        
+        ArrayList<TrashType> metalTypes = new ArrayList<>();
+        metalTypes.add(TrashType.NAILS);
+        metalTypes.add(TrashType.CAN);
+        
+        ArrayList<TrashType> glassTypes = new ArrayList<>();
+        glassTypes.add(TrashType.GLASSBOTTLE);
 
-        park.addTrashType(TrashType.APPLE);
-        park.addTrashType(TrashType.BANANA);
-        park.addTrashType(TrashType.PLASTPANT);
-        park.addTrashType(TrashType.PHONE);
-        park.spawnTrash();
-        park.printTrash();
+        ArrayList<TrashType> paperCardboard = new ArrayList<>();
+        paperCardboard.add(TrashType.JUICE);
+        paperCardboard.add(TrashType.BEERFRAME);
+        
+        ArrayList<TrashType> pantTypes = new ArrayList<>();
+        pantTypes.add(TrashType.PLASTPANT);
+        pantTypes.add(TrashType.CANPANT);
+
+        park.addTrashType(TrashType.FOOD, foodTypes);
+        park.addTrashType(TrashType.PLASTIC, plasticTypes);
+        park.addTrashType(TrashType.METAL, metalTypes);
+        park.addTrashType(TrashType.GLAS, glassTypes);
+        park.addTrashType(TrashType.PAPER, paperCardboard);
+        park.addTrashType(TrashType.CARDBOARD, paperCardboard);
+        park.addTrashType(TrashType.PANT, pantTypes);
 
         hjem = new Room("derhjemme");
+
+        hjem.addTrashType(TrashType.FOOD, foodTypes);
+        hjem.addTrashType(TrashType.PLASTIC, plasticTypes);
+        hjem.addTrashType(TrashType.PANT, pantTypes);
+        
         byen = new Room("i byen");
+        
+        byen.addTrashType(TrashType.FOOD, foodTypes);
+        byen.addTrashType(TrashType.PLASTIC, plasticTypes);
+        byen.addTrashType(TrashType.METAL, metalTypes);
+        byen.addTrashType(TrashType.GLAS, glassTypes);
+        byen.addTrashType(TrashType.PAPER, paperCardboard);
+        byen.addTrashType(TrashType.CARDBOARD, paperCardboard);
+        byen.addTrashType(TrashType.PANT, pantTypes);
+        
         genbrugsplads = new Room("på genbrugspladsen");
 
         hjem.setExit("parken", park);
@@ -81,6 +124,11 @@ public class Game {
 
         currentRoom = hjem;
 
+        park.spawnTrash();
+        byen.spawnTrash();
+        genbrugsplads.spawnTrash();
+
+        rooms.put("hjem", hjem);
         rooms.put("parken", park);
         rooms.put("byen", byen);
         rooms.put("genbrugspladsen", genbrugsplads);
@@ -232,13 +280,14 @@ public class Game {
                 currentRoom.printTrash();
             }
 
-            moves++;
-            if (moves % 2 == 0) {
-                System.out.println("Add Trash");
-
-            } else {
-                System.out.println("You moved");
+            if (moves % 3 == 0) {
+                for (String room : rooms.keySet()) {
+                    rooms.get(room).spawnTrash();
+                }
             }
+
+            moves++;
+            score.printScore();
         }
     }
 

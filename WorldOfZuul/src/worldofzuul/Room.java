@@ -2,30 +2,27 @@ package worldofzuul;
 
 import java.util.Set;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Room {
 
+    static public int spawnCounter;
+
     private String description;
     private HashMap<String, Room> exits;
     public HashMap<String, Trash> trash;
-    private ArrayList<TrashType> trashTypes;
+    private HashMap<String, ArrayList<TrashType>> trashSpawn;
 
     public Room(String description) {
         this.description = description;
         exits = new HashMap<>();
         trash = new HashMap<>();
-        trashTypes = new ArrayList<>();
+        trashSpawn = new HashMap<>();
     }
 
     public void setExit(String direction, Room neighbor) {
         exits.put(direction, neighbor);
-    }
-
-    public void setTrash(String room, ArrayList<Trash> trashTypes) {
-
     }
 
     public String getShortDescription() {
@@ -63,15 +60,31 @@ public class Room {
         this.trash.put(trash.toString(), trash);
     }
 
-    public void addTrashType(TrashType trashType) {
-        this.trashTypes.add(trashType);
+    public void addTrashType(TrashType trashType, ArrayList<TrashType> trashTypes) {
+        this.trashSpawn.put(trashType.toString(), trashTypes);
     }
 
     public void spawnTrash() {
         Random random = new Random();
-        int index = random.nextInt(trashTypes.size());
+        int randomNumber = (int)(Math.floor((Math.random() * 4) + 1));
         
-        Trash randomTrash = new Trash(trashTypes.get(index).toString(), trashTypes.get(index));
-        trash.put(randomTrash.toString(), randomTrash);
+        if (randomNumber == 0) {
+            randomNumber++;
+        }
+        
+        for (var spawn : trashSpawn.keySet()) {     
+            if (trash.size() > 3) {
+                continue;
+            } 
+            
+            if (spawnCounter % randomNumber == 0) {
+                int index = random.nextInt(trashSpawn.get(spawn).size());
+                var currentArray = trashSpawn.get(spawn);
+
+                Trash randomTrash = new Trash(currentArray.get(index).toString(), currentArray.get(index));
+                trash.put(randomTrash.toString(), randomTrash);
+            }
+            spawnCounter++;
+        }
     }
 }

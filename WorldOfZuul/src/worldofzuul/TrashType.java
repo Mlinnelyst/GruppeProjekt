@@ -4,19 +4,28 @@ package worldofzuul;
 public enum TrashType {
     INIT_ITEMS("init"),
 
-    FOOD("mad"),
-    PLASTIC("plastikaffald"),
-    METAL("metalaffald"),
-    GLAS("glasaffald"),
-    PAPER("papir"),
-    PANT("pant"),
+    FOOD("mad"), 
+    BANANA("bananskrald"), APPLE("råddent_æble"), PIZZA("pizzaskorpe"), AVOCADO("avocado"),
+    POTATO("kartoffel"),  
     
-    PLASTBAG("plastikpose"), JUICE("juice_karton"), BANANA("bananskrald"), APPLE("råddent_æble"), PIZZA("pizzaskorpe"),
-
-    PLAST("plastikflaske_uden_pant"), PLASTPANT("plastikflaske_med_pant"), PLASTBUCKET("ødelagt_plastik_spand"),
-    PLASTSHOVEL("ødelagt_plastik_skovl"), CAN("dåse"), CANPANT("dåse_med_pant"), NAILS("ødelagt_søm"),
-
-    CARDBOARD("pap"), BEERFRAME("ølramme"), PHONE("ødelagt_telefon");
+    PLASTIC("plastikaffald"), 
+    PLAST("plastikflaske_uden_pant"), PLASTBAG("plastikpose"), PLASTBUCKET("ødelagt_plastik_spand"),
+    PLASTSHOVEL("ødelagt_plastik_skovl"),
+    
+    METAL("metalaffald"),
+    NAILS("ødelagt_søm"), CAN("dåse"),  
+    
+    GLAS("glasaffald"),
+    GLASSBOTTLE("glasflaske"),
+    
+    PAPER("papir"), CARDBOARD("pap"),
+    JUICE("juice_karton"), BEERFRAME("ølramme"),
+    
+    PANT("pant"),
+    PLASTPANT("plastikflaske_med_pant"), CANPANT("dåse_med_pant"),
+    
+    GENBRUGS("genbrugsplads"), 
+    PHONE("ødelagt_telefon"), LAPTOP("ødelagt_bærbar");
 
     private final String trashTypes;
 

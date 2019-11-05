@@ -17,7 +17,7 @@ public class ScoreCounter {
     }
 
     public void printScore() {
-        System.out.println("Score is " + score);
+        System.out.println("Score: " + score);
     }
 
 }
