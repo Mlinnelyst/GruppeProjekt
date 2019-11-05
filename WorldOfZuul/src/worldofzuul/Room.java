@@ -72,14 +72,14 @@ public class Room {
             randomNumber++;
         }
         
-        for (var spawn : trashSpawn.keySet()) {     
+        for (String spawn : trashSpawn.keySet()) {     
             if (trash.size() > 3) {
                 continue;
             } 
             
             if (spawnCounter % randomNumber == 0) {
                 int index = random.nextInt(trashSpawn.get(spawn).size());
-                var currentArray = trashSpawn.get(spawn);
+                ArrayList<TrashType> currentArray = trashSpawn.get(spawn);
 
                 Trash randomTrash = new Trash(currentArray.get(index).toString(), currentArray.get(index));
                 trash.put(randomTrash.toString(), randomTrash);

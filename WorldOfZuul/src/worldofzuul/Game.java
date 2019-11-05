@@ -43,7 +43,7 @@ public class Game {
 
         ArrayList<TrashType> pantTrashType = new ArrayList<>();
         pantTrashType.add(TrashType.PANT);
-        
+
         TrashCan pantCan = new TrashCan("pant", pantTrashType, score);
 
         trashCans.put(food.toString(), food);
@@ -70,18 +70,18 @@ public class Game {
         plasticTypes.add(TrashType.PLASTBAG);
         plasticTypes.add(TrashType.PLASTBUCKET);
         plasticTypes.add(TrashType.PLASTSHOVEL);
-        
+
         ArrayList<TrashType> metalTypes = new ArrayList<>();
         metalTypes.add(TrashType.NAILS);
         metalTypes.add(TrashType.CAN);
-        
+
         ArrayList<TrashType> glassTypes = new ArrayList<>();
         glassTypes.add(TrashType.GLASSBOTTLE);
 
         ArrayList<TrashType> paperCardboard = new ArrayList<>();
         paperCardboard.add(TrashType.JUICE);
         paperCardboard.add(TrashType.BEERFRAME);
-        
+
         ArrayList<TrashType> pantTypes = new ArrayList<>();
         pantTypes.add(TrashType.PLASTPANT);
         pantTypes.add(TrashType.CANPANT);
@@ -99,9 +99,9 @@ public class Game {
         hjem.addTrashType(TrashType.FOOD, foodTypes);
         hjem.addTrashType(TrashType.PLASTIC, plasticTypes);
         hjem.addTrashType(TrashType.PANT, pantTypes);
-        
+
         byen = new Room("i byen");
-        
+
         byen.addTrashType(TrashType.FOOD, foodTypes);
         byen.addTrashType(TrashType.PLASTIC, plasticTypes);
         byen.addTrashType(TrashType.METAL, metalTypes);
@@ -109,7 +109,7 @@ public class Game {
         byen.addTrashType(TrashType.PAPER, paperCardboard);
         byen.addTrashType(TrashType.CARDBOARD, paperCardboard);
         byen.addTrashType(TrashType.PANT, pantTypes);
-        
+
         genbrugsplads = new Room("på genbrugspladsen");
 
         hjem.setExit("parken", park);
@@ -215,10 +215,10 @@ public class Game {
                 return;
             }
 
-            inventory.addTrash(currentRoom, currentRoom.trash.get(targetTrash));
-            currentRoom.trash.remove(targetTrash);
-
-            System.out.printf("Tilføjet %s til din taske!%n", targetTrash.toLowerCase());
+            if (inventory.addTrash(currentRoom, currentRoom.trash.get(targetTrash))) {
+                currentRoom.trash.remove(targetTrash);
+                System.out.printf("Tilføjet %s til din taske!%n", targetTrash.toLowerCase());
+            }
         }
     }
 
