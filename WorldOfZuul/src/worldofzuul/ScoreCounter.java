@@ -1,12 +1,13 @@
 package worldofzuul;
 
 public class ScoreCounter {
+
     private int score;
 
     public ScoreCounter() {
         this.score = 20;
     }
-    
+
     public void addScore(int amount) {
         score += amount;
     }

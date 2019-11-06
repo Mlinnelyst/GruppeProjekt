@@ -3,6 +3,7 @@ package worldofzuul;
 import java.util.ArrayList;
 
 public class TrashCan {
+
     private final String name;
     private final ArrayList<TrashType> trashType;
     public ArrayList<Trash> trash;
@@ -29,7 +30,7 @@ public class TrashCan {
     public boolean addTrash(Inventory inv, Trash trash) {
         // først tjekker vi om det objekt overhovedet eksisterer i vores player
         // inventory
-        
+
         if (inv.trash.containsValue(trash)) {
             // vi tjekker også om vores skrald har samme skraldetype som vores skraldespand.
             // det vil sige, vi definerer hvilken type skrald vores skraldespand kan
@@ -42,18 +43,18 @@ public class TrashCan {
 
                 // vi skal også huske at fjerne objektet fra vores player inventory
                 inv.trash.remove(trash.toString());
-                
+
                 return true;
             } else {
                 scoreCounter.decreaseScore(15);
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
                 // udskrives følgende
                 System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name.toLowerCase());
-                
+
                 return false;
             }
         }
-        
+
         return false;
     }
 
