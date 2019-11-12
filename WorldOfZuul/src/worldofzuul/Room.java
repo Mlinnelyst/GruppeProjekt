@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Room {
+
     // Integer der tæller hvor meget skrald der er spawnet i et rum. 
     static public int spawnCounter;
-    
+
     // Navnet på rummet som String
     private final String description;
     // Hashmap der beskriver hvilke exits et rum har, altså hvilken vej man kan gå.
@@ -16,12 +17,12 @@ public class Room {
     // Hashmap der indeholder hvilket skrald der ligger i rummet.
     public HashMap<String, Trash> trash;
     // Hashmap der indeholder hvilke typer skrald der kan spawne i rummet.
-    private HashMap<TrashType, ArrayList<TrashType>> trashSpawn;
-    
+    private final HashMap<TrashType, ArrayList<TrashType>> trashSpawn;
+
     // Room constructor, der tager et String som argument for at angive descriptionen. 
     // Opretter 3 HashMaps.
     public Room(String description) {
-         // String argumentet bliver til rummet description. 
+        // String argumentet bliver til rummet description. 
         this.description = description;
         // Opretter et HashMap til exits
         exits = new HashMap<>();
@@ -36,17 +37,18 @@ public class Room {
     public void setExit(String direction, Room neighbor) {
         exits.put(direction, neighbor);
     }
-    
+
     // Metode der returnerer en kort description.
     public String getShortDescription() {
         return description;
     }
+
     // Metode der returnerer en lang description.
     public String getLongDescription() {
         // Returnerer description som en String + description + en String med linjeskift (\n) + metoden getExitString
         return "Du befinder dig nu " + description + ".\n" + getExitString();
     }
-    
+
     //Metoden udskriver en String med noget tekst og alle exits delt op med "|"
     private String getExitString() {
         String returnString = "Du kan tage til";
@@ -59,15 +61,14 @@ public class Room {
                 returnString += " " + exit + " | ";
                 continue;
             }
-            
+
             returnString += exit + " | ";
         }
-        
-        
+
         // Returnerer returnString
         return returnString;
     }
-    
+
     // Getter til en exit. 
     public Room getExit(String direction) {
         // Henter en bestemt exit ud fra keyen "description"
@@ -86,13 +87,14 @@ public class Room {
         // Tekst efter listen af skrald
         System.out.println("----------------------------");
     }
+
     // Metode der tager et Trash objekt som argument. 
     // Tilføjer trash-objektet trash-HashMappet
     public void addTrash(Trash trash) {
         //Sætter med trash-name'et og selve objektet.
         this.trash.put(trash.toString(), trash);
     }
-    
+
     //Metode der tager et TrashType objekt og et ArrayList et TrashTypes.
     public void addTrashType(TrashType trashType, ArrayList<TrashType> trashTypes) {
         this.trashSpawn.put(trashType, trashTypes);
@@ -108,15 +110,14 @@ public class Room {
         if (randomNumber == 0) {
             randomNumber++;
         }
-        
+
         // For each loop, der kører alle keys i trashSpawn igennem og tæller spawnCounter en op, medmindre 
-        
         for (TrashType spawn : trashSpawn.keySet()) {
             // Hvis mængden af trash er større end 3, springes den trashSpawn over. Der kan altså maks spawnes 3 stykker skrald
             if (trash.size() > 3) {
                 continue;
             }
-            
+
             // Hvis spawnCounter og randomNumber er ens 
             if (spawnCounter % randomNumber == 0) {
                 int index = random.nextInt(trashSpawn.get(spawn).size());

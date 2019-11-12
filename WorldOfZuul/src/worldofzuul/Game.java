@@ -44,7 +44,7 @@ public class Game {
         // eftersom vores spil omhandler at sortere at skrald
         
         ArrayList<TrashType> metalTrashType = new ArrayList<>();
-        metalTrashType.add(TrashType.PLAST);
+        metalTrashType.add(TrashType.PLASTIC);
         metalTrashType.add(TrashType.METAL);
         metalTrashType.add(TrashType.GLAS);
 
@@ -71,7 +71,7 @@ public class Game {
 
     private void createRooms() {
         // vi frem deklarere vores room
-        Room park, hjem, byen, genbrugsplads;
+        Room park, hjem, byen, fodboldbanen;
 
         // da vi vil gerne tilgå vores rooms senere hen i andre metoder, opretter vi en Hashmap over de rooms.
         rooms = new HashMap<>();
@@ -93,7 +93,7 @@ public class Game {
         foodTypes.add(TrashType.PIZZA);
         foodTypes.add(TrashType.AVOCADO);
         foodTypes.add(TrashType.POTATO);
-
+        
         ArrayList<TrashType> plasticTypes = new ArrayList<>();
         plasticTypes.add(TrashType.PLAST);
         plasticTypes.add(TrashType.PLASTBAG);
@@ -144,17 +144,25 @@ public class Game {
         byen.addTrashType(TrashType.CARDBOARD, paperCardboard);
         byen.addTrashType(TrashType.PANT, pantTypes);
 
-        genbrugsplads = new Room("på genbrugspladsen");
+        fodboldbanen = new Room("på fodboldbanen");
+        
+        fodboldbanen.addTrashType(TrashType.FOOD, foodTypes);
+        fodboldbanen.addTrashType(TrashType.PLASTIC, plasticTypes);
+        fodboldbanen.addTrashType(TrashType.METAL, metalTypes);
+        fodboldbanen.addTrashType(TrashType.GLAS, glassTypes);
+        fodboldbanen.addTrashType(TrashType.PAPER, paperCardboard);
+        fodboldbanen.addTrashType(TrashType.CARDBOARD, paperCardboard);
+        fodboldbanen.addTrashType(TrashType.PANT, pantTypes);
 
         hjem.setExit("parken", park);
         hjem.setExit("byen", byen);
-        hjem.setExit("genbrugspladsen", genbrugsplads);
+        hjem.setExit("fodboldbanen", fodboldbanen);
 
         byen.setExit("hjem", hjem);
 
         park.setExit("hjem", hjem);
 
-        genbrugsplads.setExit("hjem", hjem);
+        fodboldbanen.setExit("hjem", hjem);
 
         currentRoom = hjem;
 
@@ -162,14 +170,14 @@ public class Game {
         // så spawner vi nogle items så snart spillet startet
         park.spawnTrash();
         byen.spawnTrash();
-        genbrugsplads.spawnTrash();
+        fodboldbanen.spawnTrash();
 
         // efter vi har oprettet alt der er relateret til vores rooms
         // sætter vi dem ind i vores HashMap, så vi kan nemt tilgå rooms senere
         rooms.put("hjem", hjem);
         rooms.put("parken", park);
         rooms.put("byen", byen);
-        rooms.put("genbrugspladsen", genbrugsplads);
+        rooms.put("fodboldbanen", fodboldbanen);
     }
 
     public void play() {
@@ -255,7 +263,7 @@ public class Game {
             if (inventory.addTrash(currentRoom, currentRoom.trash.get(targetTrash))) {
                 // og fjerner det fra rooms "inventory"
                 currentRoom.trash.remove(targetTrash);
-                System.out.printf("Tilføjet %s til din taske!%n", targetTrash.toLowerCase());
+                System.out.printf("Du har taget %s op i hænderne!%n", targetTrash.toLowerCase());
             }
         }
     }
@@ -302,7 +310,7 @@ public class Game {
         Trash currentTrash = inventory.trash.get(targetTrash);
 
         if (currentTrash == null) {
-            System.out.println("Hov! Det affald findes ikke i din inventory!");
+            System.out.println("Hov! Det har du ikke i hænderne!");
             return;
         }
         
@@ -360,7 +368,7 @@ public class Game {
 
     private boolean quit(Command command) {
         if (command.hasSecondWord()) {
-            System.out.println("Quit what?");
+            System.out.println("Afslut hvad?");
             return false;
         } else {
             return true;

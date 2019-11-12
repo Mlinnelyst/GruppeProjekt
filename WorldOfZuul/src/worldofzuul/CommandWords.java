@@ -29,9 +29,11 @@ public class CommandWords {
     }
 
     public void showAll() { // Prints all our validCommands
-        for (String command : validCommands.keySet()) {
-            System.out.print("| " + command + " ");
-        }
-        System.out.println("|");
+        System.out.println("besøg <sted>");
+        System.out.println("afslut");
+        System.out.println("hjælp");
+        System.out.println("smidud <skraldespand> <affald>");
+        System.out.println("tag <affald>");
+        System.out.println("taske\n");
     }
 }
