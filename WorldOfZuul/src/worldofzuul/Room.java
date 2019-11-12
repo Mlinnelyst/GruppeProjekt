@@ -35,9 +35,14 @@ public class Room {
 
     private String getExitString() {
         String returnString = "Du kan tage til";
-        Set<String> keys = exits.keySet();
-        for (String exit : keys) {
-            returnString += " | " + exit;
+        
+        for (String exit : exits.keySet()) {
+            if (!returnString.contains("|")) {
+                returnString += " " + exit + " | ";
+                continue;
+            }
+            
+            returnString += exit + " | ";
         }
         return returnString;
     }

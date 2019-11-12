@@ -190,9 +190,8 @@ public class Game {
 
     private void printWelcome() {
         System.out.println();
-        System.out.println("Hello Gamer, Welcome to the Big dick club");
-        System.out.println("This game is all about big dick energy.");
-        System.out.println("Skriv '" + CommandWord.HELP + "' hvis du ikke forstår noget.");
+        System.out.println("Velkommen.");
+        System.out.println("Skriv '" + CommandWord.HELP + "' for at se alle kommandoer.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -297,6 +296,11 @@ public class Game {
         // når vi har gjort det, kan vi ved hjælp af HashMapen tilgå vores skraldesprand objekt
         TrashCan currentTrashCan = trashCans.get(targetTrashCan);
         
+        if (currentTrashCan == null) {
+            System.out.println("Hov! Den skraldespand findes ikke!");
+            return;
+        }
+        
         // vi skal være sikre på at spilleren har specificeret hvilket skrald spilleren vil smide ud
         if (!command.hasThirdWord()) {
             System.out.println("Smid hvad ud?");
@@ -308,6 +312,11 @@ public class Game {
         // ved hjælp af det, skal vi finde det objekt der tilhører det skrald vi har taget op tidligere og vil gerne smide ud
         Trash currentTrash = inventory.trash.get(targetTrash);
 
+        if (currentTrash == null) {
+            System.out.println("Hov! Det affald findes ikke i din inventory!");
+            return;
+        }
+        
         // hvis det hele er som det skal, så tilføjer vi bare det skrald ind i vores skraldespands "inventory"
         if (currentTrashCan.addTrash(inventory, currentTrash)) {
             System.out.printf("%nTilføjet %s til %s skraldespand.%n", currentTrash.toString().toLowerCase(), currentTrashCan.toString());
