@@ -26,6 +26,8 @@ public class Game {
         inventory = new Inventory();
         score = new ScoreCounter();
         trashCans = new HashMap<>();
+        
+        
 
         // her vil der blive lavet de forskellige skraldesprande
         // det virker på den måde, at vi sætter parametrene for hvad skraldespande kan "spise".
@@ -234,6 +236,9 @@ public class Game {
             case INVENTORY:
                 inventory.printInventory();
                 break;
+            case TRASH:
+                currentRoom.printTrash();
+                break;
             default:
                 System.out.println("Hvad mener du?");
                 break;
@@ -241,7 +246,7 @@ public class Game {
 
         return wantToQuit;
     }
-
+    
     private void pickUp(Command command) {
         // vi skal være sikker på at spilleren har specificeret hvilken item spilleren vil tage up
         // dette gøres med en if statement
@@ -267,7 +272,7 @@ public class Game {
             }
         }
     }
-
+    
     private void printHelp() {
         System.out.println("Du har kaldt efter hjælp!\n"); // \n = new line
         System.out.println("Dine muligheder er:");
