@@ -195,7 +195,7 @@ public class Game {
             // finished vil kun blive sat til true, hvis "afslut" bliver kaldt som vil derved sætte finished til true
             finished = processCommand(command);
         }
-        System.out.println("Tak for spillet! Prøv gerne igen, for at blive endnu bedre til at sortere!");
+        System.out.println("Tak for spillet! Du fik: " + score.getScore() + " Point!\nPrøv gerne igen, for at blive endnu bedre til at sortere!\nEller bedre endnu! Måske du kan gennemføre spillet!? :O");
     }
 
     private void printWelcome() {
@@ -379,7 +379,7 @@ public class Game {
 
     private boolean quit(Command command) {
         if (command.hasSecondWord()) {
-            System.out.println("Afslut hvad?");
+            System.out.println("Vil du ikke spille mere? :-(\nSå skal du bare skrive afslut.");
             return false;
         } else {
             return true;
