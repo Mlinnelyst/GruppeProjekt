@@ -226,17 +226,6 @@ public class Game {
             case INVENTORY:
                 inventory.printInventory();
                 break;
-            case INVCAN:
-                for (String trashCan : trashCans.keySet()) {
-                    System.out.printf("----- %s affald -----%n", trashCan);
-
-                    for (Trash trash : trashCans.get(trashCan).trash) {
-                        System.out.println(trash.toString());
-                    }
-
-                    System.out.println("----------------------");
-                }
-                break;
             default:
                 System.out.println("Hvad mener du?");
                 break;
@@ -317,9 +306,9 @@ public class Game {
             return;
         }
         
-        // hvis det hele er som det skal, så tilføjer vi bare det skrald ind i vores skraldespands "inventory"
-        if (currentTrashCan.addTrash(inventory, currentTrash)) {
-            System.out.printf("%nTilføjet %s til %s skraldespand.%n", currentTrash.toString().toLowerCase(), currentTrashCan.toString());
+        // hvis det hele er som det skal, så tilføjer vi bare det sbbkrald ind i vores skraldespands "inventory"
+        if (currentTrashCan.addTrash(inventory, currentTrash, score)) {
+            System.out.printf("Du har fået point! Din score er nu: %d%n", score.getScore());               
         }
     }
 

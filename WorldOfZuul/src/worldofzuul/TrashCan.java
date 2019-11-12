@@ -27,7 +27,7 @@ public class TrashCan {
 
     // følgende funktion har til opgave at fjerne affald fra players inventory
     // og tilføje affaldet ind til skraldespanden
-    public boolean addTrash(Inventory inv, Trash trash) {
+    public boolean addTrash(Inventory inv, Trash trash, ScoreCounter score) {
         // først tjekker vi om det objekt overhovedet eksisterer i vores player
         // inventory
 
@@ -46,11 +46,11 @@ public class TrashCan {
 
                 return true;
             } else {
-                scoreCounter.decreaseScore(15);
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
-                // udskrives følgende
-                System.out.printf("%s hører ikke til %s skraldespanden!%n", trash.toString(), this.name.toLowerCase());
-
+                // vil spilleren miste point
+                scoreCounter.decreaseScore(15);
+                System.out.printf("Du har mistet point! Din score er nu: %d%n", score.getScore());
+                
                 return false;
             }
         }

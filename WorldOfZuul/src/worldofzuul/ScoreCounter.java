@@ -20,5 +20,9 @@ public class ScoreCounter {
     public void printScore() {
         System.out.println("Score: " + score);
     }
+    
+    public int getScore() {
+        return score;
+    }
 
 }

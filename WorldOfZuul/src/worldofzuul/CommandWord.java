@@ -2,8 +2,8 @@ package worldofzuul;
 
 public enum CommandWord {
     // Opbevarede kommandoer og deres streng representation
-    GO("besøg"), QUIT("afslut"), HELP("hjælp"), UNKNOWN("?"), THROWOUT("kastud"),
-    PICKUP("tag"), INVENTORY("taske"), INVCAN("invcan"), SPAWN("spawn");
+    GO("besøg"), QUIT("afslut"), HELP("hjælp"), UNKNOWN("?"), THROWOUT("smidud"),
+    PICKUP("tag"), INVENTORY("taske");
 
     private final String commandString;
 

@@ -16,7 +16,7 @@ public class Room {
     // Hashmap der indeholder hvilket skrald der ligger i rummet.
     public HashMap<String, Trash> trash;
     // Hashmap der indeholder hvilke typer skrald der kan spawne i rummet.
-    private HashMap<String, ArrayList<TrashType>> trashSpawn;
+    private HashMap<TrashType, ArrayList<TrashType>> trashSpawn;
     
     // Room constructor, der tager et String som argument for at angive descriptionen. 
     // Opretter 3 HashMaps.
@@ -54,9 +54,6 @@ public class Room {
         Set<String> keys = exits.keySet();
         //Tilføjer " | " mellem hver exit
         // Kører set-collectionen keys igennem med et forEach-loop og extender returnStringen med " | " mellem hver exit 
-        for (String exit : keys) {
-            returnString += " | " + exit;
-        
         for (String exit : exits.keySet()) {
             if (!returnString.contains("|")) {
                 returnString += " " + exit + " | ";
@@ -65,6 +62,8 @@ public class Room {
             
             returnString += exit + " | ";
         }
+        
+        
         // Returnerer returnString
         return returnString;
     }
@@ -112,7 +111,7 @@ public class Room {
         
         // For each loop, der kører alle keys i trashSpawn igennem og tæller spawnCounter en op, medmindre 
         
-        for (String spawn : trashSpawn.keySet()) {
+        for (TrashType spawn : trashSpawn.keySet()) {
             // Hvis mængden af trash er større end 3, springes den trashSpawn over. Der kan altså maks spawnes 3 stykker skrald
             if (trash.size() > 3) {
                 continue;
