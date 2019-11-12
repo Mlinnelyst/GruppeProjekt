@@ -102,9 +102,11 @@ public class Room {
 
     // Metode der spawnerTrash i et rum
     public void spawnTrash() {
-        //Opretter en et Random objekt
+        
+         // Opretter en et Random objekt (bruges længere nede i )
         Random random = new Random();
-        // Opretter en int
+        
+        // Opretter en int, der angiver hvor meget skrald vi maks skal spawne
         int maxTrash = 4;
         
         // Bestemmer antal af skrald der kan spawne i hvert rum. spawner random int mellem 0-3
@@ -113,21 +115,26 @@ public class Room {
         randomInt++;
         
         
-        // For each loop, der kører alle keys i trashSpawn igennem og tæller spawnCounteren op, medmindre 
+        // For each loop, der kører alle keys i trashSpawn igennem, spawner et tilfældigt Trash fra rummets trashTypes
+        // Der spawnes mellem 1-4 stykker skrald tilfældigt.  
         for (TrashType spawn : trashSpawn.keySet()) {
-            // Hvis mængden af trash er større end 3, springes den trashSpawn over. Der kan altså maks spawnes 4 stykker skrald
+            // Hvis mængden af trash er større end 3, springes den trashSpawn over. 
+            // Der kan altså maks spawnes 4 stykker skrald pr. rum. 
             if (trash.size() > 3) {
                 continue;
             }
 
-            // Hvis spawnCounter og randomNumber er ens 
+            // Hvis spawnCounter og randomNumber. Den køres altså indtil vi har spawned den mængde vi angav tidligere.
             if (spawnCounter % randomInt == 0) {
+                // Opretter et index med en random integer fra 0 til x (antallet af trashTyper der kan spawnes)
                 int index = random.nextInt(trashSpawn.get(spawn).size());
+                // Opretter et nyt array med vores de trashTyper der er tilladt i rummet.
                 ArrayList<TrashType> currentArray = trashSpawn.get(spawn);
-
+                // Tilføjer det tilfældige trash til vores trash-Hashmap på rummet. 
                 Trash randomTrash = new Trash(currentArray.get(index).toString(), spawn);
                 trash.put(randomTrash.toString(), randomTrash);
             }
+            //Fortæller der er spawnet et item. 
             spawnCounter++;
         }
     }
