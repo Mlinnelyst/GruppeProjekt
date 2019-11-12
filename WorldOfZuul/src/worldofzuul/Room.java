@@ -51,7 +51,7 @@ public class Room {
 
     //Metoden udskriver en String med noget tekst og alle exits delt op med "|"
     private String getExitString() {
-        String returnString = "Du kan tage til";
+        String returnString = "Du kan tage til: | ";
         // Returnerer en Set-collection af Strings og henter alle keys fra exits
         Set<String> keys = exits.keySet();
         //Tilføjer " | " mellem hver exit
@@ -104,22 +104,24 @@ public class Room {
     public void spawnTrash() {
         //Opretter en et Random objekt
         Random random = new Random();
-        // Opretter en int og angiver den // HJÆLP MARCUS
-        // FEJL, konvereter double til en int. Der bør bruges round eller lign. 
-        int randomNumber = (int) (Math.floor((Math.random() * 4) + 1));
-        if (randomNumber == 0) {
-            randomNumber++;
-        }
-
-        // For each loop, der kører alle keys i trashSpawn igennem og tæller spawnCounter en op, medmindre 
+        // Opretter en int
+        int maxTrash = 4;
+        
+        // Bestemmer antal af skrald der kan spawne i hvert rum. spawner random int mellem 0-3
+        int randomInt = (int)(Math.floor(Math.random() * Math.floor(maxTrash)));
+        // Ligger 1 til, for at det bliver 1-4, så der uanset hvad spawner noget skrald.
+        randomInt++;
+        
+        
+        // For each loop, der kører alle keys i trashSpawn igennem og tæller spawnCounteren op, medmindre 
         for (TrashType spawn : trashSpawn.keySet()) {
-            // Hvis mængden af trash er større end 3, springes den trashSpawn over. Der kan altså maks spawnes 3 stykker skrald
+            // Hvis mængden af trash er større end 3, springes den trashSpawn over. Der kan altså maks spawnes 4 stykker skrald
             if (trash.size() > 3) {
                 continue;
             }
 
             // Hvis spawnCounter og randomNumber er ens 
-            if (spawnCounter % randomNumber == 0) {
+            if (spawnCounter % randomInt == 0) {
                 int index = random.nextInt(trashSpawn.get(spawn).size());
                 ArrayList<TrashType> currentArray = trashSpawn.get(spawn);
 
