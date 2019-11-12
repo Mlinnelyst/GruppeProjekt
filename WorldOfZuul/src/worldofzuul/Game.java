@@ -195,12 +195,18 @@ public class Game {
             // finished vil kun blive sat til true, hvis "afslut" bliver kaldt som vil derved sætte finished til true
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Tak for spillet! Prøv gerne igen, for at blive endnu bedre til at sortere!");
     }
 
     private void printWelcome() {
         System.out.println();
-        System.out.println("Velkommen.");
+        System.out.println("Velkommen til spillet The Recycle Adventurer!");
+        System.out.println("Spillet vil lære dig at sortere affald korrtekt.");
+        System.out.println("Værsgo, du starter med 20 point. Dit mål er at opnå 100 point.");
+        System.out.println("Du opnår 10 point ved at sortere et stykke affald korrekt, og du mister 15 point ved forkert sortering.");
+        System.out.println("Din mission er, at udforske de forskellige rum, og at samle skrald og derefter sortere det.");
+        System.out.println("Du kan have ét stykke affald i hver hånd, og du sorterer i hjemmet");
+        System.out.println("Du kan få hjælp, ved at skrive 'hjælp' i konsollen. God jagt!");
         System.out.println("Skriv '" + CommandWord.HELP + "' for at se alle kommandoer.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -228,7 +234,7 @@ public class Game {
                 wantToQuit = quit(command);
                 break;
             case THROWOUT:
-                throwOut(command);
+                throwOut(command); 
                 break;
             case PICKUP:
                 pickUp(command);
