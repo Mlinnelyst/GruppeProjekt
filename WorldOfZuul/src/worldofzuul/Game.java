@@ -121,7 +121,7 @@ public class Game {
         
         ArrayList<TrashType> restType = new ArrayList<>();
         restType.add(TrashType.JUICE);
-        restType.add(TrashType.PIZZABAKKE);
+        restType.add(TrashType.PIZZACONTAINER);
         restType.add(TrashType.MILK);
         restType.add(TrashType.PLASTBAG);
 

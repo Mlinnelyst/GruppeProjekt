@@ -26,7 +26,7 @@ public enum TrashType {
     PHONE("ødelagt_telefon"), LAPTOP("ødelagt_bærbar"),
     
     REST("restaffald"),
-    PIZZABAKKE("pizzabakke"), JUICE("juice_karton"), MILK("mælke_karton"), PLASTBAG("plastikpose");
+    PIZZACONTAINER("pizzabakke"), JUICE("juice_karton"), MILK("mælke_karton"), PLASTBAG("plastikpose");
     
 
     private final String trashTypes;
