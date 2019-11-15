@@ -27,8 +27,6 @@ public class Game {
         score = new ScoreCounter();
         trashCans = new HashMap<>();
         
-        
-
         // her vil der blive lavet de forskellige skraldesprande
         // det virker på den måde, at vi sætter parametrene for hvad skraldespande kan "spise".
         
@@ -63,12 +61,18 @@ public class Game {
 
         TrashCan pantCan = new TrashCan("pant", pantTrashType, score);
         
+        ArrayList<TrashType> restAffaldType = new ArrayList<>();
+        restAffaldType.add(TrashType.REST);
+        
+        TrashCan restAffaldCan = new TrashCan("rest_affald", restAffaldType, score);
+        
         // efter vi har oprettet de forskellige skraldespande, tilføjer vi dem til en HashMap
         // key er naven på skraldespanden og valuen er vores objekt
         trashCans.put(food.toString(), food);
         trashCans.put(metalplastCan.toString(), metalplastCan);
         trashCans.put(papirPapCan.toString(), papirPapCan);
         trashCans.put(pantCan.toString(), pantCan);
+        trashCans.put(restAffaldCan.toString(), restAffaldCan);
     }
 
     private void createRooms() {
@@ -98,7 +102,6 @@ public class Game {
         
         ArrayList<TrashType> plasticTypes = new ArrayList<>();
         plasticTypes.add(TrashType.PLAST);
-        plasticTypes.add(TrashType.PLASTBAG);
         plasticTypes.add(TrashType.PLASTBUCKET);
         plasticTypes.add(TrashType.PLASTSHOVEL);
 
@@ -110,12 +113,17 @@ public class Game {
         glassTypes.add(TrashType.GLASSBOTTLE);
 
         ArrayList<TrashType> paperCardboard = new ArrayList<>();
-        paperCardboard.add(TrashType.JUICE);
         paperCardboard.add(TrashType.BEERFRAME);
 
         ArrayList<TrashType> pantTypes = new ArrayList<>();
         pantTypes.add(TrashType.PLASTPANT);
         pantTypes.add(TrashType.CANPANT);
+        
+        ArrayList<TrashType> restType = new ArrayList<>();
+        restType.add(TrashType.JUICE);
+        restType.add(TrashType.PIZZABAKKE);
+        restType.add(TrashType.MILK);
+        restType.add(TrashType.PLASTBAG);
 
         // efter vi har oprettet alle vores items i de forskellige typer af affald
         // så tilføjer vi dem til hver af de forskellige rooms
@@ -126,6 +134,7 @@ public class Game {
         park.addTrashType(TrashType.PAPER, paperCardboard);
         park.addTrashType(TrashType.CARDBOARD, paperCardboard);
         park.addTrashType(TrashType.PANT, pantTypes);
+        park.addTrashType(TrashType.REST, restType);
 
         hjem = new Room("derhjemme");
 
@@ -145,6 +154,7 @@ public class Game {
         byen.addTrashType(TrashType.PAPER, paperCardboard);
         byen.addTrashType(TrashType.CARDBOARD, paperCardboard);
         byen.addTrashType(TrashType.PANT, pantTypes);
+        byen.addTrashType(TrashType.REST, restType);
 
         fodboldbanen = new Room("på fodboldbanen");
         
@@ -155,6 +165,7 @@ public class Game {
         fodboldbanen.addTrashType(TrashType.PAPER, paperCardboard);
         fodboldbanen.addTrashType(TrashType.CARDBOARD, paperCardboard);
         fodboldbanen.addTrashType(TrashType.PANT, pantTypes);
+        fodboldbanen.addTrashType(TrashType.REST, restType);
 
         hjem.setExit("parken", park);
         hjem.setExit("byen", byen);
@@ -190,12 +201,20 @@ public class Game {
         // i dette tilfælde, vil loopet kører indtil finished vil blive sat til true
         boolean finished = false;
         while (!finished) {
+            if (score.getScore() >= 100) {
+                System.out.println("Tillykke! Du har vundet. Fortsæt det gode arbejde!");
+                break;
+            } else if (score.getScore() <= 0) {
+                System.out.println("Desværre! Du har tabt. Prøv igen!");
+                break;
+            }
+            
             Command command = parser.getCommand();
             
             // finished vil kun blive sat til true, hvis "afslut" bliver kaldt som vil derved sætte finished til true
             finished = processCommand(command);
         }
-        System.out.println("Tak for spillet! Du fik: " + score.getScore() + " Point!\nPrøv gerne igen, for at blive endnu bedre til at sortere!\nEller bedre endnu! Måske du kan gennemføre spillet!? :O");
+        //System.out.println("Thank you for playing.  Good bye.");
     }
 
     private void printWelcome() {
@@ -327,7 +346,7 @@ public class Game {
         
         // hvis det hele er som det skal, så tilføjer vi bare det sbbkrald ind i vores skraldespands "inventory"
         if (currentTrashCan.addTrash(inventory, currentTrash, score)) {
-            System.out.printf("Du har fået point! Din score er nu: %d%n", score.getScore());               
+            System.out.printf("Tillykke. Du har fået point! Du har sorteret korrekt.\nDin score er nu: %d%n", score.getScore());               
         }
     }
 

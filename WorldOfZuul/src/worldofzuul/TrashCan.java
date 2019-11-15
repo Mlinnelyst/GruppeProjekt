@@ -49,8 +49,8 @@ public class TrashCan {
                 // hvis skraldetypen og skraldespandstypen ikke korrespondere med hinanden
                 // vil spilleren miste point
                 scoreCounter.decreaseScore(15);
-                System.out.printf("Du har mistet point! Din score er nu: %d%n", score.getScore());
-                
+                System.out.printf("Desværre. Du har mistet point! Du har sorteret forkert. Prøv med en anden skraldespand.\nDin score er nu: %d%n", score.getScore());
+
                 return false;
             }
         }

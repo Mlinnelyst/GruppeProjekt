@@ -7,7 +7,7 @@ public enum TrashType {
     POTATO("kartoffel"),  
     
     PLASTIC("plastikaffald"), 
-    PLAST("plastikflaske_uden_pant"), PLASTBAG("plastikpose"), PLASTBUCKET("ødelagt_plastik_spand"),
+    PLAST("plastikflaske_uden_pant"), PLASTBUCKET("ødelagt_plastik_spand"),
     PLASTSHOVEL("ødelagt_plastik_skovl"),
     
     METAL("metalaffald"),
@@ -17,13 +17,17 @@ public enum TrashType {
     GLASSBOTTLE("glasflaske"),
     
     PAPER("papir"), CARDBOARD("pap"),
-    JUICE("juice_karton"), BEERFRAME("ølramme"),
+    BEERFRAME("ølramme"), PAPKASSE("pap_kasse"),
     
     PANT("pant"),
     PLASTPANT("plastikflaske_med_pant"), CANPANT("dåse_med_pant"),
     
     GENBRUGS("genbrugsplads"), 
-    PHONE("ødelagt_telefon"), LAPTOP("ødelagt_bærbar");
+    PHONE("ødelagt_telefon"), LAPTOP("ødelagt_bærbar"),
+    
+    REST("restaffald"),
+    PIZZABAKKE("pizzabakke"), JUICE("juice_karton"), MILK("mælke_karton"), PLASTBAG("plastikpose");
+    
 
     private final String trashTypes;
 
