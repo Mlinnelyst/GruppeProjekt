@@ -7,6 +7,7 @@ public class SecondaryController {
 
     @FXML
     private void switchToPrimary() throws IOException {
+        App.game.play(new Command(CommandWord.GO, "parken", "", ""));
         App.setRoot("primary");
     }
 }
