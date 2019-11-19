@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import com.mycompany.worldofzuulgui.WorldOfZuul;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -12,6 +13,8 @@ import com.mycompany.worldofzuulgui.WorldOfZuul;
 public class FodboldbanenController {
     @FXML
     private Button goHjem;
+    @FXML
+    private Pane spawnPane;
 
     @FXML
     private void goHjemAction() throws IOException {

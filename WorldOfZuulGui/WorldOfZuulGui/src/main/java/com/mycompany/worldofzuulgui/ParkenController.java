@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 /**
  * FXML Controller class
  *
@@ -23,6 +24,8 @@ public class ParkenController implements Initializable {
 
     @FXML
     private Button goHjem;
+    @FXML
+    private Pane spawnPane;
     /**
      * Initializes the controller class.
      */

@@ -8,5 +8,6 @@
       <Button fx:id="goParken" layoutX="14.0" layoutY="348.0" mnemonicParsing="false" onAction="#goParkenAction" text="Parken" />
       <Button fx:id="goByen" layoutX="904.0" layoutY="349.0" mnemonicParsing="false" onAction="#goByenAction" text="Byen" />
       <Button fx:id="goFodboldbanen" layoutX="437.0" layoutY="19.0" mnemonicParsing="false" onAction="#goFodboldbanenAction" text="Fodboldbanen" />
+      <Pane fx:id="spawnPane" layoutX="84.0" layoutY="55.0" prefHeight="568.0" prefWidth="798.0" />
    </children>
 </Pane>

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -22,12 +23,18 @@ public class ByenController implements Initializable {
 
     @FXML
     private Button goHjem;
+    @FXML
+    private Pane spawnPane;
+    @FXML
+    private Button spawnBanan;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Trash banana = new Trash ("Bananskrald", TrashType.BANANA);
+        spawnBanan.setText(banana.toString());
         // TODO
     }    
 
@@ -35,6 +42,12 @@ public class ByenController implements Initializable {
     private void goHjemAction(ActionEvent event)throws IOException {
         App.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");
+    }
+
+    @FXML
+    private void spawnBananAction(ActionEvent event) {
+        spawnBanan.setVisible(false);
+        System.out.println("...");
     }
     
 }

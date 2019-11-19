@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import com.mycompany.worldofzuulgui.WorldOfZuul;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -17,6 +18,8 @@ public class HjemController {
     private Button goByen;
     @FXML
     private Button goFodboldbanen;
+    @FXML
+    private Pane spawnPane;
 
     @FXML
     private void goParkenAction() throws IOException {
