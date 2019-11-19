@@ -11,10 +11,10 @@ import com.mycompany.worldofzuulgui.WorldOfZuul;
  */
 public class FodboldbanenController {
     @FXML
-    private Button hjemButton;
+    private Button goHjem;
 
     @FXML
-    private void gotoHjem() throws IOException {
+    private void goHjemAction() throws IOException {
         App.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");
     }

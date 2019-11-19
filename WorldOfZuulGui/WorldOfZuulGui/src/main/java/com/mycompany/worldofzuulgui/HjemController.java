@@ -11,22 +11,27 @@ import com.mycompany.worldofzuulgui.WorldOfZuul;
  */
 public class HjemController {
     @FXML
-    private Button parkButton;
+   
+    private Button goParken;
+    @FXML
+    private Button goByen;
+    @FXML
+    private Button goFodboldbanen;
 
     @FXML
-    private void gotoParken() throws IOException {
+    private void goParkenAction() throws IOException {
         App.game.play(new Command(CommandWord.GO, "parken", "", ""));
         App.setRoot("Parken");
     }
     
     @FXML
-    private void gotoByen() throws IOException {
+    private void goByenAction() throws IOException {
         App.game.play(new Command(CommandWord.GO, "byen", "", ""));
         App.setRoot("Byen");
     }
     
     @FXML
-    private void gotoFodboldbanen() throws IOException {
+    private void goFodboldbanenAction() throws IOException {
         App.game.play(new Command(CommandWord.GO, "fodboldbanen", "", ""));
         App.setRoot("Fodboldbanen");
     }
