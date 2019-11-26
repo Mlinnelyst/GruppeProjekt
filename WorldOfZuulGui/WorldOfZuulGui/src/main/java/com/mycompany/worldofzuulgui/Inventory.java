@@ -22,6 +22,21 @@ public class Inventory {
         }
         return false;
     }
+    
+    public boolean addTrash(Trash trash) {
+        if (this.trash.containsKey(trash.toString())) {
+            System.out.println("Din inventory indeholder allerede denne skraldtype.");
+            return false;
+        }
+        
+        if (this.trash.size() < 2) {
+            this.trash.put(trash.toString(), trash);
+            return true;
+        } else {
+            System.out.println("Du har ikke mere plads i hænderne!");
+            return false;
+        }
+    }
 
     // Opret trash-hashmappet i constructeren
     public Inventory() {

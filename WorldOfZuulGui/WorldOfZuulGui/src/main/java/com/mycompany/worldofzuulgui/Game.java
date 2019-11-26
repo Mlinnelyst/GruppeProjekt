@@ -11,7 +11,7 @@ public class Game {
     private HashMap<String, Room> rooms;
 
     private int moves;
-    private final Inventory inventory;
+    public final Inventory inventory;
     private final ScoreCounter score;
 
     private final HashMap<String, TrashCan> trashCans;

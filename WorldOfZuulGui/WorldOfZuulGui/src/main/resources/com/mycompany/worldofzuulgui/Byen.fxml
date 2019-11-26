@@ -8,7 +8,9 @@
       <Button fx:id="goHjem" layoutX="25.0" layoutY="347.0" mnemonicParsing="false" onAction="#goHjemAction" text="Hjem" />
       <Pane fx:id="spawnPane" layoutX="109.0" layoutY="32.0" prefHeight="597.0" prefWidth="795.0">
          <children>
-            <Button fx:id="spawnBanan" layoutX="237.0" layoutY="172.0" mnemonicParsing="false" onAction="#spawnBananAction" text="Banan" />
+            <Button fx:id="btn1" layoutX="237.0" layoutY="172.0" mnemonicParsing="false" onAction="#btnClicked" text="Btn1" />
+            <Button fx:id="btn2" layoutX="257.0" layoutY="172.0" mnemonicParsing="false" onAction="#btnClicked" text="Btn2" />
+            <Button fx:id="btn3" layoutX="277.0" layoutY="172.0" mnemonicParsing="false" onAction="#btnClicked" text="Btn3" />
          </children></Pane>
    </children>
 </Pane>
