@@ -5,15 +5,20 @@
  */
 package com.mycompany.worldofzuulgui;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 /**
@@ -28,9 +33,7 @@ public class ByenController implements Initializable {
     @FXML
     private Pane spawnPane;
     
-    
     public Button[] arrayButtons;
-    
     
     @FXML
     private Button btn1;
@@ -66,8 +69,9 @@ public class ByenController implements Initializable {
             // Random position
             arrayButtons[i].setLayoutX(new Random().nextInt(bX));
             arrayButtons[i].setLayoutY(new Random().nextInt(bY));
-            
         }
+        
+        
     }    
 
     @FXML
@@ -78,6 +82,13 @@ public class ByenController implements Initializable {
 
     @FXML
     private void btnClicked(ActionEvent event) {
+
+        
+        //File file = new File("file:/home/mads/NetBeansProjects/GruppeProjekt/WorldOfZuulGui/WorldOfZuulGui/target/classes/com/mycompany/worldofzuulgui/billede2.jpeg");
+        //Image image = new Image(file.toURI().toString());
+        //img1.setImage(image);
+        //System.out.println(img1.getImage().getUrl());
+        
         Button btn = (Button) event.getSource();
         
         System.out.println(btn.getId());
@@ -89,6 +100,36 @@ public class ByenController implements Initializable {
         }
         
         App.game.inventory.printInventory();
+        reloadInv();
     }
     
+    @FXML
+    private Button inv1;
+    
+    @FXML
+    private Button inv2;
+    
+    private void reloadInv() {
+        Button invBtns[] = new Button[] { inv1, inv2 };
+        
+        invBtns[0].setVisible(false);
+        invBtns[1].setVisible(false);
+        
+        int i = 0;
+        for (String trash : App.game.inventory.trash.keySet()) {
+            invBtns[i].setVisible(true);
+            invBtns[i].setText(trash);
+            i++;
+        }
+    }
+    
+    @FXML
+    private void invClicked1(ActionEvent event) {
+        System.out.println("1");
+    }
+    
+    @FXML
+    private void invClicked2(ActionEvent event) {
+        System.out.println("2");
+    }
 }
