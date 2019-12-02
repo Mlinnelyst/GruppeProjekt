@@ -2,6 +2,8 @@ package com.mycompany.worldofzuulgui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 
 public class Game {
 
@@ -393,4 +395,5 @@ public class Game {
             return true;
         }
     }
+    
 }

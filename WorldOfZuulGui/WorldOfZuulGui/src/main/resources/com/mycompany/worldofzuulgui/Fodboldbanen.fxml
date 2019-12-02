@@ -7,5 +7,15 @@
    <children>
       <Button fx:id="goHjem" layoutX="454.0" layoutY="564.0" mnemonicParsing="false" onAction="#goHjemAction" text="Hjem" />
       <Pane fx:id="spawnPane" layoutX="9.0" layoutY="11.0" prefHeight="546.0" prefWidth="925.0" />
+      
+      
+      <Pane fx:id="inventoryPane" layoutX="700" layoutY="500" prefHeight="200" prefWidth="200">
+            <children>
+                <Button fx:id="inv1" layoutX="50" layoutY="100" mnemonicParsing="false" onAction="#invClicked1" text="inv1" />
+                <Button fx:id="inv2" layoutX="150" layoutY="100" mnemonicParsing="false" onAction="#invClicked2" text="inv2" />
+            </children>
+        </Pane>
+        
    </children>
+   
 </Pane>

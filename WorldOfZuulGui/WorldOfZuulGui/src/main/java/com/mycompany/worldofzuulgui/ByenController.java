@@ -47,6 +47,8 @@ public class ByenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        App.game.inventory.reloadInv(inv1, inv2);
+        
         trashList.add(new Trash("bananskrald", TrashType.BANANA));
         trashList.add(new Trash("juice", TrashType.JUICE));
         trashList.add(new Trash("apple", TrashType.APPLE));
@@ -81,26 +83,8 @@ public class ByenController implements Initializable {
     }
 
     @FXML
-    private void btnClicked(ActionEvent event) {
-
-        
-        //File file = new File("file:/home/mads/NetBeansProjects/GruppeProjekt/WorldOfZuulGui/WorldOfZuulGui/target/classes/com/mycompany/worldofzuulgui/billede2.jpeg");
-        //Image image = new Image(file.toURI().toString());
-        //img1.setImage(image);
-        //System.out.println(img1.getImage().getUrl());
-        
-        Button btn = (Button) event.getSource();
-        
-        System.out.println(btn.getId());
-        
-        for (int i = 0; i < trashList.size(); i++) {
-            if (trashList.get(i).getTrashType().toString() == btn.getId()) {
-                btn.setVisible(!App.game.inventory.addTrash(trashList.get(i)));
-            }
-        }
-        
-        App.game.inventory.printInventory();
-        reloadInv();
+    private void trashClicked(ActionEvent event) {
+        App.game.inventory.trashClicked(event, trashList, inv1, inv2);
     }
     
     @FXML
@@ -109,27 +93,14 @@ public class ByenController implements Initializable {
     @FXML
     private Button inv2;
     
-    private void reloadInv() {
-        Button invBtns[] = new Button[] { inv1, inv2 };
-        
-        invBtns[0].setVisible(false);
-        invBtns[1].setVisible(false);
-        
-        int i = 0;
-        for (String trash : App.game.inventory.trash.keySet()) {
-            invBtns[i].setVisible(true);
-            invBtns[i].setText(trash);
-            i++;
-        }
-    }
-    
     @FXML
     private void invClicked1(ActionEvent event) {
-        System.out.println("1");
+        App.game.inventory.btn1Clicked(event);
     }
     
     @FXML
     private void invClicked2(ActionEvent event) {
-        System.out.println("2");
+        App.game.inventory.btn2Clicked(event);
     }
+    
 }
