@@ -64,7 +64,11 @@ public class ByenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        App.game.inventory.reloadInv(inv1, inv2);
+        File backgroundImage = new File("file:///" + System.getProperty("user.dir") + 
+                        "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\by.png");        
+        background.setImage(new Image(backgroundImage.getPath()));
+        
+        App.game.inventory.reloadInv(inv11, inv22);
 
         trashList.add(new Trash("bananskrald", TrashType.BANANA));
         trashList.add(new Trash("juice", TrashType.JUICE));
@@ -89,9 +93,6 @@ public class ByenController implements Initializable {
             
             File currentImage = new File("file:///" + System.getProperty("user.dir") + 
                         "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trashList.get(rnd).getTrashType().toString() + ".png");
-            
-            String currentImageDir = currentImage.getPath();            
-            //System.out.println("Image: " + currentImage.getPath() + ". Exists: " + currentImage.exists());
          
             arrayImage[i].setImage(new Image(currentImage.getPath()));
             
@@ -106,11 +107,6 @@ public class ByenController implements Initializable {
     private void goHjemAction(ActionEvent event) throws IOException {
         App.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");
-    }
-
-    @FXML
-    private void trashClicked(ActionEvent event) {
-
     }
 
     @FXML
@@ -131,7 +127,7 @@ public class ByenController implements Initializable {
 
     @FXML
     private void trashClicked(MouseEvent event) {
-        App.game.inventory.trashClicked(event, trashList, inv1, inv2);
+        App.game.inventory.trashClicked(event, trashList, inv11, inv22);
         System.out.println("ada");
     }
 
