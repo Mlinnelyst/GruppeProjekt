@@ -43,12 +43,12 @@ public class FodboldbanenController {
     private Button inv2;
     
     @FXML
-    private void invClicked1(ActionEvent event) {
+    private void invClicked1(MouseEvent event) {
         App.game.inventory.btn1Clicked(event);
     }
     
     @FXML
-    private void invClicked2(ActionEvent event) {
+    private void invClicked2(MouseEvent event) {
         App.game.inventory.btn2Clicked(event);
     }
 }

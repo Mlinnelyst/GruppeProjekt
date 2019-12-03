@@ -56,6 +56,10 @@ public class ByenController implements Initializable {
     private ImageView f3;
     @FXML
     private ImageView background;
+    @FXML
+    private ImageView inv11;
+    @FXML
+    private ImageView inv22;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -116,12 +120,12 @@ public class ByenController implements Initializable {
     private Button inv2;
 
     @FXML
-    private void invClicked1(ActionEvent event) {
+    private void invClicked1(MouseEvent event) {
         App.game.inventory.btn1Clicked(event);
     }
 
     @FXML
-    private void invClicked2(ActionEvent event) {
+    private void invClicked2(MouseEvent event) {
         App.game.inventory.btn2Clicked(event);
     }
 
@@ -130,5 +134,6 @@ public class ByenController implements Initializable {
         App.game.inventory.trashClicked(event, trashList, inv1, inv2);
         System.out.println("ada");
     }
+
 
 }
