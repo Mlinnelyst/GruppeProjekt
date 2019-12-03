@@ -28,12 +28,12 @@ public class FodboldbanenController {
     ArrayList<Trash> trashList = new ArrayList<Trash>();
     
     FodboldbanenController() {
-        App.game.inventory.reloadInv(inv1, inv2);
+        //App.game.inventory.reloadInv(inv1, inv2);
     }
     
     @FXML
     private void trashClicked(MouseEvent event) {
-        App.game.inventory.trashClicked(event, trashList, inv1, inv2);
+        //App.game.inventory.trashClicked(event, trashList, inv1, inv2);
     }
     
     @FXML

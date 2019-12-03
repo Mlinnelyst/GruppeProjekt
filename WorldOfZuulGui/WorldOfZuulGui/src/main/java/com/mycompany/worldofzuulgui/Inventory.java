@@ -1,11 +1,13 @@
 package com.mycompany.worldofzuulgui;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Inventory {
@@ -61,7 +63,7 @@ public class Inventory {
     }
     
     // Trash clicked from fxml
-    public void trashClicked(MouseEvent event, ArrayList<Trash> trashList, Button inv1, Button inv2) {
+    public void trashClicked(MouseEvent event, ArrayList<Trash> trashList, ImageView inv1, ImageView inv2) {
         ImageView image = (ImageView) event.getSource();
        // Button btn = (Button) event.getSource();
         
@@ -78,16 +80,22 @@ public class Inventory {
     }
     
     // Reload gui
-    public void reloadInv(Button btn1, Button btn2) {
-        Button invBtns[] = new Button[] { btn1, btn2 };
+    public void reloadInv(ImageView btn1, ImageView btn2) {
+        ImageView invBtns[] = new ImageView[] { btn1, btn2 };
         
         invBtns[0].setVisible(false);
         invBtns[1].setVisible(false);
         
         int i = 0;
-        for (String trash : trash.keySet()) {
+        for (String lol : trash.keySet()) {
             invBtns[i].setVisible(true);
-            invBtns[i].setText(trash);
+            
+            File currentImage = new File("file:///" + System.getProperty("user.dir") + 
+                        "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trash.get(lol).getTrashType().toString() + ".png");
+            invBtns[i].setImage(new Image(currentImage.getPath()));
+            
+            //invBtns[i].setText(trash);
+            System.out.println("Trash: " + trash.get(lol).getTrashType().toString() + ". Exists: " + currentImage.exists());
             i++;
         }
     }
