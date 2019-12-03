@@ -13,9 +13,7 @@ public class Parser {
     }
 
     public Command getCommand(String[] words) {
-        
-        
-        
+
         // Returner commandoen
         return new Command(commands.getCommandWord(words[0]), words[1], words[2], words[3]);
     }

@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+
 /**
  * FXML Controller class
  *
@@ -21,19 +22,19 @@ import javafx.scene.layout.Pane;
  */
 public class ParkenController implements Initializable {
 
-
     @FXML
     private Button goHjem;
     @FXML
     private Pane spawnPane;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     private void goHjemAction(ActionEvent event) throws IOException {
         App.game.play(new Command(CommandWord.GO, "hjem", "", ""));

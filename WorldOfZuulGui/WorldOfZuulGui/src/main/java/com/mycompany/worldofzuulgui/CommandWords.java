@@ -3,6 +3,7 @@ package com.mycompany.worldofzuulgui;
 import java.util.HashMap;
 
 public class CommandWords {
+
     private final HashMap<String, CommandWord> validCommands;
     // Creates a HashMap that takes a String and CommandWord as index and value
 

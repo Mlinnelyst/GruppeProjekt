@@ -16,7 +16,7 @@ public class App extends Application {
     private static Scene scene;
 
     public static Game game = new Game();
-    
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("Hjem"), 960, 720);
@@ -37,5 +37,4 @@ public class App extends Application {
         launch();
     }
 
-    
 }
