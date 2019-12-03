@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 public class Inventory {
 
@@ -59,14 +61,15 @@ public class Inventory {
     }
     
     // Trash clicked from fxml
-    public void trashClicked(ActionEvent event, ArrayList<Trash> trashList, Button inv1, Button inv2) {
-        Button btn = (Button) event.getSource();
+    public void trashClicked(MouseEvent event, ArrayList<Trash> trashList, Button inv1, Button inv2) {
+        ImageView image = (ImageView) event.getSource();
+       // Button btn = (Button) event.getSource();
         
-        System.out.println(btn.getId());
+        System.out.println(image.getId());
         
         for (int i = 0; i < trashList.size(); i++) {
-            if (trashList.get(i).getTrashType().toString() == btn.getId()) {
-                btn.setVisible(!App.game.inventory.addTrash(trashList.get(i)));
+            if (trashList.get(i).getTrashType().toString() == image.getId()) {
+                image.setVisible(!App.game.inventory.addTrash(trashList.get(i)));
             }
         }
         

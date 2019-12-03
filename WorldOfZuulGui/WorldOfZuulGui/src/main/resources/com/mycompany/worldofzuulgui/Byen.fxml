@@ -7,6 +7,11 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.worldofzuulgui.ByenController">
    <children>
+      <ImageView fx:id="background" fitHeight="720.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Backgrounds/by.png" />
+         </image>
+      </ImageView>
       <Button fx:id="goHjem" layoutX="25.0" layoutY="347.0" mnemonicParsing="false" onAction="#goHjemAction" text="Hjem" />
       <Pane fx:id="spawnPane" layoutX="109.0" layoutY="32.0" prefHeight="597.0" prefWidth="795.0">
          <children>
