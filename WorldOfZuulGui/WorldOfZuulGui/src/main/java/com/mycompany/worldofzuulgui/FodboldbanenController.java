@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import com.mycompany.worldofzuulgui.WorldOfZuul;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 /**
@@ -31,7 +32,7 @@ public class FodboldbanenController {
     }
     
     @FXML
-    private void trashClicked(ActionEvent event) {
+    private void trashClicked(MouseEvent event) {
         App.game.inventory.trashClicked(event, trashList, inv1, inv2);
     }
     

@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 /**
@@ -35,6 +36,8 @@ public class ByenController implements Initializable {
     
     public Button[] arrayButtons;
     
+    public ImageView[] arrayImage;
+    
     @FXML
     private Button btn1;
     @FXML
@@ -43,6 +46,16 @@ public class ByenController implements Initializable {
     private Button btn3;
     
     ArrayList<Trash> trashList = new ArrayList<Trash>();
+    @FXML
+    private Pane inventoryPane;
+    @FXML
+    private ImageView f1;
+    @FXML
+    private ImageView f2;
+    @FXML
+    private ImageView f3;
+    @FXML
+    private ImageView background;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -56,21 +69,21 @@ public class ByenController implements Initializable {
         trashList.add(new Trash("beerframe", TrashType.BEERFRAME));
         
         arrayButtons = new Button[] { btn1, btn2, btn3 };
+        arrayImage = new ImageView[] {f1,f2,f3};
+        
         
         int bX = 795;
         int bY = 597;
         
-        for (int i = 0; i < arrayButtons.length; i++){
-            int rnd;
+        for (int i = 0; i < arrayImage.length; i++){
+            int rnd = new Random().nextInt(trashList.size());
             
-            rnd = new Random().nextInt(trashList.size());
-            
-            arrayButtons[i].setText(trashList.get(rnd).toString());
-            arrayButtons[i].setId(trashList.get(rnd).getTrashType().toString());
+            arrayImage[i].setId(trashList.get(rnd).getTrashType().toString());
+            arrayImage[i].se
 
             // Random position
-            arrayButtons[i].setLayoutX(new Random().nextInt(bX));
-            arrayButtons[i].setLayoutY(new Random().nextInt(bY));
+            arrayImage[i].setLayoutX(new Random().nextInt(bX));
+            arrayImage[i].setLayoutY(new Random().nextInt(bY));
         }
         
         
@@ -84,7 +97,7 @@ public class ByenController implements Initializable {
 
     @FXML
     private void trashClicked(ActionEvent event) {
-        App.game.inventory.trashClicked(event, trashList, inv1, inv2);
+        
     }
     
     @FXML
@@ -101,6 +114,12 @@ public class ByenController implements Initializable {
     @FXML
     private void invClicked2(ActionEvent event) {
         App.game.inventory.btn2Clicked(event);
+    }
+
+    @FXML
+    private void trashClicked(MouseEvent event) {
+       App.game.inventory.trashClicked(event, trashList, inv1, inv2);
+        System.out.println("ada");
     }
     
 }
