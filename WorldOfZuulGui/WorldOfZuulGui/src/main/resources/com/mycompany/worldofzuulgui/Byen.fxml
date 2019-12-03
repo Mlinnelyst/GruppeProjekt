@@ -13,6 +13,18 @@
             <Button fx:id="btn1" layoutX="237.0" layoutY="172.0" mnemonicParsing="false" onAction="#trashClicked" text="Btn1" />
             <Button fx:id="btn2" layoutX="257.0" layoutY="172.0" mnemonicParsing="false" onAction="#trashClicked" text="Btn2" />
             <Button fx:id="btn3" layoutX="277.0" layoutY="172.0" mnemonicParsing="false" onAction="#trashClicked" text="Btn3" />
+            <ImageView fx:id="f1" fitHeight="150.0" fitWidth="200.0" layoutX="47.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@billede2.jpeg" />
+               </image></ImageView>
+            <ImageView fx:id="f2" fitHeight="150.0" fitWidth="200.0" layoutX="387.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@billede2.jpeg" />
+               </image></ImageView>
+            <ImageView fx:id="f3" fitHeight="150.0" fitWidth="200.0" layoutX="217.0" layoutY="395.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@billede.jpeg" />
+               </image></ImageView>
             
          </children>
       </Pane>
