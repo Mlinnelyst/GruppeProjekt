@@ -102,19 +102,18 @@ public class Room {
 
     // Metode der spawnerTrash i et rum
     public void spawnTrash() {
-        
-         // Opretter en et Random objekt (bruges længere nede i )
+
+        // Opretter en et Random objekt (bruges længere nede i )
         Random random = new Random();
-        
+
         // Opretter en int, der angiver hvor meget skrald vi maks skal spawne
         int maxTrash = 4;
-        
+
         // Bestemmer antal af skrald der kan spawne i hvert rum. spawner random int mellem 0-3
-        int randomInt = (int)(Math.floor(Math.random() * Math.floor(maxTrash)));
+        int randomInt = (int) (Math.floor(Math.random() * Math.floor(maxTrash)));
         // Ligger 1 til, for at det bliver 1-4, så der uanset hvad spawner noget skrald.
         randomInt++;
-        
-        
+
         // For each loop, der kører alle keys i trashSpawn igennem, spawner et tilfældigt Trash fra rummets trashTypes
         // Der spawnes mellem 1-4 stykker skrald tilfældigt.  
         for (TrashType spawn : trashSpawn.keySet()) {

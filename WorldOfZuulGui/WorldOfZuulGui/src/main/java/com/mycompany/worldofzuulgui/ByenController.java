@@ -64,10 +64,10 @@ public class ByenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        File backgroundImage = new File("file:///" + System.getProperty("user.dir") + 
-                        "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\by.png");        
+        File backgroundImage = new File("file:///" + System.getProperty("user.dir")
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\by.png");
         background.setImage(new Image(backgroundImage.getPath()));
-        
+
         App.game.inventory.reloadInv(inv11, inv22);
 
         trashList.add(new Trash("bananskrald", TrashType.BANANA));
@@ -85,17 +85,17 @@ public class ByenController implements Initializable {
         for (Trash trash : trashList) {
             System.out.println("Trash: " + trash.toString());
         }
-        
+
         for (int i = 0; i < arrayImage.length; i++) {
             int rnd = new Random().nextInt(trashList.size());
-            
+
             arrayImage[i].setId(trashList.get(rnd).getTrashType().toString());
-            
-            File currentImage = new File("file:///" + System.getProperty("user.dir") + 
-                        "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trashList.get(rnd).getTrashType().toString() + ".png");
-         
+
+            File currentImage = new File("file:///" + System.getProperty("user.dir")
+                    + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trashList.get(rnd).getTrashType().toString() + ".png");
+
             arrayImage[i].setImage(new Image(currentImage.getPath()));
-            
+
             // Random position
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
@@ -108,12 +108,6 @@ public class ByenController implements Initializable {
         App.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");
     }
-
-    @FXML
-    private Button inv1;
-
-    @FXML
-    private Button inv2;
 
     @FXML
     private void invClicked1(MouseEvent event) {
@@ -130,6 +124,5 @@ public class ByenController implements Initializable {
         App.game.inventory.trashClicked(event, trashList, inv11, inv22);
         System.out.println("ada");
     }
-
 
 }

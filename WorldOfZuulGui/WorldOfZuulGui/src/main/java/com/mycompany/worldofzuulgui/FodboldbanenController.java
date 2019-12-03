@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
  * @author mads
  */
 public class FodboldbanenController {
+
     @FXML
     private Button goHjem;
     @FXML
@@ -24,29 +25,29 @@ public class FodboldbanenController {
         App.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");
     }
-    
+
     ArrayList<Trash> trashList = new ArrayList<Trash>();
-    
+
     FodboldbanenController() {
         //App.game.inventory.reloadInv(inv1, inv2);
     }
-    
+
     @FXML
     private void trashClicked(MouseEvent event) {
         //App.game.inventory.trashClicked(event, trashList, inv1, inv2);
     }
-    
+
     @FXML
     private Button inv1;
-    
+
     @FXML
     private Button inv2;
-    
+
     @FXML
     private void invClicked1(MouseEvent event) {
         App.game.inventory.btn1Clicked(event);
     }
-    
+
     @FXML
     private void invClicked2(MouseEvent event) {
         App.game.inventory.btn2Clicked(event);
