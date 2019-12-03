@@ -92,11 +92,11 @@ public class Inventory {
         }
     }
     
-    public void btn1Clicked(ActionEvent event) {
+    public void btn1Clicked(MouseEvent event) {
         System.out.println("1");
     }
     
-    public void btn2Clicked(ActionEvent event) {
+    public void btn2Clicked(MouseEvent event) {
         System.out.println("2");
     }
     
