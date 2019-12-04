@@ -24,7 +24,7 @@ public class StrandController implements Initializable {
 
     private ImageView[] arrayImage;
     private ArrayList<Trash> trashList;
-    
+
     @FXML
     private Button goHjem;
     @FXML
@@ -45,18 +45,12 @@ public class StrandController implements Initializable {
     private ImageView background;
 
     public StrandController() {
-        trashList = new ArrayList<>();
-        trashList.add(new Trash("bananskrald", TrashType.BANANA));
-        trashList.add(new Trash("juice", TrashType.JUICE));
-        trashList.add(new Trash("apple", TrashType.APPLE));
-        trashList.add(new Trash("avocado", TrashType.AVOCADO));
-        trashList.add(new Trash("beerframe", TrashType.BEERFRAME));
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File backgroundImage = new File("file:///" + System.getProperty("user.dir")
-                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\fodbold2.png");
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\toxic.png");
         background.setImage(new Image(backgroundImage.getPath()));
 
         arrayImage = new ImageView[]{f1, f2, f3};
@@ -66,13 +60,18 @@ public class StrandController implements Initializable {
         int bX = 795;
         int bY = 597;
 
-        for (int i = 0; i < arrayImage.length; i++) {
-            int rnd = new Random().nextInt(trashList.size());
+        Room currentRoom = WorldOfZuul.game.getCurrentRoom();
+        currentRoom.trash.clear();
+        currentRoom.spawnTrash();
 
-            arrayImage[i].setId(trashList.get(rnd).getTrashType().toString());
+        Object[] values = currentRoom.trash.values().toArray();
+        for (int i = 0; i < currentRoom.trash.size(); i++) {
+            Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];
+
+            arrayImage[i].setId(currentTrash.getTrashType().toString());
 
             File currentImage = new File("file:///" + System.getProperty("user.dir")
-                    + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trashList.get(rnd).getTrashType().toString() + ".png");
+                    + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + currentTrash.toString() + ".png");
 
             arrayImage[i].setImage(new Image(currentImage.getPath()));
 
@@ -80,7 +79,7 @@ public class StrandController implements Initializable {
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
         }
     }
-    
+
     @FXML
     private void goHjemAction() throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "hjem", "", ""));
@@ -99,6 +98,12 @@ public class StrandController implements Initializable {
 
     @FXML
     private void trashClicked(MouseEvent event) {
+        Room currentRoom = WorldOfZuul.game.getCurrentRoom();
+
+        ArrayList<Trash> list = new ArrayList<>(currentRoom.trash.values());
+
+        WorldOfZuul.game.inventory.trashClicked(event, list, inv11, inv22);
+        System.out.println("ada");
     }
 
 }
