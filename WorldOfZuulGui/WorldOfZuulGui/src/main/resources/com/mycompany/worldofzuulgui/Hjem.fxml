@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.worldofzuulgui.HjemController">
     <children>
+        <ImageView fx:id="background" fitHeight="720.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../java/com/mycompany/JavaBilleder1/fodbold2.png" />
+            </image>
+        </ImageView>
+        
         <Button fx:id="goParken" layoutX="14.0" layoutY="348.0" mnemonicParsing="false" onAction="#goParkenAction" text="Parken" />
         <Button fx:id="goByen" layoutX="904.0" layoutY="349.0" mnemonicParsing="false" onAction="#goByenAction" text="Byen" />
         <Button fx:id="goFodboldbanen" layoutX="437.0" layoutY="19.0" mnemonicParsing="false" onAction="#goFodboldbanenAction" text="Fodboldbanen" />
+        <Button fx:id="goStranden" layoutX="437.0" layoutY="670.0" mnemonicParsing="false" onAction="#goStrandenAction" text="Stranden" />
+        
         <Pane fx:id="spawnPane" layoutX="84.0" layoutY="55.0" prefHeight="568.0" prefWidth="798.0" />
-        <ImageView fx:id="inv2M" fitHeight="70.0" fitWidth="111.0" layoutX="823.0" layoutY="623.0" onMouseClicked="#invClicked2" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="inv1M" fitHeight="70.0" fitWidth="93.0" layoutX="748.0" layoutY="623.0" onMouseClicked="#invClicked1" pickOnBounds="true" preserveRatio="true" />
+        
+        <Pane fx:id="inventoryPane" layoutX="700" layoutY="500" prefHeight="200" prefWidth="200">
+            <children>
+                <ImageView fx:id="inv11" fitHeight="63.0" fitWidth="79.0" layoutX="29.0" layoutY="69.0" onMouseClicked="#invClicked1" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="inv22" fitHeight="63.0" fitWidth="79.0" layoutX="121.0" layoutY="69.0" onMouseClicked="#invClicked2" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </Pane>
     </children>
 </Pane>

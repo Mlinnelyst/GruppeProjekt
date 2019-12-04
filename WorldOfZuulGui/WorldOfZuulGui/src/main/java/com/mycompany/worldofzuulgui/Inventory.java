@@ -15,6 +15,10 @@ public class Inventory {
     // Hashmap til opbevaring af skraldeobjekter i spillerens inventar
     public HashMap<String, Trash> trash;
 
+    ImageView firstSlot;
+    ImageView secondSlot;
+    ArrayList<ImageView> inventory;
+
     // Tilføj skrald fra rummet til spillerens inventar
     public boolean addTrash(Room room, Trash trash) {
         // Check om rummet indeholder skraldet
@@ -70,31 +74,35 @@ public class Inventory {
         System.out.println(image.getId());
 
         for (int i = 0; i < trashList.size(); i++) {
-            if (trashList.get(i).getTrashType().toString() == image.getId()) {
-                image.setVisible(!App.game.inventory.addTrash(trashList.get(i)));
+            if (trashList.get(i).getTrashType().toString().equals(image.getId())) {
+                image.setVisible(!WorldOfZuul.game.inventory.addTrash(trashList.get(i)));
             }
         }
 
-        App.game.inventory.printInventory();
-        App.game.inventory.reloadInv(inv1, inv2);
+        WorldOfZuul.game.inventory.printInventory();
+        WorldOfZuul.game.inventory.reloadInv(inv1, inv2);
     }
 
     // Reload gui
     public void reloadInv(ImageView btn1, ImageView btn2) {
-        ImageView invBtns[] = new ImageView[]{btn1, btn2};
+        if (btn1 != null || btn2 != null) {
+            ImageView invBtns[] = new ImageView[]{btn1, btn2};
 
-        invBtns[0].setVisible(false);
-        invBtns[1].setVisible(false);
+            invBtns[0].setVisible(false);
+            invBtns[1].setVisible(false);
 
-        int i = 0;
-        for (String lol : trash.keySet()) {
-            invBtns[i].setVisible(true);
+            int i = 0;
+            for (String lol : trash.keySet()) {
+                invBtns[i].setVisible(true);
 
-            File currentImage = new File("file:///" + System.getProperty("user.dir")
-                    + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trash.get(lol).getTrashType().toString() + ".png");
-            invBtns[i].setImage(new Image(currentImage.getPath()));
+                File currentImage = new File("file:///" + System.getProperty("user.dir")
+                        + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trash.get(lol).toString() + ".png");
+                invBtns[i].setImage(new Image(currentImage.getPath()));
+                i++;
+            }
 
-            i++;
+            firstSlot = invBtns[0];
+            secondSlot = invBtns[1];
         }
     }
 

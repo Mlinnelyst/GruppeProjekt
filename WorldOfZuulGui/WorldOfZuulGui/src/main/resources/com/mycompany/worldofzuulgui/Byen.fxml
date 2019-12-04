@@ -6,40 +6,41 @@
 <?import javafx.scene.layout.Pane?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.worldofzuulgui.ByenController">
-   <children>
-      <ImageView fx:id="background" fitHeight="720.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../java/com/mycompany/JavaBilleder1/by.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="goHjem" layoutX="25.0" layoutY="347.0" mnemonicParsing="false" onAction="#goHjemAction" text="Hjem" />
-      <Pane fx:id="spawnPane" layoutX="109.0" layoutY="32.0" prefHeight="597.0" prefWidth="795.0">
-         <children>
-            <Button fx:id="btn1" layoutX="237.0" layoutY="172.0" mnemonicParsing="false" onAction="#trashClicked" text="Btn1" />
-            <Button fx:id="btn2" layoutX="257.0" layoutY="172.0" mnemonicParsing="false" onAction="#trashClicked" text="Btn2" />
-            <Button fx:id="btn3" layoutX="277.0" layoutY="172.0" mnemonicParsing="false" onAction="#trashClicked" text="Btn3" />
-            <ImageView fx:id="f1" fitHeight="75.0" fitWidth="100.0" layoutX="47.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@billede2.jpeg" />
-               </image></ImageView>
-            <ImageView fx:id="f2" fitHeight="75.0" fitWidth="100.0" layoutX="387.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@billede2.jpeg" />
-               </image></ImageView>
-            <ImageView fx:id="f3" fitHeight="75.0" fitWidth="100.0" layoutX="217.0" layoutY="395.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@billede.jpeg" />
-               </image></ImageView>
+    <children>
+        <ImageView fx:id="background" fitHeight="720.0" fitWidth="960.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../java/com/mycompany/JavaBilleder1/by.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="goHjem" layoutX="25.0" layoutY="347.0" mnemonicParsing="false" onAction="#goHjemAction" text="Hjem" />
+      
+        <Pane fx:id="spawnPane" layoutX="109.0" layoutY="32.0" prefHeight="597.0" prefWidth="795.0">
+            <children>
+                <ImageView fx:id="f1" fitHeight="75.0" fitWidth="100.0" layoutX="47.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@placeholder.jpeg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="f2" fitHeight="75.0" fitWidth="100.0" layoutX="387.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@placeholder.jpeg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="f3" fitHeight="75.0" fitWidth="100.0" layoutX="217.0" layoutY="395.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@placeholder.jpeg" />
+                    </image>
+                </ImageView>
             
-         </children>
-      </Pane>
+            </children>
+        </Pane>
       
-      <Pane fx:id="inventoryPane" layoutX="700" layoutY="500" prefHeight="200" prefWidth="200">
-         <children>
-            <ImageView fx:id="inv11" fitHeight="63.0" fitWidth="79.0" layoutX="29.0" layoutY="69.0" onMouseClicked="#invClicked1" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="inv22" fitHeight="43.0" fitWidth="79.0" layoutX="121.0" layoutY="97.0" onMouseClicked="#invClicked2" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </Pane>
+        <Pane fx:id="inventoryPane" layoutX="700" layoutY="500" prefHeight="200" prefWidth="200">
+            <children>
+                <ImageView fx:id="inv11" fitHeight="63.0" fitWidth="79.0" layoutX="29.0" layoutY="69.0" onMouseClicked="#invClicked1" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="inv22" fitHeight="63.0" fitWidth="79.0" layoutX="121.0" layoutY="69.0" onMouseClicked="#invClicked2" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </Pane>
       
-   </children>
+    </children>
 </Pane>
