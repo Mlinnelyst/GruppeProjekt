@@ -80,7 +80,7 @@ public final class Game {
 
     private void createRooms() {
         // vi frem deklarere vores room
-        Room park, hjem, byen, fodboldbanen, stranden;
+        Room park, hjem, byen, fodboldbanen, stranden, gaden;
 
         // da vi vil gerne tilgå vores rooms senere hen i andre metoder, opretter vi en Hashmap over de rooms.
         rooms = new HashMap<>();
@@ -178,6 +178,16 @@ public final class Game {
         stranden.addTrashType(TrashType.CARDBOARD, paperCardboard);
         stranden.addTrashType(TrashType.PANT, pantTypes);
         stranden.addTrashType(TrashType.REST, restType);
+        
+        gaden = new Room("i gågaden");
+        gaden.addTrashType(TrashType.FOOD, foodTypes);
+        gaden.addTrashType(TrashType.PLASTIC, plasticTypes);
+        gaden.addTrashType(TrashType.METAL, metalTypes);
+        gaden.addTrashType(TrashType.GLAS, glassTypes);
+        gaden.addTrashType(TrashType.PAPER, paperCardboard);
+        gaden.addTrashType(TrashType.CARDBOARD, paperCardboard);
+        gaden.addTrashType(TrashType.PANT, pantTypes);
+        gaden.addTrashType(TrashType.REST, restType);
 
         hjem.setExit("parken", park);
         hjem.setExit("byen", byen);
@@ -185,12 +195,15 @@ public final class Game {
         hjem.setExit("stranden", stranden);
 
         byen.setExit("hjem", hjem);
+        byen.setExit("gaden", gaden);
 
         park.setExit("hjem", hjem);
 
         fodboldbanen.setExit("hjem", hjem);
         
         stranden.setExit("hjem", hjem);
+        
+        gaden.setExit("byen", byen);
 
         currentRoom = hjem;
 
@@ -200,6 +213,7 @@ public final class Game {
         byen.spawnTrash();
         fodboldbanen.spawnTrash();
         stranden.spawnTrash();
+        gaden.spawnTrash();
 
         // efter vi har oprettet alt der er relateret til vores rooms
         // sætter vi dem ind i vores HashMap, så vi kan nemt tilgå rooms senere
@@ -208,6 +222,7 @@ public final class Game {
         rooms.put("byen", byen);
         rooms.put("fodboldbanen", fodboldbanen);
         rooms.put("stranden", stranden);
+        rooms.put("gaden", gaden);
     }
 
     public void play(Command command) {        
