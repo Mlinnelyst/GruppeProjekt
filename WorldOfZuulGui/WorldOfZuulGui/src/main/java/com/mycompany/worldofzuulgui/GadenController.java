@@ -20,7 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-public class ByenController implements Initializable {
+public class GadenController implements Initializable {
 
     private ImageView[] arrayImage;
 
@@ -37,9 +37,7 @@ public class ByenController implements Initializable {
     @FXML
     private ImageView inv22;
     @FXML
-    private Button goHjem;
-    @FXML
-    private Button goGaden;
+    private Button goByen;
     @FXML
     private Pane spawnPane;
     @FXML
@@ -85,9 +83,9 @@ public class ByenController implements Initializable {
     }
     
     @FXML
-    private void goGadenAction(ActionEvent event) throws IOException {
-        WorldOfZuul.game.play(new Command(CommandWord.GO, "gaden", "", ""));
-        App.setRoot("Gaden");
+    private void goByenAction(ActionEvent event) throws IOException {
+        WorldOfZuul.game.play(new Command(CommandWord.GO, "byen", "", ""));
+        App.setRoot("Byen");
     }
 
     @FXML
@@ -109,4 +107,6 @@ public class ByenController implements Initializable {
         WorldOfZuul.game.inventory.trashClicked(event, list, inv11, inv22);
         System.out.println("ada");
     }
+
+    
 }
