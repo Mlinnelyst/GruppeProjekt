@@ -27,8 +27,7 @@ public enum TrashType {
     
     REST("restaffald"),
     PIZZACONTAINER("pizzabakke"), JUICE("juice_karton"), MILK("mælke_karton"), PLASTBAG("plastikpose");
-    
-
+   
     private final String trashTypes;
 
     TrashType(String trashTypes) {

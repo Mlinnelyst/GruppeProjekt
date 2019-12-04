@@ -1,32 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.worldofzuulgui;
 
-import java.io.File;
 import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import com.mycompany.worldofzuulgui.WorldOfZuul;
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 /**
- * FXML Controller class
  *
- * @author XPS
+ * @author mads
  */
-public class ParkenController implements Initializable {
+public class FodboldbanenController implements Initializable {
 
     private ImageView[] arrayImage;
     
@@ -36,27 +30,23 @@ public class ParkenController implements Initializable {
     private Pane spawnPane;
     @FXML
     private Pane inventoryPane;
-    
-    @FXML
-    private ImageView inv11;
-    @FXML
-    private ImageView inv22;
-    @FXML
-    private ImageView background;
     @FXML
     private ImageView f1;
     @FXML
     private ImageView f2;
     @FXML
     private ImageView f3;
-
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private ImageView inv11;
+    @FXML
+    private ImageView inv22;
+    @FXML
+    private ImageView background;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File backgroundImage = new File("file:///" + System.getProperty("user.dir")
-                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\park.png");
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\fodbold2.png");
         background.setImage(new Image(backgroundImage.getPath()));
 
         arrayImage = new ImageView[]{f1, f2, f3};
@@ -85,19 +75,21 @@ public class ParkenController implements Initializable {
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
         }  
     }
-
+    
     @FXML
-    private void goHjemAction(ActionEvent event) throws IOException {
+    private void goHjemAction() throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");
     }
 
     @FXML
     private void invClicked1(MouseEvent event) {
+        WorldOfZuul.game.inventory.btn1Clicked(event);
     }
 
     @FXML
     private void invClicked2(MouseEvent event) {
+        WorldOfZuul.game.inventory.btn2Clicked(event);
     }
 
     @FXML

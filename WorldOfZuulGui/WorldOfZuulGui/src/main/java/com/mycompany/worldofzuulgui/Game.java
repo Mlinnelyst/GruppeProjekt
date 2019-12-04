@@ -2,10 +2,13 @@ package com.mycompany.worldofzuulgui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 
-public class Game {
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+public final class Game {
 
     private final Parser parser;
 
@@ -77,7 +80,7 @@ public class Game {
 
     private void createRooms() {
         // vi frem deklarere vores room
-        Room park, hjem, byen, fodboldbanen;
+        Room park, hjem, byen, fodboldbanen, stranden;
 
         // da vi vil gerne tilgå vores rooms senere hen i andre metoder, opretter vi en Hashmap over de rooms.
         rooms = new HashMap<>();
@@ -165,16 +168,29 @@ public class Game {
         fodboldbanen.addTrashType(TrashType.CARDBOARD, paperCardboard);
         fodboldbanen.addTrashType(TrashType.PANT, pantTypes);
         fodboldbanen.addTrashType(TrashType.REST, restType);
+        
+        stranden = new Room("på stranden");
+        stranden.addTrashType(TrashType.FOOD, foodTypes);
+        stranden.addTrashType(TrashType.PLASTIC, plasticTypes);
+        stranden.addTrashType(TrashType.METAL, metalTypes);
+        stranden.addTrashType(TrashType.GLAS, glassTypes);
+        stranden.addTrashType(TrashType.PAPER, paperCardboard);
+        stranden.addTrashType(TrashType.CARDBOARD, paperCardboard);
+        stranden.addTrashType(TrashType.PANT, pantTypes);
+        stranden.addTrashType(TrashType.REST, restType);
 
         hjem.setExit("parken", park);
         hjem.setExit("byen", byen);
         hjem.setExit("fodboldbanen", fodboldbanen);
+        hjem.setExit("stranden", stranden);
 
         byen.setExit("hjem", hjem);
 
         park.setExit("hjem", hjem);
 
         fodboldbanen.setExit("hjem", hjem);
+        
+        stranden.setExit("hjem", hjem);
 
         currentRoom = hjem;
 
@@ -183,6 +199,7 @@ public class Game {
         park.spawnTrash();
         byen.spawnTrash();
         fodboldbanen.spawnTrash();
+        stranden.spawnTrash();
 
         // efter vi har oprettet alt der er relateret til vores rooms
         // sætter vi dem ind i vores HashMap, så vi kan nemt tilgå rooms senere
@@ -190,11 +207,10 @@ public class Game {
         rooms.put("parken", park);
         rooms.put("byen", byen);
         rooms.put("fodboldbanen", fodboldbanen);
+        rooms.put("stranden", stranden);
     }
 
-    public void play(Command command) {
-        //printWelcome();
-
+    public void play(Command command) {        
         if (score.getScore() >= 100) {
             System.out.println("Tillykke! Du har vundet. Fortsæt det gode arbejde!");
         } else if (score.getScore() <= 0) {
@@ -365,11 +381,6 @@ public class Game {
                 System.out.println("-------------------------");
             }
 
-            // hvis der er affald i rummet, så printer vi det
-            if (!currentRoom.trash.isEmpty()) {
-                currentRoom.printTrash();
-            }
-
             // her er vores spawner af skrald
             // det vil sige, for hvert 3 skridt spilleren tager, vil der spawne skrald i hvert rum
             if (moves % 3 == 0) {
@@ -392,5 +403,9 @@ public class Game {
             return true;
         }
     }
+    
+    public Room getCurrentRoom() {
+        return currentRoom;
+    } 
 
 }

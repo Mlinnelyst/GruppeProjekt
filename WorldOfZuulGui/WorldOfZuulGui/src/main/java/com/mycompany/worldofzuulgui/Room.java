@@ -107,7 +107,7 @@ public class Room {
         Random random = new Random();
 
         // Opretter en int, der angiver hvor meget skrald vi maks skal spawne
-        int maxTrash = 4;
+        int maxTrash = 3;
 
         // Bestemmer antal af skrald der kan spawne i hvert rum. spawner random int mellem 0-3
         int randomInt = (int) (Math.floor(Math.random() * Math.floor(maxTrash)));
@@ -119,7 +119,7 @@ public class Room {
         for (TrashType spawn : trashSpawn.keySet()) {
             // Hvis mængden af trash er større end 3, springes den trashSpawn over. 
             // Der kan altså maks spawnes 4 stykker skrald pr. rum. 
-            if (trash.size() > 3) {
+            if (trash.size() > maxTrash - 1) {
                 continue;
             }
 
