@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.worldofzuulgui.HjemController">
     <children>
@@ -16,7 +17,7 @@
         <Button fx:id="goParken" layoutX="14.0" layoutY="348.0" mnemonicParsing="false" onAction="#goParkenAction" text="Parken" />
         <Button fx:id="goByen" layoutX="904.0" layoutY="349.0" mnemonicParsing="false" onAction="#goByenAction" text="Byen" />
         <Button fx:id="goFodboldbanen" layoutX="437.0" layoutY="19.0" mnemonicParsing="false" onAction="#goFodboldbanenAction" text="Fodboldbanen" />
-        <Button fx:id="goStranden" layoutX="437.0" layoutY="670.0" mnemonicParsing="false" onAction="#goStrandenAction" text="Stranden" />
+        <Button fx:id="goStranden" layoutX="437.0" layoutY="643.0" mnemonicParsing="false" onAction="#goStrandenAction" text="Stranden" />
         
         <Pane fx:id="spawnPane" layoutX="84.0" layoutY="55.0" prefHeight="568.0" prefWidth="798.0">
          <children>
@@ -33,5 +34,8 @@
                 <ImageView fx:id="inv22" fitHeight="63.0" fitWidth="79.0" layoutX="121.0" layoutY="69.0" onMouseClicked="#invClicked2" pickOnBounds="true" preserveRatio="true" />
             </children>
         </Pane>
+      <Text fx:id="moveTxt" layoutX="29.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="scoreTxt" layoutX="893.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="sorterTxt" layoutX="437.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
     </children>
 </Pane>
