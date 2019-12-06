@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class HjemController implements Initializable {
 
@@ -46,6 +47,13 @@ public class HjemController implements Initializable {
     private ImageView madaffald;
     @FXML
     private ImageView rest_affald;
+    private ImageView mad;
+    @FXML
+    private Text moveTxt;
+    @FXML
+    private Text scoreTxt;
+    @FXML
+    private Text sorterTxt;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
