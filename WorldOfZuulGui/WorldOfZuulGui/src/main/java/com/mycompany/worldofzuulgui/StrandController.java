@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -43,6 +44,12 @@ public class StrandController implements Initializable {
     private ImageView inv22;
     @FXML
     private ImageView background;
+    @FXML
+    private Text moveTxt;
+    @FXML
+    private Text scoreTxt;
+    @FXML
+    private Text sorterTxt;
 
     public StrandController() {
     }
@@ -78,6 +85,10 @@ public class StrandController implements Initializable {
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
         }
+        
+        moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
+        sorterTxt.setText("");
     }
 
     @FXML
