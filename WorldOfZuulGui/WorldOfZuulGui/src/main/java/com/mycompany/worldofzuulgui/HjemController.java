@@ -128,6 +128,7 @@ public class HjemController implements Initializable {
                 rest_affald.setEffect(null);
             }
         });
+
     }
 
     @FXML
