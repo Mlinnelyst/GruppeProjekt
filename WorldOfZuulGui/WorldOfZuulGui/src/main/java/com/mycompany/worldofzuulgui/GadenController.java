@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 public class GadenController implements Initializable {
 
@@ -42,6 +43,12 @@ public class GadenController implements Initializable {
     private Pane spawnPane;
     @FXML
     private Pane inventoryPane;
+    @FXML
+    private Text moveTxt;
+    @FXML
+    private Text scoreTxt;
+    @FXML
+    private Text sorterTxt;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -74,9 +81,12 @@ public class GadenController implements Initializable {
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
         }
+        
+        moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
+        sorterTxt.setText("");
     }
 
-    @FXML
     private void goHjemAction(ActionEvent event) throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");

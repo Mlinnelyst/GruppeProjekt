@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -49,6 +50,12 @@ public class ParkenController implements Initializable {
     private ImageView f2;
     @FXML
     private ImageView f3;
+    @FXML
+    private Text moveTxt;
+    @FXML
+    private Text scoreTxt;
+    @FXML
+    private Text sorterTxt;
 
     /**
      * Initializes the controller class.
@@ -84,6 +91,10 @@ public class ParkenController implements Initializable {
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
         }
+        
+        moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
+        sorterTxt.setText("");
     }
 
     @FXML
