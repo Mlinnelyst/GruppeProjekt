@@ -371,6 +371,8 @@ public final class Game {
 
     private void goRoom(Command command) {
 
+        inventory.currentSelectedSlot = null;
+        
         if (!command.hasSecondWord()) {
             System.out.println("Besøg hvad?");
             return;

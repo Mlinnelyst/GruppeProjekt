@@ -84,12 +84,12 @@ public class FodboldbanenController implements Initializable {
 
     @FXML
     private void invClicked1(MouseEvent event) {
-        WorldOfZuul.game.inventory.btn1Clicked(event);
+        WorldOfZuul.game.inventory.slotSelectedHandler(event);
     }
 
     @FXML
     private void invClicked2(MouseEvent event) {
-        WorldOfZuul.game.inventory.btn2Clicked(event);
+        WorldOfZuul.game.inventory.slotSelectedHandler(event);
     }
 
     @FXML
@@ -99,7 +99,6 @@ public class FodboldbanenController implements Initializable {
         ArrayList<Trash> list = new ArrayList<>(currentRoom.trash.values());
         
         WorldOfZuul.game.inventory.trashClicked(event, list, inv11, inv22);
-        System.out.println("ada");
     }
 
 }

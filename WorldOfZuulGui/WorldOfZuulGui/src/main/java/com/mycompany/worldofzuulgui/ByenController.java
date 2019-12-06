@@ -12,13 +12,16 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class ByenController implements Initializable {
 
@@ -61,11 +64,10 @@ public class ByenController implements Initializable {
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
         currentRoom.spawnTrash();
-        
-        Object[] values = currentRoom.trash.values().toArray();
+
         for (int i = 0; i < currentRoom.trash.size(); i++) {
-            Trash currentTrash = (Trash)currentRoom.trash.values().toArray()[i];
-            
+            Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];
+
             arrayImage[i].setId(currentTrash.getTrashType().toString());
 
             File currentImage = new File("file:///" + System.getProperty("user.dir")
@@ -75,7 +77,7 @@ public class ByenController implements Initializable {
 
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
-        }        
+        }
     }
 
     @FXML
@@ -83,7 +85,7 @@ public class ByenController implements Initializable {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");
     }
-    
+
     @FXML
     private void goGadenAction(ActionEvent event) throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "gaden", "", ""));
@@ -92,21 +94,21 @@ public class ByenController implements Initializable {
 
     @FXML
     private void invClicked1(MouseEvent event) {
-        WorldOfZuul.game.inventory.btn1Clicked(event);
+        WorldOfZuul.game.inventory.slotSelectedHandler(event);
+
     }
 
     @FXML
     private void invClicked2(MouseEvent event) {
-        WorldOfZuul.game.inventory.btn2Clicked(event);
+        WorldOfZuul.game.inventory.slotSelectedHandler(event);
     }
 
     @FXML
     private void trashClicked(MouseEvent event) {
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
-        
+
         ArrayList<Trash> list = new ArrayList<>(currentRoom.trash.values());
-        
+
         WorldOfZuul.game.inventory.trashClicked(event, list, inv11, inv22);
-        System.out.println("ada");
     }
 }
