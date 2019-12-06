@@ -63,7 +63,7 @@ public class ByenController implements Initializable {
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
-        currentRoom.spawnTrash();
+        currentRoom.spawnTrash(WorldOfZuul.game.inventory);
 
         for (int i = 0; i < currentRoom.trash.size(); i++) {
             Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];

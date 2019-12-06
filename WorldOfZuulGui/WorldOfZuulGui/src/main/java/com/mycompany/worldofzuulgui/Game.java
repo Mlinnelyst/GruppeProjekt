@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public final class Game {
 
@@ -23,12 +25,14 @@ public final class Game {
 
     public Game() {
 
+        // start med at lave spillerens inventory
+        inventory = new Inventory();
+
         // så snart constructoren bliver kaldt, vil det første være at lave de rooms, som vi har bestemt i spillet
         createRooms();
 
-        // derefter, skal vi initialisere vores parser, inventory, score og de forskellige skraldespande
+        // derefter, skal vi initialisere vores parser, score og de forskellige skraldespande
         parser = new Parser();
-        inventory = new Inventory();
         score = new ScoreCounter();
         trashCans = new HashMap<>();
 
@@ -119,7 +123,6 @@ public final class Game {
 
         ArrayList<TrashType> pantTypes = new ArrayList<>();
         pantTypes.add(TrashType.PLASTPANT);
-        pantTypes.add(TrashType.CANPANT);
 
         ArrayList<TrashType> restType = new ArrayList<>();
         restType.add(TrashType.JUICE);
@@ -168,7 +171,7 @@ public final class Game {
         fodboldbanen.addTrashType(TrashType.CARDBOARD, paperCardboard);
         fodboldbanen.addTrashType(TrashType.PANT, pantTypes);
         fodboldbanen.addTrashType(TrashType.REST, restType);
-        
+
         stranden = new Room("på stranden");
         stranden.addTrashType(TrashType.FOOD, foodTypes);
         stranden.addTrashType(TrashType.PLASTIC, plasticTypes);
@@ -178,7 +181,7 @@ public final class Game {
         stranden.addTrashType(TrashType.CARDBOARD, paperCardboard);
         stranden.addTrashType(TrashType.PANT, pantTypes);
         stranden.addTrashType(TrashType.REST, restType);
-        
+
         gaden = new Room("i gågaden");
         gaden.addTrashType(TrashType.FOOD, foodTypes);
         gaden.addTrashType(TrashType.PLASTIC, plasticTypes);
@@ -200,20 +203,20 @@ public final class Game {
         park.setExit("hjem", hjem);
 
         fodboldbanen.setExit("hjem", hjem);
-        
+
         stranden.setExit("hjem", hjem);
-        
+
         gaden.setExit("byen", byen);
 
         currentRoom = hjem;
 
         // efter vi har sat opsat vores spawn mekanisme
         // så spawner vi nogle items så snart spillet startet
-        park.spawnTrash();
-        byen.spawnTrash();
-        fodboldbanen.spawnTrash();
-        stranden.spawnTrash();
-        gaden.spawnTrash();
+        park.spawnTrash(inventory);
+        byen.spawnTrash(inventory);
+        fodboldbanen.spawnTrash(inventory);
+        stranden.spawnTrash(inventory);
+        gaden.spawnTrash(inventory);
 
         // efter vi har oprettet alt der er relateret til vores rooms
         // sætter vi dem ind i vores HashMap, så vi kan nemt tilgå rooms senere
@@ -225,7 +228,7 @@ public final class Game {
         rooms.put("gaden", gaden);
     }
 
-    public void play(Command command) {        
+    public void play(Command command) {
         if (score.getScore() >= 100) {
             System.out.println("Tillykke! Du har vundet. Fortsæt det gode arbejde!");
         } else if (score.getScore() <= 0) {
@@ -370,7 +373,7 @@ public final class Game {
     }
 
     private void goRoom(Command command) {
-        
+
         if (!command.hasSecondWord()) {
             System.out.println("Besøg hvad?");
             return;
@@ -401,7 +404,7 @@ public final class Game {
             // det vil sige, for hvert 3 skridt spilleren tager, vil der spawne skrald i hvert rum
             if (moves % 3 == 0) {
                 for (String room : rooms.keySet()) {
-                    rooms.get(room).spawnTrash();
+                    rooms.get(room).spawnTrash(inventory);
                 }
             }
 
@@ -419,9 +422,69 @@ public final class Game {
             return true;
         }
     }
-    
+
+    public ScoreCounter getScoreCounter() {
+        return score;
+    }
+
     public Room getCurrentRoom() {
         return currentRoom;
-    } 
+    }
+
+    public HashMap<String, TrashCan> getTrashCans() {
+        return trashCans;
+    }
+
+    public boolean recycleTrash(MouseEvent event, ImageView inv11, ImageView inv22) {
+        if (!currentRoom.getShortDescription().contains("derhjemme")) {
+            System.out.println("Du skal være hjemme for at kunne sortere dit affald!");
+            return false;
+        }
+
+        if (inventory.currentSelectedSlot == null) {
+            System.out.println("Du har ikke valgt en genstand!");
+            return false;
+        }
+
+        ImageView currentTrashIv = (ImageView) event.getSource();
+        TrashCan currentTrashCan = WorldOfZuul.game.getTrashCans().get(currentTrashIv.getId());
+
+        if (currentTrashCan == null) {
+            return false;
+        }
+
+        ImageView slot = inventory.currentSelectedSlot;
+        Trash trash = inventory.trash.get(slot.getId());
+
+        if (currentTrashCan.addTrash(WorldOfZuul.game.inventory, trash, WorldOfZuul.game.getScoreCounter())) {
+            System.out.printf("Tillykke. Du har fået point! Du har sorteret korrekt.\nDin score er nu: %d%n", score.getScore());
+
+            if (currentTrashCan.containsTrashType(trash.getTrashType())) {
+                if (inv11 != null && slot.getId().equals(inv11.getId())) {
+                    inv11.setVisible(false);
+                    inv11 = null;
+                } else if (inv22 != null && slot.getId().equals(inv22.getId())) {
+                    inv22.setVisible(false);
+                    inv22 = null;
+                }
+
+                if (WorldOfZuul.game.inventory.firstSlot != null
+                        && slot.getId().equals(WorldOfZuul.game.inventory.firstSlot.getId())) {
+                    WorldOfZuul.game.inventory.firstSlot.setVisible(false);
+                    WorldOfZuul.game.inventory.firstSlot = null;
+                } else if (WorldOfZuul.game.inventory.secondSlot != null
+                        && slot.getId().equals(WorldOfZuul.game.inventory.secondSlot.getId())) {
+                    WorldOfZuul.game.inventory.secondSlot.setVisible(false);
+                    WorldOfZuul.game.inventory.secondSlot = null;
+                }
+
+                WorldOfZuul.game.inventory.currentSelectedSlot = null;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }

@@ -62,7 +62,7 @@ public class StrandController implements Initializable {
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
-        currentRoom.spawnTrash();
+        currentRoom.spawnTrash(WorldOfZuul.game.inventory);
 
         Object[] values = currentRoom.trash.values().toArray();
         for (int i = 0; i < currentRoom.trash.size(); i++) {

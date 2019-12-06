@@ -17,8 +17,8 @@ public class Inventory {
     // Hashmap til opbevaring af skraldeobjekter i spillerens inventar
     public HashMap<String, Trash> trash;
 
-    private ImageView firstSlot;
-    private ImageView secondSlot;
+    public ImageView firstSlot;
+    public ImageView secondSlot;
     private ArrayList<ImageView> inventory;
 
     public ImageView currentSelectedSlot;
@@ -112,8 +112,12 @@ public class Inventory {
     }
 
     public void slotSelectedHandler(MouseEvent event) {
-        firstSlot.setEffect(null);
-        secondSlot.setEffect(null);
+        if (firstSlot != null) {
+            firstSlot.setEffect(null);
+        }
+        if (secondSlot != null) {
+            secondSlot.setEffect(null);
+        }
 
         currentSelectedSlot = (ImageView) event.getSource();
 

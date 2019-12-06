@@ -29,14 +29,14 @@ import javafx.scene.layout.Pane;
 public class ParkenController implements Initializable {
 
     private ImageView[] arrayImage;
-    
+
     @FXML
     private Button goHjem;
     @FXML
     private Pane spawnPane;
     @FXML
     private Pane inventoryPane;
-    
+
     @FXML
     private ImageView inv11;
     @FXML
@@ -68,12 +68,12 @@ public class ParkenController implements Initializable {
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
-        currentRoom.spawnTrash();
-        
+        currentRoom.spawnTrash(WorldOfZuul.game.inventory);
+
         Object[] values = currentRoom.trash.values().toArray();
         for (int i = 0; i < currentRoom.trash.size(); i++) {
-            Trash currentTrash = (Trash)currentRoom.trash.values().toArray()[i];
-            
+            Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];
+
             arrayImage[i].setId(currentTrash.getTrashType().toString());
 
             File currentImage = new File("file:///" + System.getProperty("user.dir")
@@ -83,7 +83,7 @@ public class ParkenController implements Initializable {
 
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
-        }  
+        }
     }
 
     @FXML
@@ -103,9 +103,9 @@ public class ParkenController implements Initializable {
     @FXML
     private void trashClicked(MouseEvent event) {
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
-        
+
         ArrayList<Trash> list = new ArrayList<>(currentRoom.trash.values());
-        
+
         WorldOfZuul.game.inventory.trashClicked(event, list, inv11, inv22);
     }
 

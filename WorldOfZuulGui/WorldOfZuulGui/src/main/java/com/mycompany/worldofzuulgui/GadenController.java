@@ -58,12 +58,12 @@ public class GadenController implements Initializable {
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
-        currentRoom.spawnTrash();
-        
+        currentRoom.spawnTrash(WorldOfZuul.game.inventory);
+
         Object[] values = currentRoom.trash.values().toArray();
         for (int i = 0; i < currentRoom.trash.size(); i++) {
-            Trash currentTrash = (Trash)currentRoom.trash.values().toArray()[i];
-            
+            Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];
+
             arrayImage[i].setId(currentTrash.getTrashType().toString());
 
             File currentImage = new File("file:///" + System.getProperty("user.dir")
@@ -73,7 +73,7 @@ public class GadenController implements Initializable {
 
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
-        }        
+        }
     }
 
     @FXML
@@ -81,7 +81,7 @@ public class GadenController implements Initializable {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "hjem", "", ""));
         App.setRoot("Hjem");
     }
-    
+
     @FXML
     private void goByenAction(ActionEvent event) throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "byen", "", ""));
@@ -101,11 +101,10 @@ public class GadenController implements Initializable {
     @FXML
     private void trashClicked(MouseEvent event) {
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
-        
+
         ArrayList<Trash> list = new ArrayList<>(currentRoom.trash.values());
-        
+
         WorldOfZuul.game.inventory.trashClicked(event, list, inv11, inv22);
     }
 
-    
 }
