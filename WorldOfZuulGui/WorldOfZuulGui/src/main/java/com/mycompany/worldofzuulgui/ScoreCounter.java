@@ -14,7 +14,6 @@ public class ScoreCounter {
 
     public void decreaseScore(int amount) {
         score -= amount;
-
     }
 
     public void printScore() {

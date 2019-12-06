@@ -137,6 +137,9 @@ public class HjemController implements Initializable {
             }
         });
 
+        moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
+        sorterTxt.setText("");
     }
 
     @FXML
@@ -175,27 +178,56 @@ public class HjemController implements Initializable {
 
     @FXML
     private void metalGlasPlastClicked(MouseEvent event) {
-        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
+        if (WorldOfZuul.game.recycleTrash(event, inv11, inv22)) {
+            sorterTxt.setText("Tillykke! Du har sorteret korrekt! Du har fået 10 point.");
+        } else {
+            sorterTxt.setText("Desværre. Du har sorteret forkert. Du har mistet 15 point!");
+        }
+
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
 
     @FXML
     private void papPapirClicked(MouseEvent event) {
-        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
+        if (WorldOfZuul.game.recycleTrash(event, inv11, inv22)) {
+            sorterTxt.setText("Tillykke! Du har sorteret korrekt! Du har fået 10 point.");
+        } else {
+            sorterTxt.setText("Desværre. Du har sorteret forkert. Du har mistet 15 point!");
+        }
+
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
 
     @FXML
     private void madClicked(MouseEvent event) {
-        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
+        if (WorldOfZuul.game.recycleTrash(event, inv11, inv22)) {
+            sorterTxt.setText("Tillykke! Du har sorteret korrekt! Du har fået 10 point.");
+        } else {
+            sorterTxt.setText("Desværre. Du har sorteret forkert. Du har mistet 15 point!");
+        }
+
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
 
     @FXML
     private void restClicked(MouseEvent event) {
-        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
+        if (WorldOfZuul.game.recycleTrash(event, inv11, inv22)) {
+            sorterTxt.setText("Tillykke! Du har sorteret korrekt! Du har fået 10 point.");
+        } else {
+            sorterTxt.setText("Desværre. Du har sorteret forkert. Du har mistet 15 point!");
+        }
+        
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
 
     @FXML
     private void pantClicked(MouseEvent event) {
-        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
+        if (WorldOfZuul.game.recycleTrash(event, inv11, inv22)) {
+            sorterTxt.setText("Tillykke! Du har sorteret korrekt! Du har fået 10 point.");
+        } else {
+            sorterTxt.setText("Desværre. Du har sorteret forkert. Du har mistet 15 point!");
+        }
+        
+        scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
-
 }
