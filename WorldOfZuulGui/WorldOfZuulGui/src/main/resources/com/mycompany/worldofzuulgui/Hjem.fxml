@@ -20,11 +20,11 @@
         
         <Pane fx:id="spawnPane" layoutX="84.0" layoutY="55.0" prefHeight="568.0" prefWidth="798.0">
          <children>
-            <ImageView fx:id="me_gl_pl" fitHeight="100.0" fitWidth="118.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="pa_pa" fitHeight="100.0" fitWidth="134.0" layoutX="192.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="mad" fitHeight="112.0" fitWidth="134.0" layoutX="488.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="rest" fitHeight="112.0" fitWidth="118.0" layoutX="666.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="pant" fitHeight="150.0" fitWidth="200.0" layoutX="270.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="me_gl_pl" fitHeight="100.0" fitWidth="118.0" layoutY="237.0" onMouseClicked="#metalGlasPlastClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="pa_pa" fitHeight="100.0" fitWidth="134.0" layoutX="192.0" layoutY="237.0" onMouseClicked="#papPapirClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="mad" fitHeight="112.0" fitWidth="134.0" layoutX="488.0" layoutY="219.0" onMouseClicked="#madClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="rest" fitHeight="112.0" fitWidth="118.0" layoutX="666.0" layoutY="219.0" onMouseClicked="#restClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="pant" fitHeight="150.0" fitWidth="200.0" layoutX="270.0" layoutY="14.0" onMouseClicked="#pantClicked" pickOnBounds="true" preserveRatio="true" />
          </children></Pane>
         
         <Pane fx:id="inventoryPane" layoutX="700" layoutY="500" prefHeight="200" prefWidth="200">

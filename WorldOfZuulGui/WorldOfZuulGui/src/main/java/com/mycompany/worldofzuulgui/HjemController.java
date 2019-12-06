@@ -112,4 +112,24 @@ public class HjemController implements Initializable {
     private void invClicked2(MouseEvent event) {
     }
 
+    @FXML
+    private void metalGlasPlastClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void papPapirClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void madClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void restClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void pantClicked(MouseEvent event) {
+    }
+
 }
