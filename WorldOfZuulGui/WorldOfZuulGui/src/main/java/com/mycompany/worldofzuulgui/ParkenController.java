@@ -107,7 +107,6 @@ public class ParkenController implements Initializable {
         ArrayList<Trash> list = new ArrayList<>(currentRoom.trash.values());
         
         WorldOfZuul.game.inventory.trashClicked(event, list, inv11, inv22);
-        System.out.println("ada");
     }
 
 }

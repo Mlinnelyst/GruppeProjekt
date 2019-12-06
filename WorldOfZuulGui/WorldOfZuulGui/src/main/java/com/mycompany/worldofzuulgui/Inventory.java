@@ -7,17 +7,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class Inventory {
 
     // Hashmap til opbevaring af skraldeobjekter i spillerens inventar
     public HashMap<String, Trash> trash;
 
-    ImageView firstSlot;
-    ImageView secondSlot;
-    ArrayList<ImageView> inventory;
+    private ImageView firstSlot;
+    private ImageView secondSlot;
+    private ArrayList<ImageView> inventory;
+
+    public ImageView currentSelectedSlot;
 
     // Tilføj skrald fra rummet til spillerens inventar
     public boolean addTrash(Room room, Trash trash) {
@@ -69,7 +73,6 @@ public class Inventory {
     // Trash clicked from fxml
     public void trashClicked(MouseEvent event, ArrayList<Trash> trashList, ImageView inv1, ImageView inv2) {
         ImageView image = (ImageView) event.getSource();
-        // Button btn = (Button) event.getSource();
 
         System.out.println(image.getId());
 
@@ -92,12 +95,15 @@ public class Inventory {
             invBtns[1].setVisible(false);
 
             int i = 0;
-            for (String lol : trash.keySet()) {
+            for (String selectedTrash : trash.keySet()) {
                 invBtns[i].setVisible(true);
 
                 File currentImage = new File("file:///" + System.getProperty("user.dir")
-                        + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trash.get(lol).toString() + ".png");
+                        + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trash.get(selectedTrash).toString() + ".png");
                 invBtns[i].setImage(new Image(currentImage.getPath()));
+
+                invBtns[i].setId(trash.get(selectedTrash).toString());
+
                 i++;
             }
 
@@ -106,12 +112,13 @@ public class Inventory {
         }
     }
 
-    public void btn1Clicked(MouseEvent event) {
-        System.out.println("1");
-    }
+    public void slotSelectedHandler(MouseEvent event) {
+        firstSlot.setEffect(null);
+        secondSlot.setEffect(null);
 
-    public void btn2Clicked(MouseEvent event) {
-        System.out.println("2");
-    }
+        currentSelectedSlot = (ImageView) event.getSource();
 
+        DropShadow ds = new DropShadow(20, Color.YELLOW);
+        currentSelectedSlot.setEffect(ds);
+    }
 }
