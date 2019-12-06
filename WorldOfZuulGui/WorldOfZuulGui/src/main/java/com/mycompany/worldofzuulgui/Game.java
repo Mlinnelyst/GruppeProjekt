@@ -370,8 +370,6 @@ public final class Game {
     }
 
     private void goRoom(Command command) {
-
-        inventory.currentSelectedSlot = null;
         
         if (!command.hasSecondWord()) {
             System.out.println("Besøg hvad?");
@@ -386,6 +384,7 @@ public final class Game {
             System.out.println("Du kan ikke gå den vej");
         } else {
             currentRoom = nextRoom;
+            inventory.currentSelectedSlot = null;
             System.out.println(currentRoom.getLongDescription());
 
             // hvis spilleren befinder sig derhjemme, kan spilleren sortere sit affald
