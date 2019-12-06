@@ -21,7 +21,6 @@ import javafx.scene.layout.Pane;
 public class HjemController implements Initializable {
 
     @FXML
-
     private Button goParken;
     @FXML
     private Button goByen;
@@ -39,6 +38,16 @@ public class HjemController implements Initializable {
     private Button goStranden;
     @FXML
     private ImageView background;
+    @FXML
+    private ImageView me_gl_pl;
+    @FXML
+    private ImageView pa_pa;
+    @FXML
+    private ImageView rest;
+    @FXML
+    private ImageView pant;
+    @FXML
+    private ImageView mad;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
