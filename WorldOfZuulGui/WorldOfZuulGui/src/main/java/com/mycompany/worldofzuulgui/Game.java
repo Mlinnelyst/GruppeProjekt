@@ -384,29 +384,7 @@ public final class Game {
         } else {
             currentRoom = nextRoom;
             inventory.currentSelectedSlot = null;
-            System.out.println(currentRoom.getLongDescription());
-
-            // hvis spilleren befinder sig derhjemme, kan spilleren sortere sit affald
-            // for at vise hvilke muligheder spilleren har, printer vi alle skraldespandene ud
-            if (currentRoom.getShortDescription().contains("derhjemme")) {
-                System.out.println("\n----- Skraldespande -----");
-                for (String can : trashCans.keySet()) {
-                    System.out.println(can);
-                }
-                System.out.println("-------------------------");
-            }
-
-            // her er vores spawner af skrald
-            // det vil sige, for hvert 3 skridt spilleren tager, vil der spawne skrald i hvert rum
-            if (moves % 3 == 0) {
-                for (String room : rooms.keySet()) {
-                    rooms.get(room).spawnTrash(inventory);
-                }
-            }
-
-            // hver gang spilleren bevæger sig fra rum til rum
             moves++;
-            score.printScore();
         }
     }
 
@@ -419,6 +397,10 @@ public final class Game {
         }
     }
 
+    public int getMoves() {
+        return moves;
+    }
+    
     public ScoreCounter getScoreCounter() {
         return score;
     }
@@ -443,7 +425,7 @@ public final class Game {
         }
 
         ImageView currentTrashIv = (ImageView) event.getSource();
-        TrashCan currentTrashCan = WorldOfZuul.game.getTrashCans().get(currentTrashIv.getId());
+        TrashCan currentTrashCan = trashCans.get(currentTrashIv.getId());
 
         if (currentTrashCan == null) {
             return false;
@@ -452,9 +434,9 @@ public final class Game {
         ImageView slot = inventory.currentSelectedSlot;
         Trash trash = inventory.trash.get(slot.getId());
 
-        if (currentTrashCan.addTrash(WorldOfZuul.game.inventory, trash, WorldOfZuul.game.getScoreCounter())) {
+        if (currentTrashCan.addTrash(inventory, trash, getScoreCounter())) {
             System.out.printf("Tillykke. Du har fået point! Du har sorteret korrekt.\nDin score er nu: %d%n", score.getScore());
-            
+
             if (currentTrashCan.containsTrashType(trash.getTrashType())) {
                 if (inv11 != null && slot.getId().equals(inv11.getId())) {
                     inv11.setVisible(false);
@@ -464,18 +446,18 @@ public final class Game {
                     inv22 = null;
                 }
 
-                if (WorldOfZuul.game.inventory.firstSlot != null
-                        && slot.getId().equals(WorldOfZuul.game.inventory.firstSlot.getId())) {
-                    WorldOfZuul.game.inventory.firstSlot.setVisible(false);
-                    WorldOfZuul.game.inventory.firstSlot = null;
-                } else if (WorldOfZuul.game.inventory.secondSlot != null
-                        && slot.getId().equals(WorldOfZuul.game.inventory.secondSlot.getId())) {
-                    WorldOfZuul.game.inventory.secondSlot.setVisible(false);
-                    WorldOfZuul.game.inventory.secondSlot = null;
+                if (inventory.firstSlot != null
+                        && slot.getId().equals(inventory.firstSlot.getId())) {
+                    inventory.firstSlot.setVisible(false);
+                    inventory.firstSlot = null;
+                } else if (inventory.secondSlot != null
+                        && slot.getId().equals(inventory.secondSlot.getId())) {
+                    inventory.secondSlot.setVisible(false);
+                    inventory.secondSlot = null;
                 }
 
-                WorldOfZuul.game.inventory.currentSelectedSlot = null;
-                
+                inventory.currentSelectedSlot = null;
+
                 return true;
             }
         }
