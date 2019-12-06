@@ -3,21 +3,19 @@ package com.mycompany.worldofzuulgui;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import com.mycompany.worldofzuulgui.WorldOfZuul;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
-/**
- *
- * @author mads
- */
 public class HjemController implements Initializable {
 
     @FXML
@@ -39,15 +37,15 @@ public class HjemController implements Initializable {
     @FXML
     private ImageView background;
     @FXML
-    private ImageView me_gl_pl;
-    @FXML
-    private ImageView pa_pa;
-    @FXML
-    private ImageView rest;
-    @FXML
     private ImageView pant;
     @FXML
-    private ImageView mad;
+    private ImageView metal_glas_plast;
+    @FXML
+    private ImageView papir_pap;
+    @FXML
+    private ImageView madaffald;
+    @FXML
+    private ImageView rest_affald;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -57,27 +55,79 @@ public class HjemController implements Initializable {
                 + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\hjem2.png");
         background.setImage(new Image(backgroundImage.getPath()));
 
-        File metal_glas_plast = new File("file:///" + System.getProperty("user.dir")
+        DropShadow hover = new DropShadow(15, Color.YELLOW);
+
+        File metalGlasPlast = new File("file:///" + System.getProperty("user.dir")
                 + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\BlaaSkraldespand.png");
-        me_gl_pl.setImage(new Image(metal_glas_plast.getPath()));
+        metal_glas_plast.setImage(new Image(metalGlasPlast.getPath()));
 
-        File pap_papir = new File("file:///" + System.getProperty("user.dir")
+        metal_glas_plast.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                metal_glas_plast.setEffect(hover);
+            }
+        });
+
+        metal_glas_plast.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                metal_glas_plast.setEffect(null);
+            }
+        });
+
+        File papPair = new File("file:///" + System.getProperty("user.dir")
                 + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\RoedSkraldespand.png");
-        pa_pa.setImage(new Image(pap_papir.getPath()));
+        papir_pap.setImage(new Image(papPair.getPath()));
 
-        File mad_skraldespand = new File("file:///" + System.getProperty("user.dir")
-                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\GulSkraldespand.png");
-        mad.setImage(new Image(mad_skraldespand.getPath()));
+        papir_pap.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                papir_pap.setEffect(hover);
+            }
+        });
 
-        /*
-        File pant_skraldespand = new File("file:///" + System.getProperty("user.dir")
+        papir_pap.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                papir_pap.setEffect(null);
+            }
+        });
+
+        File madSkraldespand = new File("file:///" + System.getProperty("user.dir")
                 + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\GulSkraldespand.png");
-        mad.setImage(new Image(backgroundImage.getPath()));
-         */
-        
-        File rest_skraldespand = new File("file:///" + System.getProperty("user.dir")
+        madaffald.setImage(new Image(madSkraldespand.getPath()));
+
+        madaffald.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                madaffald.setEffect(hover);
+            }
+        });
+
+        madaffald.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                madaffald.setEffect(null);
+            }
+        });
+
+        File restSkraldespand = new File("file:///" + System.getProperty("user.dir")
                 + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\TyrkisSkraldespand.png");
-        rest.setImage(new Image(rest_skraldespand.getPath()));
+        rest_affald.setImage(new Image(restSkraldespand.getPath()));
+
+        rest_affald.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                rest_affald.setEffect(hover);
+            }
+        });
+
+        rest_affald.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                rest_affald.setEffect(null);
+            }
+        });
     }
 
     @FXML
@@ -106,30 +156,37 @@ public class HjemController implements Initializable {
 
     @FXML
     private void invClicked1(MouseEvent event) {
+        WorldOfZuul.game.inventory.slotSelectedHandler(event);
     }
 
     @FXML
     private void invClicked2(MouseEvent event) {
+        WorldOfZuul.game.inventory.slotSelectedHandler(event);
     }
 
     @FXML
     private void metalGlasPlastClicked(MouseEvent event) {
+        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
     }
 
     @FXML
     private void papPapirClicked(MouseEvent event) {
+        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
     }
 
     @FXML
     private void madClicked(MouseEvent event) {
+        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
     }
 
     @FXML
     private void restClicked(MouseEvent event) {
+        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
     }
 
     @FXML
     private void pantClicked(MouseEvent event) {
+        WorldOfZuul.game.recycleTrash(event, inv11, inv22);
     }
 
 }

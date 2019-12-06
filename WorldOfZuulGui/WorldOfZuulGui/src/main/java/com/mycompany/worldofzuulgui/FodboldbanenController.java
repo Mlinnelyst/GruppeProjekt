@@ -23,7 +23,7 @@ import javafx.scene.layout.Pane;
 public class FodboldbanenController implements Initializable {
 
     private ImageView[] arrayImage;
-    
+
     @FXML
     private Button goHjem;
     @FXML
@@ -42,7 +42,7 @@ public class FodboldbanenController implements Initializable {
     private ImageView inv22;
     @FXML
     private ImageView background;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File backgroundImage = new File("file:///" + System.getProperty("user.dir")
@@ -58,12 +58,12 @@ public class FodboldbanenController implements Initializable {
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
-        currentRoom.spawnTrash();
-        
+        currentRoom.spawnTrash(WorldOfZuul.game.inventory);
+
         Object[] values = currentRoom.trash.values().toArray();
         for (int i = 0; i < currentRoom.trash.size(); i++) {
-            Trash currentTrash = (Trash)currentRoom.trash.values().toArray()[i];
-            
+            Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];
+
             arrayImage[i].setId(currentTrash.getTrashType().toString());
 
             File currentImage = new File("file:///" + System.getProperty("user.dir")
@@ -73,9 +73,9 @@ public class FodboldbanenController implements Initializable {
 
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
-        }  
+        }
     }
-    
+
     @FXML
     private void goHjemAction() throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "hjem", "", ""));
@@ -95,9 +95,9 @@ public class FodboldbanenController implements Initializable {
     @FXML
     private void trashClicked(MouseEvent event) {
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
-        
+
         ArrayList<Trash> list = new ArrayList<>(currentRoom.trash.values());
-        
+
         WorldOfZuul.game.inventory.trashClicked(event, list, inv11, inv22);
     }
 

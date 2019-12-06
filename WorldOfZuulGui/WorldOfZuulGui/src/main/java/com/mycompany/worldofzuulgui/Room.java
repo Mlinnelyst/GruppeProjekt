@@ -101,7 +101,7 @@ public class Room {
     }
 
     // Metode der spawnerTrash i et rum
-    public void spawnTrash() {
+    public void spawnTrash(Inventory inventory) {
 
         // Opretter en et Random objekt (bruges længere nede i )
         Random random = new Random();
@@ -131,6 +131,21 @@ public class Room {
                 ArrayList<TrashType> currentArray = trashSpawn.get(spawn);
                 // Tilføjer det tilfældige trash til vores trash-Hashmap på rummet. 
                 Trash randomTrash = new Trash(currentArray.get(index).toString(), spawn);
+
+                // forhindre at samme item spawner 
+                boolean shouldSkip = false;
+                for (String invTrash : inventory.trash.keySet()) {
+                    Trash currentTrash = inventory.trash.get(invTrash);
+
+                    if (currentTrash.toString().equals(randomTrash.toString())) {
+                        shouldSkip = true;
+                    }
+                }
+
+                if (shouldSkip) {
+                    continue;
+                }
+
                 trash.put(randomTrash.toString(), randomTrash);
             }
             //Fortæller der er spawnet et item. 
