@@ -3,10 +3,6 @@ package com.mycompany.worldofzuulgui;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -458,7 +454,7 @@ public final class Game {
 
         if (currentTrashCan.addTrash(WorldOfZuul.game.inventory, trash, WorldOfZuul.game.getScoreCounter())) {
             System.out.printf("Tillykke. Du har fået point! Du har sorteret korrekt.\nDin score er nu: %d%n", score.getScore());
-
+            
             if (currentTrashCan.containsTrashType(trash.getTrashType())) {
                 if (inv11 != null && slot.getId().equals(inv11.getId())) {
                     inv11.setVisible(false);
@@ -479,7 +475,7 @@ public final class Game {
                 }
 
                 WorldOfZuul.game.inventory.currentSelectedSlot = null;
-
+                
                 return true;
             }
         }
