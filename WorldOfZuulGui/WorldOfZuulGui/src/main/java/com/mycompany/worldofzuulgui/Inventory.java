@@ -101,7 +101,6 @@ public class Inventory {
                 File currentImage = new File("file:///" + System.getProperty("user.dir")
                         + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\" + trash.get(selectedTrash).toString() + ".png");
                 invBtns[i].setImage(new Image(currentImage.getPath()));
-
                 invBtns[i].setId(trash.get(selectedTrash).toString());
 
                 i++;
@@ -118,7 +117,7 @@ public class Inventory {
 
         currentSelectedSlot = (ImageView) event.getSource();
 
-        DropShadow ds = new DropShadow(20, Color.YELLOW);
+        DropShadow ds = new DropShadow(10, Color.YELLOW);
         currentSelectedSlot.setEffect(ds);
     }
 }

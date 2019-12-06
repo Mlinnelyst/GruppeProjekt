@@ -52,12 +52,34 @@ public class HjemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         WorldOfZuul.game.inventory.reloadInv(inv11, inv22);
-        
+
         File backgroundImage = new File("file:///" + System.getProperty("user.dir")
                 + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\hjem2.png");
         background.setImage(new Image(backgroundImage.getPath()));
+
+        File metal_glas_plast = new File("file:///" + System.getProperty("user.dir")
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\BlaaSkraldespand.png");
+        me_gl_pl.setImage(new Image(metal_glas_plast.getPath()));
+
+        File pap_papir = new File("file:///" + System.getProperty("user.dir")
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\RoedSkraldespand.png");
+        pa_pa.setImage(new Image(pap_papir.getPath()));
+
+        File mad_skraldespand = new File("file:///" + System.getProperty("user.dir")
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\GulSkraldespand.png");
+        mad.setImage(new Image(mad_skraldespand.getPath()));
+
+        /*
+        File pant_skraldespand = new File("file:///" + System.getProperty("user.dir")
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\GulSkraldespand.png");
+        mad.setImage(new Image(backgroundImage.getPath()));
+         */
+        
+        File rest_skraldespand = new File("file:///" + System.getProperty("user.dir")
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\TyrkisSkraldespand.png");
+        rest.setImage(new Image(rest_skraldespand.getPath()));
     }
-    
+
     @FXML
     private void goParkenAction() throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "parken", "", ""));
@@ -75,8 +97,8 @@ public class HjemController implements Initializable {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "fodboldbanen", "", ""));
         App.setRoot("Fodboldbanen");
     }
-    
-     @FXML
+
+    @FXML
     private void goStrandenAction(ActionEvent event) throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "stranden", "", ""));
         App.setRoot("Stranden");
