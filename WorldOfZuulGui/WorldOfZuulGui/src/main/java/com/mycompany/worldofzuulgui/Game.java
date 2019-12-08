@@ -480,7 +480,7 @@ public final class Game {
             sortedCorrectly = false;
         }
 
-        if (score.getScore() >= 50) {
+        if (score.getScore() >= 100) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText("Tillykke!");
             alert.setContentText("Du har vundet. Fortsæt det gode arbejde!");
