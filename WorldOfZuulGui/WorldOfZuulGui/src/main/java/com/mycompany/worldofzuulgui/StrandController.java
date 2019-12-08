@@ -57,7 +57,7 @@ public class StrandController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File backgroundImage = new File("file:///" + System.getProperty("user.dir")
-                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\toxic.png");
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\StrandenFinal4.png");
         background.setImage(new Image(backgroundImage.getPath()));
 
         arrayImage = new ImageView[]{f1, f2, f3};

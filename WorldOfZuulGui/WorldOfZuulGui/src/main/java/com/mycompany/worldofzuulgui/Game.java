@@ -2,9 +2,13 @@ package com.mycompany.worldofzuulgui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
 
 public final class Game {
 
@@ -225,28 +229,32 @@ public final class Game {
     }
 
     public void play(Command command) {
-        if (score.getScore() >= 100) {
-            System.out.println("Tillykke! Du har vundet. Fortsæt det gode arbejde!");
-        } else if (score.getScore() <= 0) {
-            System.out.println("Desværre! Du har tabt. Prøv igen!");
-        }
-
         // finished vil kun blive sat til true, hvis "afslut" bliver kaldt som vil derved sætte finished til true
         processCommand(command);
     }
 
-    private void printWelcome() {
-        System.out.println();
-        System.out.println("Velkommen til spillet The Recycle Adventurer!");
-        System.out.println("Spillet vil lære dig at sortere affald korrtekt.");
-        System.out.println("Værsgo, du starter med 20 point. Dit mål er at opnå 100 point.");
-        System.out.println("Du opnår 10 point ved at sortere et stykke affald korrekt, og du mister 15 point ved forkert sortering.");
-        System.out.println("Din mission er, at udforske de forskellige rum, og at samle skrald og derefter sortere det.");
-        System.out.println("Du kan have ét stykke affald i hver hånd, og du sorterer i hjemmet");
-        System.out.println("Du kan få hjælp, ved at skrive 'hjælp' i konsollen. God jagt!");
-        System.out.println("Skriv '" + CommandWord.HELP + "' for at se alle kommandoer.");
-        System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+    public void printWelcome() {
+        Alert alert = new Alert(AlertType.INFORMATION);        
+        alert.getDialogPane().setMinWidth(575);        
+        alert.setHeaderText("Velkommen til spillet The Recycle Adventurer!");
+        
+        String scoreText;
+        if (score.loadHighestScore() == 0) {
+            scoreText = "Du har ingen gemte score!";
+        } else {
+            scoreText = "Lavest antal skridt: " + score.loadHighestScore();
+        }
+        
+        alert.setContentText("Spillet vil lære dig at sortere affald korrtekt.\n"
+                + "Værsgo, du starter med 20 point. Dit mål er at opnå 100 point.\n"
+                + "Du opnår 10 point ved at sortere et stykke affald korrekt, og du mister 15 point ved forkert sortering.\n"
+                + "Din mission er, at udforske de forskellige rum, og at samle skrald og derefter sortere det.\n"
+                + "Du kan have ét stykke affald i hver hånd, og du sorterer i hjemmet.\n"
+                + "Du kan få hjælp, ved at skrive 'hjælp' i konsollen. God jagt!\n"
+                + currentRoom.getLongDescription() + "\n\n" 
+                + scoreText);
+                
+        alert.showAndWait();
     }
 
     private boolean processCommand(Command command) {
@@ -389,18 +397,14 @@ public final class Game {
     }
 
     private boolean quit(Command command) {
-        if (command.hasSecondWord()) {
-            System.out.println("Vil du ikke spille mere? :-(\nSå skal du bare skrive afslut.");
-            return false;
-        } else {
-            return true;
-        }
+        System.exit(0);
+        return true;
     }
 
     public int getMoves() {
         return moves;
     }
-    
+
     public ScoreCounter getScoreCounter() {
         return score;
     }
@@ -413,30 +417,39 @@ public final class Game {
         return trashCans;
     }
 
-    public boolean recycleTrash(MouseEvent event, ImageView inv11, ImageView inv22) {
+    public boolean recycleTrash(MouseEvent event, Text text, ImageView inv11, ImageView inv22) {        
+        // befinder spilleren sig derhjemme?
         if (!currentRoom.getShortDescription().contains("derhjemme")) {
             System.out.println("Du skal være hjemme for at kunne sortere dit affald!");
             return false;
         }
 
+        // vi skal også tjekke om spilleren har valgt en gesntand fra inventaren
         if (inventory.currentSelectedSlot == null) {
             System.out.println("Du har ikke valgt en genstand!");
             return false;
         }
 
+        // Ved hjælp af ImageView id, kan vi bestemme hvilken skraldespand spilleren har trykket på
         ImageView currentTrashIv = (ImageView) event.getSource();
+
+        // eftersom vi har en hashmap over de skraldespand derhjemme, kan vi hurtigt tilgå dem
         TrashCan currentTrashCan = trashCans.get(currentTrashIv.getId());
 
+        // et tjek der forhindre en NullPointerException
         if (currentTrashCan == null) {
             return false;
         }
 
+        // få den nuværende valgt genstand fra spillerens inventar
         ImageView slot = inventory.currentSelectedSlot;
+
+        // tilgå trash objektet ved hjælp af ImageView id
         Trash trash = inventory.trash.get(slot.getId());
 
+        // der benyttes en boolean her for at gøre det muligt at tjekke en spillers score
+        boolean sortedCorrectly = false;
         if (currentTrashCan.addTrash(inventory, trash, getScoreCounter())) {
-            System.out.printf("Tillykke. Du har fået point! Du har sorteret korrekt.\nDin score er nu: %d%n", score.getScore());
-
             if (currentTrashCan.containsTrashType(trash.getTrashType())) {
                 if (inv11 != null && slot.getId().equals(inv11.getId())) {
                     inv11.setVisible(false);
@@ -458,11 +471,38 @@ public final class Game {
 
                 inventory.currentSelectedSlot = null;
 
-                return true;
+                text.setText("Tillykke! Du har sorteret korrekt! Du har fået 10 point");
+
+                sortedCorrectly = true;
             }
+        } else {
+            text.setText("Desværre. Du har sorteret forkert. Du har mistet 15 point!");
+            sortedCorrectly = false;
         }
 
-        return false;
+        if (score.getScore() >= 50) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setHeaderText("Tillykke!");
+            alert.setContentText("Du har vundet. Fortsæt det gode arbejde!");
+            alert.showAndWait();
+            
+            score.saveScore(moves);
+
+            play(new Command(CommandWord.QUIT, "", "", ""));
+
+            return false;
+        } else if (score.getScore() <= 0) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setHeaderText("Desværre!");
+            alert.setContentText("Du har tabt. Prøv igen!");
+            alert.showAndWait();
+
+            play(new Command(CommandWord.QUIT, "", "", ""));
+
+            return false;
+        }
+
+        return sortedCorrectly;
     }
 
 }

@@ -53,7 +53,7 @@ public class FodboldbanenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File backgroundImage = new File("file:///" + System.getProperty("user.dir")
-                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\fodbold2.png");
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\FodboldbanenFinal4.png");
         background.setImage(new Image(backgroundImage.getPath()));
 
         arrayImage = new ImageView[]{f1, f2, f3};
