@@ -46,7 +46,7 @@ public class Room {
     // Metode der returnerer en lang description.
     public String getLongDescription() {
         // Returnerer description som en String + description + en String med linjeskift (\n) + metoden getExitString
-        return "Du befinder dig nu " + description + ".\n" + getExitString();
+        return "Du befinder dig nu " + description;
     }
 
     //Metoden udskriver en String med noget tekst og alle exits delt op med "|"

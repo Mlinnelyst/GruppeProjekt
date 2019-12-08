@@ -53,7 +53,7 @@ public class GadenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File backgroundImage = new File("file:///" + System.getProperty("user.dir")
-                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\by.png");
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\GaagadenFinal4.png");
         background.setImage(new Image(backgroundImage.getPath()));
 
         arrayImage = new ImageView[]{f1, f2, f3};

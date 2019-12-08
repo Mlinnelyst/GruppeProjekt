@@ -12,16 +12,13 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class ByenController implements Initializable {
@@ -58,7 +55,7 @@ public class ByenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File backgroundImage = new File("file:///" + System.getProperty("user.dir")
-                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\by.png");
+                + "\\src\\main\\java\\com\\mycompany\\JavaBilleder1\\ByenFinal4.png");
         background.setImage(new Image(backgroundImage.getPath()));
 
         arrayImage = new ImageView[]{f1, f2, f3};

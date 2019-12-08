@@ -36,6 +36,6 @@
         </Pane>
       <Text fx:id="moveTxt" layoutX="29.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="scoreTxt" layoutX="893.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="sorterTxt" layoutX="437.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="sorterTxt" layoutX="437.0" layoutY="650.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
     </children>
 </Pane>

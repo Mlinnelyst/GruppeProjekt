@@ -18,6 +18,7 @@ public class App extends Application {
         stage.setTitle("The Recycle Adventurer");
         stage.setScene(scene);
         stage.show();
+        WorldOfZuul.game.printWelcome();
     }
 
     static void setRoot(String fxml) throws IOException {
