@@ -75,10 +75,6 @@ public class ScoreCounter implements ScoreLogger {
                 }
             }            
         } catch (FileNotFoundException ex) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Kunne ikke indlæse savegame.txt!");
-            alert.showAndWait();
         }
         
         if (scores.isEmpty()) {
@@ -120,10 +116,6 @@ public class ScoreCounter implements ScoreLogger {
                 result.add(in.nextLine());
             }            
         } catch (FileNotFoundException ex) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Kunne ikke indlæse savegame.txt!");
-            alert.showAndWait();
         }
         
         return result;
