@@ -91,7 +91,7 @@ public class ParkenController implements Initializable {
             arrayImage[i].setLayoutX(new Random().nextInt(bX));
             arrayImage[i].setLayoutY(new Random().nextInt(bY));
         }
-        
+
         moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());
         scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
         sorterTxt.setText("");

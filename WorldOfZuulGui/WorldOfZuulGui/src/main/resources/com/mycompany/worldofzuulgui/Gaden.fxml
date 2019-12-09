@@ -38,8 +38,8 @@
       
         <Pane fx:id="inventoryPane" layoutX="700" layoutY="500" prefHeight="200" prefWidth="200">
             <children>
-                <ImageView fx:id="inv11" fitHeight="63.0" fitWidth="79.0" layoutX="29.0" layoutY="69.0" onMouseClicked="#invClicked1" pickOnBounds="true" preserveRatio="true" />
-                <ImageView fx:id="inv22" fitHeight="63.0" fitWidth="79.0" layoutX="121.0" layoutY="69.0" onMouseClicked="#invClicked2" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="inv11" fitHeight="63.0" fitWidth="79.0" layoutX="303.0" layoutY="436.0" onMouseClicked="#invClicked1" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="inv22" fitHeight="63.0" fitWidth="79.0" layoutX="430" layoutY="436" onMouseClicked="#invClicked2" pickOnBounds="true" preserveRatio="true" />
             </children>
         </Pane>
       
