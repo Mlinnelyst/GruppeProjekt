@@ -234,26 +234,26 @@ public final class Game {
     }
 
     public void printWelcome() {
-        Alert alert = new Alert(AlertType.INFORMATION);        
-        alert.getDialogPane().setMinWidth(575);        
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.getDialogPane().setMinWidth(575);
         alert.setHeaderText("Velkommen til spillet The Recycle Adventurer!");
-        
+
         String scoreText;
         if (score.loadHighestScore() == 0) {
             scoreText = "Du har ingen gemte score!";
         } else {
             scoreText = "Lavest antal skridt: " + score.loadHighestScore();
         }
-        
+
         alert.setContentText("Spillet vil lære dig at sortere affald korrtekt.\n"
                 + "Værsgo, du starter med 20 point. Dit mål er at opnå 100 point.\n"
                 + "Du opnår 10 point ved at sortere et stykke affald korrekt, og du mister 15 point ved forkert sortering.\n"
                 + "Din mission er, at udforske de forskellige rum, og at samle skrald og derefter sortere det.\n"
                 + "Du kan have ét stykke affald i hver hånd, og du sorterer i hjemmet.\n"
                 + "Du kan få hjælp, ved at skrive 'hjælp' i konsollen. God jagt!\n"
-                + currentRoom.getLongDescription() + "\n\n" 
+                + currentRoom.getLongDescription() + "\n\n"
                 + scoreText);
-                
+
         alert.showAndWait();
     }
 
@@ -417,7 +417,7 @@ public final class Game {
         return trashCans;
     }
 
-    public boolean recycleTrash(MouseEvent event, Text text, ImageView inv11, ImageView inv22) {        
+    public boolean recycleTrash(MouseEvent event, Text text, ImageView inv11, ImageView inv22) {
         // befinder spilleren sig derhjemme?
         if (!currentRoom.getShortDescription().contains("derhjemme")) {
             System.out.println("Du skal være hjemme for at kunne sortere dit affald!");
@@ -469,6 +469,7 @@ public final class Game {
                     inventory.secondSlot = null;
                 }
 
+                inventory.currentSelectedSlot.setEffect(null);
                 inventory.currentSelectedSlot = null;
 
                 text.setText("Tillykke! Du har sorteret korrekt! Du har fået 10 point");
@@ -485,7 +486,7 @@ public final class Game {
             alert.setHeaderText("Tillykke!");
             alert.setContentText("Du har vundet. Fortsæt det gode arbejde!");
             alert.showAndWait();
-            
+
             score.saveScore(moves);
 
             play(new Command(CommandWord.QUIT, "", "", ""));
