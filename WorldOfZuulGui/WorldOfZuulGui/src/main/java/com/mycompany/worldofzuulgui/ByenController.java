@@ -62,8 +62,8 @@ public class ByenController implements Initializable {
 
         WorldOfZuul.game.inventory.reloadInv(inv11, inv22);
 
-        int bX = 828;
-        int bY = 114;
+        int bX = 763;
+        int bY = 159;
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();

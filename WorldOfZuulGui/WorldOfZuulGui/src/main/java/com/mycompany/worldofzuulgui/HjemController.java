@@ -63,8 +63,8 @@ public class HjemController implements Initializable {
 
     private ImageView[] arrayImage;
 
-    int bX = 784;
-    int bY = 164;
+    int bX = 763;
+    int bY = 159;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

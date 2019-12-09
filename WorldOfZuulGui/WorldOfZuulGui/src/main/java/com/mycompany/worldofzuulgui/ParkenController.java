@@ -70,8 +70,8 @@ public class ParkenController implements Initializable {
 
         WorldOfZuul.game.inventory.reloadInv(inv11, inv22);
 
-        int bX = 795;
-        int bY = 597;
+        int bX = 878;
+        int bY = 320;
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
