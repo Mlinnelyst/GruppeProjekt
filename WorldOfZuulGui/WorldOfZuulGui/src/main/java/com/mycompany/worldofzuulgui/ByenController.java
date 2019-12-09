@@ -62,8 +62,10 @@ public class ByenController implements Initializable {
 
         WorldOfZuul.game.inventory.reloadInv(inv11, inv22);
 
-        int bX = 763;
-        int bY = 159;
+        int paneX = 3;
+        int paneY = 277;
+        int bX = 752;
+        int bY = 360;
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
@@ -79,8 +81,8 @@ public class ByenController implements Initializable {
 
             arrayImage[i].setImage(new Image(currentImage.getPath()));
 
-            arrayImage[i].setLayoutX(new Random().nextInt(bX));
-            arrayImage[i].setLayoutY(new Random().nextInt(bY));
+            arrayImage[i].setLayoutX(new Random().nextInt((bX - paneX) + 1) + paneX);
+            arrayImage[i].setLayoutY(new Random().nextInt((bY - paneY) + 1) + paneY);
         }
         
         moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());
