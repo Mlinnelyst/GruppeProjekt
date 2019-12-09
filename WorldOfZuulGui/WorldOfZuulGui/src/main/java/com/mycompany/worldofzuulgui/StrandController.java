@@ -64,14 +64,15 @@ public class StrandController implements Initializable {
 
         WorldOfZuul.game.inventory.reloadInv(inv11, inv22);
 
-        int bX = 912;
-        int bY = 228;
+        int paneX = 63;
+        int paneY = 202;
+        int bX = 879;
+        int bY = 260;
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
         currentRoom.spawnTrash(WorldOfZuul.game.inventory);
 
-        Object[] values = currentRoom.trash.values().toArray();
         for (int i = 0; i < currentRoom.trash.size(); i++) {
             Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];
 
@@ -82,8 +83,8 @@ public class StrandController implements Initializable {
 
             arrayImage[i].setImage(new Image(currentImage.getPath()));
 
-            arrayImage[i].setLayoutX(new Random().nextInt(bX));
-            arrayImage[i].setLayoutY(new Random().nextInt(bY));
+            arrayImage[i].setLayoutX(new Random().nextInt((bX - paneX) + 1) + paneX);
+            arrayImage[i].setLayoutY(new Random().nextInt((bY - paneY) + 1) + paneY);
         }
         
         moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());

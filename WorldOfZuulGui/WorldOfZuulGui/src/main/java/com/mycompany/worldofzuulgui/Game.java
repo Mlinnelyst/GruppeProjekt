@@ -246,11 +246,10 @@ public final class Game {
         }
 
         alert.setContentText("Spillet vil lære dig at sortere affald korrtekt.\n"
-                + "Værsgo, du starter med 20 point. Dit mål er at opnå 100 point.\n"
+                + "Værsgo, du starter med 20 point. Dit mål er at opnå 200 point.\n"
                 + "Du opnår 10 point ved at sortere et stykke affald korrekt, og du mister 15 point ved forkert sortering.\n"
                 + "Din mission er, at udforske de forskellige rum, og at samle skrald og derefter sortere det.\n"
-                + "Du kan have ét stykke affald i hver hånd, og du sorterer i hjemmet.\n"
-                + "Du kan få hjælp, ved at skrive 'hjælp' i konsollen. God jagt!\n"
+                + "Du kan have ét stykke affald i hver hånd, og du sorterer i hjemmet. God fornøjelse!\n"
                 + currentRoom.getLongDescription() + "\n\n"
                 + scoreText);
 
@@ -481,7 +480,7 @@ public final class Game {
             sortedCorrectly = false;
         }
 
-        if (score.getScore() >= 100) {
+        if (score.getScore() >= 200) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText("Tillykke!");
             alert.setContentText("Du har vundet. Fortsæt det gode arbejde!");

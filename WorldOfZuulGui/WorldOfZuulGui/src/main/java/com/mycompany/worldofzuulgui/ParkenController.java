@@ -70,14 +70,15 @@ public class ParkenController implements Initializable {
 
         WorldOfZuul.game.inventory.reloadInv(inv11, inv22);
 
-        int bX = 878;
-        int bY = 320;
+        int paneX = 26;
+        int paneY = 156;
+        int bX = 867;
+        int bY = 312;
 
         Room currentRoom = WorldOfZuul.game.getCurrentRoom();
         currentRoom.trash.clear();
         currentRoom.spawnTrash(WorldOfZuul.game.inventory);
 
-        Object[] values = currentRoom.trash.values().toArray();
         for (int i = 0; i < currentRoom.trash.size(); i++) {
             Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];
 
@@ -88,8 +89,8 @@ public class ParkenController implements Initializable {
 
             arrayImage[i].setImage(new Image(currentImage.getPath()));
 
-            arrayImage[i].setLayoutX(new Random().nextInt(bX));
-            arrayImage[i].setLayoutY(new Random().nextInt(bY));
+            arrayImage[i].setLayoutX(new Random().nextInt((bX - paneX) + 1) + paneX);
+            arrayImage[i].setLayoutY(new Random().nextInt((bY - paneY) + 1) + paneY);
         }
 
         moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());

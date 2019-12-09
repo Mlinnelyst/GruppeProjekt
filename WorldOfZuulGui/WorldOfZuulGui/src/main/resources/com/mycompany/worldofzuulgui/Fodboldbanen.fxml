@@ -18,17 +18,17 @@
       
         <Pane fx:id="spawnPane" layoutX="109.0" layoutY="32.0" prefHeight="597.0" prefWidth="795.0">
             <children>
-                <ImageView fx:id="f1" fitHeight="49.0" fitWidth="63.0" layoutX="47.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="f1" fitHeight="50.0" fitWidth="85.0" layoutX="47.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@placeholder.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="f2" fitHeight="41.0" fitWidth="63.0" layoutX="387.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="f2" fitHeight="50.0" fitWidth="85.0" layoutX="387.0" layoutY="128.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@placeholder.jpeg" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="f3" fitHeight="41.0" fitWidth="55.0" layoutX="217.0" layoutY="395.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="f3" fitHeight="50.0" fitWidth="85.0" layoutX="217.0" layoutY="395.0" onMouseClicked="#trashClicked" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@placeholder.jpeg" />
                     </image>

@@ -60,6 +60,8 @@ public class FodboldbanenController implements Initializable {
 
         WorldOfZuul.game.inventory.reloadInv(inv11, inv22);
 
+        int paneX = 69;
+        int paneY = 62;
         int bX = 845;
         int bY = 421;
 
@@ -67,7 +69,6 @@ public class FodboldbanenController implements Initializable {
         currentRoom.trash.clear();
         currentRoom.spawnTrash(WorldOfZuul.game.inventory);
 
-        Object[] values = currentRoom.trash.values().toArray();
         for (int i = 0; i < currentRoom.trash.size(); i++) {
             Trash currentTrash = (Trash) currentRoom.trash.values().toArray()[i];
 
@@ -78,8 +79,8 @@ public class FodboldbanenController implements Initializable {
 
             arrayImage[i].setImage(new Image(currentImage.getPath()));
 
-            arrayImage[i].setLayoutX(new Random().nextInt(bX));
-            arrayImage[i].setLayoutY(new Random().nextInt(bY));
+            arrayImage[i].setLayoutX(new Random().nextInt((bX - paneX) + 1) + paneX);
+            arrayImage[i].setLayoutY(new Random().nextInt((bY - paneY) + 1) + paneY);
         }
         
         moveTxt.setText("Besøg: " + WorldOfZuul.game.getMoves());
