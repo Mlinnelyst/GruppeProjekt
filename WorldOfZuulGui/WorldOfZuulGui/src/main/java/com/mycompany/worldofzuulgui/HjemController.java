@@ -194,9 +194,7 @@ public class HjemController implements Initializable {
         }
     }
 
-    ;
-
-        @FXML
+    @FXML
     private void goParkenAction() throws IOException {
         WorldOfZuul.game.play(new Command(CommandWord.GO, "parken", "", ""));
         App.setRoot("Parken");
@@ -221,48 +219,41 @@ public class HjemController implements Initializable {
     }
 
     @FXML
-    private void invClicked1(MouseEvent event
-    ) {
+    private void invClicked1(MouseEvent event) {
         WorldOfZuul.game.inventory.slotSelectedHandler(event);
     }
 
     @FXML
-    private void invClicked2(MouseEvent event
-    ) {
+    private void invClicked2(MouseEvent event) {
         WorldOfZuul.game.inventory.slotSelectedHandler(event);
     }
 
     @FXML
-    private void metalGlasPlastClicked(MouseEvent event
-    ) {
+    private void metalGlasPlastClicked(MouseEvent event) {
         WorldOfZuul.game.recycleTrash(event, sorterTxt, inv11, inv22);
         scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
 
     @FXML
-    private void papPapirClicked(MouseEvent event
-    ) {
+    private void papPapirClicked(MouseEvent event) {
         WorldOfZuul.game.recycleTrash(event, sorterTxt, inv11, inv22);
         scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
 
     @FXML
-    private void madClicked(MouseEvent event
-    ) {
+    private void madClicked(MouseEvent event) {
         WorldOfZuul.game.recycleTrash(event, sorterTxt, inv11, inv22);
         scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
 
     @FXML
-    private void restClicked(MouseEvent event
-    ) {
+    private void restClicked(MouseEvent event) {
         WorldOfZuul.game.recycleTrash(event, sorterTxt, inv11, inv22);
         scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
 
     @FXML
-    private void pantClicked(MouseEvent event
-    ) {
+    private void pantClicked(MouseEvent event) {
         WorldOfZuul.game.recycleTrash(event, sorterTxt, inv11, inv22);
         scoreTxt.setText("Point: " + WorldOfZuul.game.getScoreCounter().getScore());
     }
